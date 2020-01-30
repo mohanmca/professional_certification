@@ -13,6 +13,8 @@
     * [The magic behind the magic: Spring Boot Autoconfiguration](https://aboullaite.me/the-magic-behind-the-magic-spring-boot-autoconfiguration/)
     * [Spring Certification Notes](https://github.com/MrR0807/SpringCertification5.0)
 - [] [Mock Questions](http://itestjava.com/java-certification-practice-tests/product/enter.do?product=SPRING-CORE50)
+- [] Shortlist Existing Anki Cards
+- [] Craete 4 Anki Cards per day
 
 
 ## Technical checklist
