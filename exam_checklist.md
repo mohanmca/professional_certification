@@ -4,6 +4,7 @@
 - [x] [Buy exam voucher](https://pivotal.io/training/certification/spring-professional-certification)
 - [x] [Familiarise exam content](https://pivotalcontent.s3.amazonaws.com/training/exam-briefs/Pivotal_ExamBrief_SpringProfessional.pdf)
 - [] [Familiarise Spring Questions listed in study guide](https://pivotalcontent.s3.amazonaws.com/academy/Spring-Professional-Certification-Study-Guide.pdf)
+- [] [Spring core pdf](https://docs.spring.io/spring/docs/current/spring-framework-reference/pdf/core.pdf)
 - [] [Read Spring Books](https://github.com/dgkanatsios/CKAD-exercises)
   -  [Pivotal Certified Professional Core Spring 5 Developer Exam: A Study Guide Using Spring Framework 5](https://www.amazon.com/Pivotal-Certified-Professional-Spring-Developer-ebook-dp-B082MCRCLM/dp/B082MCRCLM/ref=mt_kindle?_encoding=UTF8&me=&qid=)
   -  [Spring in Action, Fifth Edition](https://www.amazon.co.uk/Spring-Action-Fifth-Craig-Walls/dp/1617294942)
@@ -42,3 +43,5 @@
 
 ## Reference
 * [Becoming a Spring Certified Professional without the Core Spring Course](https://gist.github.com/LinnykOleh/578466701a2f43d436fb68b86df63caa)
+* [Spring PDF documentation](https://docs.spring.io/spring/docs/current/spring-framework-reference/pdf/)
+* [Spring core pdf](https://docs.spring.io/spring/docs/current/spring-framework-reference/pdf/core.pdf)
