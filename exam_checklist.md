@@ -66,3 +66,6 @@ tips.map(tip =>  tip.parentElement.nextSibling.nextSibling.innerText).filter(t =
 * [Becoming a Spring Certified Professional without the Core Spring Course](https://gist.github.com/LinnykOleh/578466701a2f43d436fb68b86df63caa)
 * [Spring PDF documentation](https://docs.spring.io/spring/docs/current/spring-framework-reference/pdf/)
 * [Spring core pdf](https://docs.spring.io/spring/docs/current/spring-framework-reference/pdf/core.pdf)
+* [Configuring Logback With Spring Boot](https://dzone.com/articles/configuring-logback-with-spring-boot)
+* [Spring Tips](https://twitter.com/SpringTipsLive/lists)
+* [Spring Tips](https://bit.ly/spring-tips-playlist)
