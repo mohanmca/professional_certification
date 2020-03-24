@@ -130,3 +130,8 @@ Header always set Set-Cookie "JSESSIONID=;Path=/tutorial;Expires=Thu, 01 Jan 197
 1. The following documentation is for use within Reactive environments. For Servlet environments, refer to WebClient for Servlet environments.
 1. For this to work the return type of the method must be a org.reactivestreams.Publisher (i.e. Mono/Flux). This is necessary to integrate with Reactor’s Context.
 1. Basic Authentication drafts evolved into Simple Authentication and is only supported for backward compatibility. See RSocketSecurity.basicAuthentication(Customizer) for setting it up.
+
+```javascript
+let notes = Array.from(document.getElementsByClassName("fa icon-note"))
+notes.map(tip =>  tip.parentElement.nextSibling.nextSibling.innerText).filter(t => t.indexOf("See the")==-1).filter(t => t.indexOf("in the appendix")==-1).join("\r\n1. ")
+```
