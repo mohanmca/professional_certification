@@ -3,6 +3,11 @@
 * @After - Can you access retrun type and value
 * jdbcTemplate - can it be autowire if there is Datasource()
 * Name of method for DisposableBean and Initializing Bean
+* If there is an system environment variable daily.limit, how do you access them using SPeL
+  * @Value("${daily.limit}")
+  * @Value("#{daily.limit}")
+  * @Value("${sytemProperties['daily.limit']}")
+  * @Value("#{systemProperties.daily.lmit}) //may not work, as . means method invocation
 * Select query method
   * 
 
