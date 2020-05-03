@@ -1,5 +1,3 @@
-
-
 ## How to create anki from this file
 
 ```
