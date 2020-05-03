@@ -1,7 +1,6 @@
 # Exam checklist prepared based on past blogs
 
 ## Before exam
-## Before exam
 - [] [Read MrR0807/SpringCertification5.0](https://github.com/MrR0807/SpringCertification5.0)
 - [] [Prepare 6 Spring guides](https://spring.io/guides#getting-started-guides)
 - [] [Read Certification Guide](https://leanpub.com/corespring5certificationindetail)
@@ -15,7 +14,6 @@
 - [] [Mock Questions-1](http://itestjava.com/java-certification-practice-tests/product/enter.do?product=SPRING-CORE50)
 - [] [Mock Questions-2](https://quizlet.com/class/6479335/)
 - [] [Mock Questions-3](https://www.certification-questions.com/spring-exam/professional-dumps.html)
-
 
 
 ## List of exercises
