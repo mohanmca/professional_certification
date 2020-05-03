@@ -3,6 +3,7 @@
 ## Before exam
 ## Before exam
 - [] [Read MrR0807/SpringCertification5.0](https://github.com/MrR0807/SpringCertification5.0)
+- [] [Prepare 6 Spring guides](https://spring.io/guides#getting-started-guides)
 - [] [Read Certification Guide](https://leanpub.com/corespring5certificationindetail)
 - [] [Prepare prior exam questions]
   docs\md_anki\spring_mock_questions.md
