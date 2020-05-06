@@ -4,11 +4,11 @@
 - [] [Read MrR0807/SpringCertification5.0](https://github.com/MrR0807/SpringCertification5.0)
 - [] [Prepare 6 Spring guides](https://spring.io/guides#getting-started-guides)
 - [] [Read Certification Guide](https://leanpub.com/corespring5certificationindetail)
-- [] [Prepare prior exam questions]
-  docs\md_anki\spring_mock_questions.md
-- [] [Attempt Mock Exams]  
+- [] [Prepare prior exam questions](docs\md_anki\spring_mock_questions.md)  
+- [] [Attempt Mock Exams]
 - [] [Familiarise Spring Questions listed in study guide](https://pivotalcontent.s3.amazonaws.com/academy/Spring-Professional-Certification-Study-Guide.pdf)
-  -  [Review questions from : Pivotal Certified Professional Core Spring 5 Developer Exam: A Study Guide Using Spring Framework 5](https://www.amazon.com/Pivotal-Certified-Professional-Spring-Developer-ebook-dp-B082MCRCLM/dp/B082MCRCLM/ref=mt_kindle?_encoding=UTF8&me=&qid=)
+  -[][Review questions from : Pivotal Certified Professional Core Spring 5 Developer Exam: A Study Guide Using Spring Framework 5](https://www.amazon.com/Pivotal-Certified-Professional-Spring-Developer-ebook-dp-B082MCRCLM/dp/B082MCRCLM/ref=mt_kindle?_encoding=UTF8&me=&qid=)
+  -[][Review questions from : Android mobile apps]
 - [] [How Spring Boot Auto-Configuration Works](https://dzone.com/articles/how-springboot-autoconfiguration-magic-works)
 - [] [The magic behind the magic: Spring Boot Autoconfiguration](https://aboullaite.me/the-magic-behind-the-magic-spring-boot-autoconfiguration/)
 - [] [Mock Questions-1](http://itestjava.com/java-certification-practice-tests/product/enter.do?product=SPRING-CORE50)
