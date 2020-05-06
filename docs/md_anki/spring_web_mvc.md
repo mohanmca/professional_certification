@@ -577,3 +577,10 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     }
 }
 ```
+
+
+## How to test web-layer without running Server
+
+* @AutoConfigureMockMvc and 	@Autowired	private MockMvc mockMvc;
+* To test only the layer where spring handles http request without HTTP Server, where Spring handles the incoming HTTP request and hands it off to your controller. That way, almost of the full stack is used, and your code will be called in exactly the same way as if it were processing a real HTTP request but without the cost of starting the server.
+
