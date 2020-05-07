@@ -3,7 +3,7 @@
 ## How to create anki from this file
 
 ```
-mdanki spring-boot-mock-questions.md spring-boot-mock-questions.apkg  --deck "Spring 5 Certification::Boot:MdAnki" --config spring_web_mvc.json
+mdanki spring-boot-mock-questions.md spring-boot-mock-questions.apkg  --deck "Spring 5 Certification::Boot::MdAnki" --config spring_web_mvc.json
 ```
 
 ## What does @EnableAutoConfiguration do?
@@ -99,3 +99,57 @@ subsystem,
 1. The severity order of the status codes can be changed and new health indicator status codes can be added using the management.health.status.order configuration property.
 1. management.health.status.order=FATAL, DOWN, OUT_OF_SERVICE, UNKNOWN, UP
 1. management.health.status.http-mapping.FATAL=418 (To map the status code 418)
+
+
+## What is the importance of  @DataJpaTest
+
+1. The @DataJpaTest annotation to test JPA applications. 
+1. By default, it scans for @Entity classes and configures Spring Data JPA repositories. 
+1. If an embedded database is available on the classpath, it configures one as well. 
+1. Regular @Component beans are not loaded into the ApplicationContext.
+1. Data JPA tests are transactional and roll back at the end of each test.
+1. transaction management can be disabled for a test or for the whole class using @Transactional(propagation = Propagation.NOT_SUPPORTED)
+
+
+
+## Show example usage of @DataJpaTest
+
+```java
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.orm.jpa.*;
+
+import static org.assertj.core.api.Assertions.*;
+
+@DataJpaTest
+class ExampleRepositoryTests {
+
+    @Autowired
+    private TestEntityManager entityManager;
+
+    @Autowired
+    private UserRepository repository;
+
+    @Test
+    void testExample() throws Exception {
+        this.entityManager.persist(new User("sboot", "1234"));
+        User user = this.repository.findByUsername("sboot");
+        assertThat(user.getUsername()).isEqualTo("sboot");
+        assertThat(user.getVin()).isEqualTo("1234");
+    }
+
+}
+```
+
+
+## What are the differences between @org.springframework.boot.test.mock.mockito.MockBean and @org.mockito.Mock?
+
+1. @org.springframework.boot.test.mock.mockito.MockBean and @Mock annotation can be used to create Mockito mocks
+1. @org.mockito.Mock can only be applied to fields and parameters while @MockBean can only be applied to classes and fields.
+1. @Mock can be used to mock any Java class or interface 
+1 @Mock - As you write a test that doesn't need any dependencies from the Spring Boot container, the classic/plain Mockito is the way to follow : it is fast and favors the isolation of the tested component.
+1. @org.springframework.boot.test.mock.mockito.MockBean only allows for mocking of Spring beans or creation of mock Spring beans.
+1. @org.springframework.boot.test.mock.mockito.MockBean can be used to mock existing beans but also to create new beans that will belong to the Spring application context.
+1. To be able to use the @org.springframework.boot.test.mock.mockito.MockBean annotation, the Spring runner (@RunWith(SpringRunner.class) ) has to be used to run the associated test.
+1. @org.springframework.boot.test.mock.mockito.MockBean can be used to create custom annotations for specific, reoccurring, needs.
+1. If a bean, compatible with the declared class exists in the context, @MockBean replaces it by the mock. If it is not the case, it adds the mock in the context as a bean
+1. If your test needs to rely on the Spring Boot container and you want also to add or mock one of the container beans : @MockBean from Spring Boot is the way.
