@@ -1,3 +1,11 @@
+# Spring mock questions
+
+## How to create anki from this mock question file
+
+```
+mdanki spring-mock-questions.md spring-mock-questions.apkg --deck "Spring 5 Certification::MdAnki::Mock" --config spring_web_mvc.json
+```
+
 ## Its advantage include faster development, lesser repetitive SQL code
 
 1. ORM

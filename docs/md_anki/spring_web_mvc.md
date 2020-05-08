@@ -1,7 +1,7 @@
-## How to create anki from this file
+## How to create anki from this web-mvc file
 
 ```
-mdanki spring_web_mvc.md spring_web_mvc.apkg --config spring_web_mvc.json
+mdanki spring_web_mvc.md spring_web_mvc.apkg --deck "Spring 5 Certification::MdAnki::WebMvc" --config spring_web_mvc.json
 ```
 
 ## Spring Web MVC consists of 

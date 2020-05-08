@@ -1,9 +1,9 @@
 # Spring boot questions
 
-## How to create anki from this file
+## How to create anki from this boot mock question file
 
 ```
-mdanki spring-boot-mock-questions.md spring-boot-mock-questions.apkg  --deck "Spring 5 Certification::Boot::MdAnki" --config spring_web_mvc.json
+mdanki spring-boot-mock-questions.md spring-boot-mock-questions.apkg --deck "Spring 5 Certification::MdAnki::Boot" --config spring_web_mvc.json
 ```
 
 ## What does @EnableAutoConfiguration do?
