@@ -34,3 +34,4 @@ tips.map(tip =>  tip.parentElement.nextSibling.nextSibling.innerText).filter(t =
 * [Spring Tips](https://twitter.com/SpringTipsLive/lists)
 * [Spring Tips](https://bit.ly/spring-tips-playlist)
 * [MrR0807 - SpringCertification5.0](https://github.com/MrR0807/SpringCertification5.0)
+* [Download Spring documentation](https://repo.spring.io/release/org/springframework/spring/5.2.6.RELEASE/)
