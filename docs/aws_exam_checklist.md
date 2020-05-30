@@ -1,3 +1,11 @@
+## Preparation schedule
+
+* Complete CloudAcademy - Course
+* Complete CloudGuru - Course
+* Complete the study guid book
+* Practice 25 Anki per day
+
+
 WHITEPAPERS To read: https://aws.amazon.com/whitepapers/
  -  [] AWS Security Best Practices
  -  [] AWS Well-Architected Framework
@@ -9,7 +17,7 @@ WHITEPAPERS To read: https://aws.amazon.com/whitepapers/
  -  [] Running Containerized Microservices on AWS
  -  [] Blue/Green Deployments on AWS
 
-FAQs I read: https://aws.amazon.com/faqs/
+FAQs to read: https://aws.amazon.com/faqs/
  -  [] Amazon Simple Queue Service
  -  [] Amazon DynamoDB
  -  [] Amazon ElastiCache
@@ -19,3 +27,13 @@ FAQs I read: https://aws.amazon.com/faqs/
  -  [] AWS Elastic Beanstalk
  -  [] AWS Identity and Access Management
  -  [] AWS Key Management Service
+
+
+## Reference
+
+* [Preparation blog](https://sumit-ghosh.com/articles/aws-solutions-architect-associate-preparation/)
+* [CSA-2019-Notes](https://github.com/AlessioCasco/AWS-CSA-2019-study-notes)
+* [CSA-2019-Notes](https://github.com/Berkeley-Reject/AWS-CSA-Notes-2019)
+* [CSA-2018-Notes](https://github.com/NigelEarle/AWS-CSA-Notes-2018)
+* [CSA-2016-Notes](https://github.com/leokhoa/Aws-Solution-Architect-Notes)
+
