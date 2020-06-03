@@ -28,12 +28,21 @@ FAQs to read: https://aws.amazon.com/faqs/
  -  [] AWS Identity and Access Management
  -  [] AWS Key Management Service
 
+## AWS Well-Architected
+
+* [AWS_Well-Architected_Framework](https://d1.awsstatic.com/whitepapers/architecture/AWS_Well-Architected_Framework.pdf)
+* [Framework](https://d1.awsstatic.com/whitepapers/architecture/AWS_Well-Architected_Framework.pdf)
+* [Operational Excellence whitepaper](https://d1.awsstatic.com/whitepapers/architecture/AWS-Operational-Excellence-Pillar.pdf)
+* [Security Pillar](hhttps://d1.awsstatic.com/whitepapers/architecture/AWS-Security-Pillar.pdf)
+* [Download the Reliability Pillar whitepaper](https://d1.awsstatic.com/whitepapers/architecture/AWS-Reliability-Pillar.pdf)
+* [Performance Efficiency](https://d1.awsstatic.com/whitepapers/architecture/AWS-Performance-Efficiency-Pillar.pdf)
+* [Cost Optimization whitepaper](https://d1.awsstatic.com/whitepapers/architecture/AWS-Performance-Efficiency-Pillar.pdf)
 
 ## Reference
 
 * [Preparation blog](https://sumit-ghosh.com/articles/aws-solutions-architect-associate-preparation/)
-* [CSA-2019-Notes](https://github.com/AlessioCasco/AWS-CSA-2019-study-notes)
-* [CSA-2019-Notes](https://github.com/Berkeley-Reject/AWS-CSA-Notes-2019)
+* [AlessioCasco - CSA-2019-Notes](https://github.com/AlessioCasco/AWS-CSA-2019-study-notes)
+* [Berkeley-Reject - CSA-2019-Notes](https://github.com/Berkeley-Reject/AWS-CSA-Notes-2019)
 * [CSA-2018-Notes](https://github.com/NigelEarle/AWS-CSA-Notes-2018)
 * [CSA-2016-Notes](https://github.com/leokhoa/Aws-Solution-Architect-Notes)
 
