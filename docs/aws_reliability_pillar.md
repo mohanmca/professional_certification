@@ -21,6 +21,7 @@
 * Service availability over period of time
 * 99% - 3 days 15 hours
 * 99.9% - 8 hours 45 minutes
+* 99.95% - 
 * 99.999% - 5 minutes
 * When the 9's are increasing, every kind of errors/failures should be handled by application (and architecture) itself
 

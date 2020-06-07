@@ -99,16 +99,68 @@
 * Versisoning
 
 
+### Getting data in/out of AWS
+* Direct connect
+* VPN
+* Internet connections
+* AWS Snowball
+* AWS Snowmobile
+* AWS Storage gateway
+
+
 ### AWS Snowball service
 
 * Physical appliance
 * 50TB or 80TB
+* SFP+ Coper or SFP+ Optical, RJ45 (Cat6)
 * Dust, Water and Tamper resistant
 * Default AWS KMS encrypted
-* End-2-End tracking, can be notified using SNS
+* End-2-End tracking using E-INK, can be notified using SNS
+* AWS would ensure data removed after transfering to S3
 * Data aggregation using muliple appliance
-* 
+* If your data transfer would take more than a week, prefer AWS snowball
+* E-INK has return address, and snowball devices are owned by AWS
 
+### Aws storage gateway
+
+* 3 types - File gatway, volume gateway and tape gateway
+* Software appliance - Integrates between On-Premise storage with AWS
+* File Gatways - stores in S3
+  * HTTPS to S3
+  * Provides Local Cache
+  * Mounts as drive using NFS v4.1 or V3
+
+#### AWS Stored volume gateways
+* Present locally and remotely in S3
+* Provides latency (using iScsi volume) backed local disks and mounted using SAN/NAS
+* Represented as iSCSI volumes
+* Volume can be 1GiB - 16TiB
+* Each storage gateway can hold 32 volume
+* 16 * 32 = 512TiB maximum storage gatway per AWS stored valume gateway
+* SSL, Snapshot support
+* Incremental volume snapshopt are stored on S3 as EBS snapshot
+
+#### AWS Cached volume gateways
+* Provides as iScsi mounted using SAN/NAS
+* Local buffer/cache
+* 32 * 32 = 1024iB maximum storage gatway per AWS cached valume gateway
+* Incremental volume snapshopt are stored on S3 as EBS snapshot
+* Snapshots can be easily mounted to any EC2 as EBS volume
+
+### AWS VTL (Virtual tape library)
+* Existing tape backup applications are supported
+* Leverage AWS glacier for data archive
+* Storage gateway 1500 virtual tapes
+* Virtual Tapes - 100Gib-2.5TiB. Data stored in VT are backed by S3 and visible in virtual tape library
+* 10 virtual Tape Drives and Media Changer as iScsi device
+* Archive 3to5 hrs to retrieve
+
+
+### One of the main benefit - Easy to retrieve and test the DR plans from the backup using AWS infrastructure.
+
+
+
+ 
 
 
 
