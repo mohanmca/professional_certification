@@ -96,6 +96,19 @@
 1. Launch (Create keypair)
 
 
+## Get the EC2 instance meta-data
+```bash
+curl http://169.254.169.254/latest/meta-data/ami-id
+curl http://ec2-54-185-39-21.us-west-2.compute.amazonaws.com/meta-data
+```
+
+### Connecting to EC2 instance
+```bash
+chmod 400 mohan_ec2.pem
+ec2-54-185-39-21.us-west-2.compute.amazonaws.com
+ssh -i "mohan_ec2.pem" ec2-user@ec2-54-185-39-21.us-west-2.compute.amazonaws.com
+```
+
 ### Common system status check failure
 * AWS owned problem due to underlying host/power/network issue/corrup file-syste
 * Better to relaunch
