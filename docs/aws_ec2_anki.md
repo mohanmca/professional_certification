@@ -96,4 +96,6 @@
 1. Launch (Create keypair)
 
 
-
+### Common system status check failure
+* AWS owned problem due to underlying host/power/network issue/corrup file-syste
+* Better to relaunch
