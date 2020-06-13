@@ -98,6 +98,7 @@
 
 ## Get the EC2 instance meta-data
 ```bash
+curl  -w "\n" http://ec2-54-185-39-21.us-west-2.compute.amazonaws.com/meta-data
 curl http://169.254.169.254/latest/meta-data/ami-id
 curl http://ec2-54-185-39-21.us-west-2.compute.amazonaws.com/meta-data
 ```
@@ -106,8 +107,53 @@ curl http://ec2-54-185-39-21.us-west-2.compute.amazonaws.com/meta-data
 ```bash
 chmod 400 mohan_ec2.pem
 ec2-54-185-39-21.us-west-2.compute.amazonaws.com
-ssh -i "mohan_ec2.pem" ec2-user@ec2-54-185-39-21.us-west-2.compute.amazonaws.com
+ssh -i "/path/to/your/mohan_ec2.pem" ec2-user@ec2-54-185-39-21.us-west-2.compute.amazonaws.com
+ssh -i mohan_ec2.pem ec2-user@ec2-54-185-39-21.us-west-2.compute.amazonaws.com
+ssh -i mohan_ec2.pem ec2-user@54.185.39.21
 ```
+
+
+### Convert PEM into PPK
+
+https://aws.amazon.com/premiumsupport/knowledge-center/convert-pem-file-into-ppk/
+
+#### Popular EC2 users
+```bash
+Amazon Linux AMIs typically use:ec2-user
+Debian: admin
+RedHat: ec2-user
+Ubuntu: ubuntu
+```
+
+#### EC2 instance normalization factor
+1. nano  0.25
+1. micro 0.5
+1. small 1
+1. medium 2
+1. large 4
+1. xlarge 8
+1. 2xlarge 16
+1. 3xlarge 24
+1. 4xlarge 32
+1. 6xlarge 48
+1. 8xlarge 64
+1. 9xlarge 72
+1. 10xlarge 80
+1. 12xlarge 96
+1. 16xlarge 128
+1. 18xlarge 144
+1. 24xlarge 192
+1. 32xlarge 256
+
+
+### Unofficial factor
+* nano = 1
+* micro = 2*nano
+* small = 2*micro
+* medium = 2*small
+* large = 2*medium
+* xlarge = 2*large
+
 
 ### Common system status check failure
 * AWS owned problem due to underlying host/power/network issue/corrup file-syste

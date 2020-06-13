@@ -107,11 +107,15 @@
 * Avoids manual intervention to right scale cloud resources
 * Cost reduction and Great customer satisfaction
 * Scalalble and Flexible architecture
+* Groups
+  * Your EC2 instances are organized into groups so that they can be treated as a logical unit for the purposes of scaling and management.
+  * When you create a group, you can specify its minimum, maximum, and desired number of EC2 instances.
 
 #### AWS EC2 autoscaling - components
 1. Launch configuration  - Creaion of launch configuration (or Lauch template)
    1. Lauch template is advanced version of launch configuration
 1. Autoscaling Group - Creation of Autoscaling Group
+  1. Your group uses a launch configuration as a template for its EC2 instances.
 1. Launch configuration
    1. AMI
    1. Instance type
@@ -120,11 +124,15 @@
    1. if any user-data on first boot
    1. storage volume configuration
    1. security groups
+   1. When you create a launch configuration, you can specify information such as the AMI ID, instance type, key pair, security groups, and block device mapping for your instances.
 
 #### AWS EC2 autoscaling - launch template steps
 1. AWS Management console  
 1. EC2 console (under compute)
 1. Launch template > Create Launch Template
+  1. A launch template is similar to a launch configuration, in that it specifies instance configuration information.
+  1. Defining a launch template instead of a launch configuration allows you to have multiple versions of a template.
+  1. With versioning, you can create a subset of the full set of parameters and then reuse it to create other templates or template versions.
 1. Step-1) Launch Template
     1. Create new tempalte
       1. name + description + source-template
@@ -170,6 +178,35 @@
 1. Create        
     
 
+### CloudWatch
+* By default, CloudWatch monitors EC2 instances approximately every 5 minutes. Detailed monitoring enables monitoring more often (each minute). Note: Detailed monitoring does have an associated cost.
+* Cooldown period - The cooldown period helps you prevent your Auto Scaling group from launching or terminating additional instances before the effects of previous activities are visible. You can configure the length of time based on your instance startup time or other application needs. 
+
+
 ### Combine ELB vs Autoscaling group
+* Select the target-group in AutoScaling group to tie the ELB
+
+### Lab
+* 257937829427/student/Ca1_3X1Kh4ha
+* 
+```
+#!/bin/bash
+#Enable the epel-release
+amazon-linux-extras install epel
+#Install and start Apache web server
+yum install -y httpd php
+service httpd start
+#Install CPU stress test tool
+sudo yum install -y stress
+```
+
+###
+chmod 700 ec2_challenge_1.pem
+ssh -i "ec2_challenge_1.pem" ec2_user@ec2-54-68-106-177.us-west-2.compute.amazonaws.com
+
+### To stress CPU
+stress -c 2 -i 1 -m 1 --vm-bytes 128M -t 5m
 
 ###[ELB Product comparisons](https://aws.amazon.com/elasticloadbalancing/features/)  
+###[What Is Amazon EC2 Auto Scaling?](https://docs.aws.amazon.com/autoscaling/latest/userguide/WhatIsAutoScaling.html)
+### (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
