@@ -12,6 +12,9 @@
 1. IGW - Internet gateways and Load Balancers
 
 
+? What is netmask
+? How many bits are supported for netmask
+
 ## VPC
 1. Each account is allowed to create 5 VPC per region
 1. VPC = Name + CIDR block (IP-Address range)
@@ -34,6 +37,7 @@
    * The highest number that you can use for a rule is 32766. 
    * It is recommended to creating rules in increments (for example, increments of 10 or 100) so that you can insert new rules where you need to later on.
 * [NACL document](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html)
+* When you add or remove rules from a network ACL, the changes are automatically applied to the subnets it is associated with. 
 
 ## Security Group
 
@@ -42,10 +46,12 @@
 * We can specify allow rules, but not deny rules.
 * Security-Group = Type/Protocol/Port-Range/Source (MySQL|HTTP/TCP/3306/10.0.1.0`/`24)  
 * By default, a security group includes an outbound rule that allows all outbound traffic. You can remove the rule and add outbound rules that allow specific outbound traffic only. If your security group has no outbound rules, no outbound traffic originating from your instance is allowed. 
+* Note that NACLs may take a bit longer to propagate, as opposed to security groups, which take effect almost immediately (1-2 seconds).   
+
 
 ### Subnets and CIDR block
 
-* We cab create public-subnet and private subnet
+* We can create public-subnet and private subnet
 * Each subnet is ip-address block using CIDR
 * Every subnet has a route-table
 * For VPC, CIDR can rnage from */16 to */28
@@ -59,6 +65,9 @@
    * Eample Local Route - Destination: 10.0.0.16/16 -> Target: Local (Example default route)
 * Route table entry in IGW 
   * 0.0.0.0/0 -> igw-212823ab5g (Any host within VPC can contact IGW)
+* Private subnet
+    * If a subnet doesn't have a route to the Internet gateway, the subnet is known as a private subnet.
+    * The private subnet routes internet traffic through the NAT instance.
 
 ### Subnets, Region and Resillency
 
@@ -95,6 +104,9 @@
 * Private subnet should have an entry 0.0.0.0/0 ---> Nat Gateway to gain access to internet
    * 0.0.0.0/0 -> nat.0fabcdef678ghk
 * Nat-gateway should be configured for resillent fallback VPC as well
+* NAT instance is in the public subnet
+   * It cannot be reached from the internet. 
+   * It has an inbound rule that only grants instances from the private security group (private instances) access. 
 
 ### Bastion Hosts
 * Why we need Bastion hosts
@@ -169,3 +181,96 @@
   * Attachment  - Attach new VPC to VPN
 
   
+### AWS VPC Lab (604274498499/student/Ca1_IhPhfoCK/172.31.0.0/16)
+1. Creating a VPC subnet
+1. Creating a VPC Internet Gateway
+1. Connecting the Internet Gateway to the VPC Route Table
+1. Creating an EC2 instance
+1. Allocating and Associating an Elastic IP
+
+#### AWS Lab-1
+1. Create VPC with 10.0.0.0/16
+  1. Block size always should be between /16 and /28
+1. VPC = name + cidr-block (10.0.0.0/16) + tenancy (default/dedicated)
+    1. DHCP Options set + Main route table + Main Network ACL (default it creates)
+    1. DHCP Options set enables DNS for instances that need to communicate over the VPC's Internet gateway
+1. VPC ID - vpc-09598320b1f03592a
+1. To create subnet (Name-tag+VPC+AZ+VPC CIDRs)
+  1. Choose subnet with lesser netmask for the VPC subnet - Subnet ID subnet-06b1516d2cab54272
+  1. We can create maxium of 5 subnet within a VPC
+1. Internet Gateway - Internet gateway ID - igw-0d060a75a8b2a2a9e
+1. To configure ping to instance, configure security group
+  1. All ICMP - IPv4	ICMP	All	0.0.0.0/0	igw_to_instance
+1. There is a route table for every VPC, that should be used to add routes  
+  
+#### AWS Lab-2
+1. Create public subnet, a private subnet, and a network address translation (NAT) instance in the public subnet. 
+1. Create public subnet with Bation host NAT to connect to private instance
+1. Actual steps
+    1. Create VPC - cloudacademy-labs with CIDR block - 10.0.0.0/16  (vpc-032ec65cd5ad76f2c)
+    1. Create igw with name labs-gw
+      1. Attach this IGW with the VPC - vpc-032ec65cd5ad76f2c
+    1. Create Public subnet's IPv4 CIDR with name Public-A: - - 10.0.20.0/24 
+      1. Create new route table named: PublicRouteTable  and attach it to Public-A subnet (PublicRouteTable)
+      1. Route all address not belong to 10.0.0.0/16 to IGW
+      1. Create Bastion host (in public VPC) (name: Bastion)
+        1. A bastion host is typically a host that sits inside your public subnet for the purposes of SSH (and/or RDP) access (Jump server)
+        1. Upon creation - assign public-ip and add the instance part of public subnet
+        1. In security group allow SSH connection from required IP address (find.MyIP)
+    1. Create Private subnet's IPv4 CIDR with name Public-A: - 10.0.10.0/24 (subnet-0af2d53860d38dd8e)
+        1. PrivateRouteTable should be created with IGW (IGW only stop gap, we should remove it)
+        1. PrivateRouteTable should allow route to 0.0.0.0/0 via IGW and associate this route table to Private Subnet
+    1. Create Private-NACL and attach to Private-Subnet
+        1. Add Inbound Rule
+            1. Allow SSH from 10.0.20.0/24
+            1. Allow TCP port-range from 1024-65535 from 0.0.0.0/0
+        1. Add Outbound Rule
+            1. Rule-100 : Allow HTTP to 0.0.0.0/0
+            1. Rule-200 : Allow HTTPS to 0.0.0.0/0
+            1. Rule-300 : Allow TCP Port range 32768-61000 to 10.0.20.0/24
+    1. Launch Private EC2 instance in private subnet
+        1. Select private subnet and disable public-ip
+        1. Configure SecurityGroup (named SG-Provate)
+            1. Allow TCP SSH Input from SG-Bastion (SSH only from public subnet of our own VPC)
+    1. Open SG-bastion security group (SG created during Bastion)
+      1. Allow Destination SSH to SG-Private
+    1. Use agent forwarding connect to Public instance
+        1. From public instance connect to private instance
+        1. sudo yum udpate
+    1. Create NAT instance to provide internet for private instances
+        1. Choose public subnet
+        1. Public-Ip should be enabled
+        1. Configure SG-NAT security group
+            1. Type of All Traffic and Source of SG-Private (allow all traffic from any instance using your private security group) 
+            1. Allow - SSH TCP 22 My IP
+        1. Select the NAT instance, then click Actions > Networking > Change Source/Dest. Check. Verify that the attribute is disabled: 
+    1. PrivateRoute Table should be updated
+        1. Alllow 0.0.0.0/0 using above NAT instances created.
+
+
+### How to confirm is SSH forwarding was used
+```bash
+[ec2-user@ip-10-0-20-129 ~]$ env | grep SSH_AUTH_SOCK
+SSH_AUTH_SOCK=/tmp/ssh-rfEo0aushe/agent.3598
+```
+
+ssh ec2-user@10.0.10.177
+
+## Errors
+* No supported authentication methods available (server sent: public-key, gssapi-keyex, gssapi-with-mic)
+  1. You may be using wrong user-id, ec2_user instead ec2-user caused me.
+
+sg-02a0d700a289d3bc9	SG-Private
+sg-073ccdd96554911fc	SG-bastion
+ec2_user@W34.216.151.145
+
+
+
+1) Public-VPC - VPC ID-vpc-01691915afc11f067 - 10.0.0.0/19
+1.1)  PublicSubnet - Subnet ID/subnet-069b5b1d926b1a3f1 - 10.0.128.0/24
+2) Private-VPC - VPC vpc-0d78ffac9dd928baa - 10.0.0.0/19
+2.1)  PrivateSubnet - Subnet ID/subnet-0e2a7d97838e62659 - 10.0.0.0/24
+
+
+## [References](https://aws-quickstart.s3.amazonaws.com/quickstart-linux-bastion/doc/linux-bastion-hosts-on-the-aws-cloud.pdf)
+## [Public/Private Subnet security](https://cloudacademy.com/lab/securing-your-vpc-using-public-and-private-subnets-with-network-acl/)
