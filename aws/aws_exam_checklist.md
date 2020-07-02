@@ -45,4 +45,4 @@ FAQs to read: https://aws.amazon.com/faqs/
 * [Berkeley-Reject - CSA-2019-Notes](https://github.com/Berkeley-Reject/AWS-CSA-Notes-2019)
 * [CSA-2018-Notes](https://github.com/NigelEarle/AWS-CSA-Notes-2018)
 * [CSA-2016-Notes](https://github.com/leokhoa/Aws-Solution-Architect-Notes)
-
+* [A curated list of AWS resources to prepare for the AWS Certifications](https://gist.github.com/leonardofed/bbf6459ad154ad5215d354f3825435dc)

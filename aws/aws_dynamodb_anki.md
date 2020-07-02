@@ -38,20 +38,52 @@
 ## DynamoDB supports two kinds of indexes
 
 * Global secondary index – An index with a partition key and sort key that can be different from those on the table.
+  * GSI can span all of the data in the base table, across all partitions.
+  * Has own provisioned throughput settings for read and write activity that are separate from those of the table.
+  * No size limit
 * Local secondary index – An index that has the same partition key as the table, but a different sort key.
+  * Total size of indexed items for any one partition key value can't exceed 10 GB.
+* Each table in DynamoDB can have up to 20 global secondary indexes (default quota) and 5 local secondary indexes.
+
 
 ## Point-in-Time Recovery for DynamoDB
 
 * Continuous backups of your DynamoDB table data.
 * Optional, has to explicitly enable PITR (Point-in-time-recovery)
 * PITR backup can be restored into new table
-* 
 
 ## What is the consistency model of DynamoDB?
 
 * Read can choose the consistency model depending on demand
   * Eventually consistent reads (the default, high throughput)
   * Strongly consistent reads (read from master, low throughput)
+
+## AWS DynamoDB DAX (Accelerator)
+
+* in-memory cache for DynamoDB that delivers up to a 10x performance improvement
+  * from milliseconds to microseconds – even at millions of requests per second.
+* Dynamo DB - milliseconds, DAX - MicroSeconds
+* DAX is compatible with DynamoDB (no application code change)
+* DAX supporst AES encryption
+* DAX doesn't handle table related operations, they are handled by DynamoDB
+* All write operations ("write-through") are written to DynamoDB first and later to DAX (DAX is eventual consistency)
+* DAX is not ideal
+  * Applications that require strongly consistent reads.
+  * Applications that do not require microsecond response times for reads.
+  * Applications that are write-intensive, or that do not perform much read activity.
+  * Applications that are already using a different caching solution with DynamoDB, and are using their own client-side logic for working with that caching solution.
+
+
+## AWS DynamoDB DAX Cluster
+
+* Minimum of 3 nodes, maximum of 10 nodes (1 Primary, 9 Replicas)
+* DAX EC2 cluster requires additional role and would use your existing VPC
+* DAX EC2 requires additional inbound rule for port 8111
+* We should install "DAX Client" software on those EC2 instances
+* Read Capacity Units can be reduced since DAX would take care most of the reads
+
+
+## AWS DynamoDB Commands
 
 ```bash
 aws dynamodb create-table --region us-west-2 --table-name cloudacademy-courses \
