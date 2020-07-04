@@ -161,3 +161,45 @@
 * Virtual MFA device
   * Example: Google Authenticator
     * Scan QR code and pass two authentication code for activating virutal MFA
+
+## IAM identify federation
+
+* External identify providers could provide service equivalent of what IAM does
+* Id providers allow user to access AWS resource access securely
+* OpenId Connection Provider
+* Microsoft Active Directory can grant access to your AWS resource
+* Trust relationship between AWS account and IdP
+  * Two types SAML-V2.0 and OpenID
+    * OpenId providers includes Google, Facebook, Amazon
+    * SAML (Security assertion markkup language)
+      * MS-AD uses SAML
+* Active directory authentication
+  * Authenticated by MS-AD
+  * SAML will be issued to user
+  * User would send SAML to AWS STS
+  * User would access S3 using STS
+  * [Security Token Service](https://docs.aws.amazon.com/STS/latest/APIReference/welcome.html)
+* [Steps to create create OpenId provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html)
+*[Steps to create - IAM SAML Identity Providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml.html)
+ 
+
+## AWS IAM account settings
+
+* Password policy (State 8 points)
+  * Require atleast one uppercase letter
+  * Require atleast one lowercase letter
+  * Require atleast one number 
+  * Require atleast one non-alphanumeric
+  * Allow user to change own password
+  * Enable password expiry in 99 days
+  * Prevent password reuse (number of password to remember)
+  * Prevent password reuse (number of password to remember)
+* Security Token service can be selectively activated for certain regions
+* Credential report can be generated only once every 4 hours
+* [Credential report format](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html#id_credentials_understanding_the_report_format)
+* AWS KMS
+  * Managed service
+  * Manages encryption keys
+  * CMK - Customer master keys can be managed
+  * Keys can be used to encrypt data
+
