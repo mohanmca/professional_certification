@@ -49,6 +49,11 @@
 * Sample user ARN: arn:aws:iam::0123456789:user/Admin
 * AWS CodeCommit is github equivalent, we can provide access while user is created!
 
+## AWS IAM Identity vs entity
+
+IAM entity (user or role)
+IAM identity (user or role or group)
+
 ## IAM Groups
 
 * Used in authorization process
@@ -91,7 +96,7 @@
 ## AWS Policy (Like traditional granular permission)
 
 * Example Policy: AmazonS3FullAccess, AmazonS3ReadOnly, AmazonEC2FullAccess
- 
+* arn:aws:iam::aws:policy/AmazonEC2ReadOnlyAccess 
 
 ## AWS IAM - User policies based on job functions
 
@@ -203,3 +208,9 @@
   * CMK - Customer master keys can be managed
   * Keys can be used to encrypt data
 
+## New user credential
+
+```csv
+User name,Password,Access key ID,Secret access key,Console login link
+john,tCN5X&VugLQ7,AKIA5WBGSXIIEW4A4RE4,167paOvNFTHYNGGK6Uz4F/3FuLgw73moTzNEpUje,https://940678756880.signin.aws.amazon.com/console
+```

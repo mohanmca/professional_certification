@@ -103,6 +103,14 @@ curl http://169.254.169.254/latest/meta-data/ami-id
 curl http://ec2-54-185-39-21.us-west-2.compute.amazonaws.com/meta-data
 ```
 
+
+## Key files
+
+* PEM - Privacy Enhanced Mail (.pem)
+  * Not natively supported by putty
+* PEK - PuTTY Private Key (.ppk)
+  * PuTTYgen - required to register this file
+
 ### Connecting to EC2 instance
 ```bash
 chmod 400 mohan_ec2.pem
