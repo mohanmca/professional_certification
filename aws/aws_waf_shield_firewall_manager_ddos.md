@@ -62,12 +62,18 @@
   * Web ACL - $5.00 per month (prorated hourly)
   * Rule - $1.00 per month (prorated hourly)
   * Request -	$0.60 per 1 million requests
+* It would take 15 minutes to probagate all the WEB-ACL  to all the regions
 
 ## AWS Firewall manager
 
 * AWS Firewall Manager is a security management service which allows you to centrally configure and manage firewall rules across your accounts and applications in AWS Organization.
 * AWS FM = AWS WAF on entire AWS Organization
 * Prerequisite = AWS Config enabled + AWS Account to act as Firewall Manager Admin + All accounts should be part of AWS Organization (not just consolidated billing)
+
+## AWS WAF Rule evaluation order
+
+* When creating a Web ACL for AWS Web Application Firewall (WAF), it is critical to remember that WAF rules are evaluated in a specific order. What general order of WAF rules within a Web ACL is recommended?
+* Whitelist rules first, then Blacklist, then Bad Signature
 
 ## AWS Firewall manager  - Components
 
@@ -119,7 +125,6 @@
   * You can choose from the provided list or enter the Amazon Resource Name (ARN) of specific resources to protect. You can choose or enter any combination of resource types and resources.
 * Shield Advanced lists a maximum of 100 resources at one time. If you have more than 100 resources, choose Next to see the next set.
 * If you want to protect an Amazon EC2 instance, you must first associate an Elastic IP address with the instance, and then choose the Elastic IP address as the resource to protect.
-
 
 
 ## Reference
