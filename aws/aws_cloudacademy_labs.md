@@ -1,3 +1,7 @@
+## My Todo List
+
+* [Compliance Check Using AWS Config Rules (Managed & Custom)](https://cloudacademy.com/lab/compliance-check-using-aws-config-rules-managed-custom/?context_resource=lp&context_id=954)
+
 ## List of labs
 
 * []Advanced Roles and Groups Management Using IAM
