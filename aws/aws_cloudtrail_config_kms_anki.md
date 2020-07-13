@@ -20,7 +20,7 @@
 
 * CloudTrail records events in each region and delivers the CloudTrail event log files to an S3 bucket
 * CloudTrail must have the required permissions, and it cannot be configured as a Requester Pays bucket. CloudTrail automatically attaches the required permissions to a bucket when you create an Amazon S3 bucket as part of creating or updating a trail in the CloudTrail console.
-* Logs are create every 5 mintes
+* Logs are created every 5 mintes, but it takes sometime 15 minutes to deliver to S3 (it is not realtime).
 * KMS can be used to encrypt the log files
 * SNS can notify the events (with or withou CloudWatch)
 * EventSelectors can be used to adjust the CloudTrail
@@ -30,6 +30,15 @@
 * User-agent can be used to find the source of event
   * "userAgent": "aws-cli/1.3.2 Python/2.7.5 Windows/7"
 * CloudTrail can be configured to deliver log files from multiple regions to a single S3 bucket for a single account.
+* eventName
+* eventSource  - service that generated event
+* SourceIPAddress - find the IP address
+* "userAgent" : {'Signin.amazonaws.com', 'Console.amazonaws.com', lambda.amazonaws.com'}
+
+## CloudTrail log-file, bucket folder name convention
+
+* AccountID_CloudTrail_RegionName_YYYYMMDDTHHmmZZ_UniqueString.FileNameFormat (.json.gz) is the extension
+* BucketName/prefix/AWSLogs/AccountID/CloudTrail/RegionName/YYYY/MM/DD
 
 ## AWS CloudTrail logs (sample)
 
@@ -63,6 +72,64 @@
         }
     }]}}
 }]}
+```
+
+
+## AWS CloudTrail integrity
+
+* We can validate integrity of the log cloudtrail log files
+* Used for security and integrity
+* SHA-256 is used for CloudTrail
+* CloudTrail creates digest every hour
+* Digest files are signed by private key of key pair
+* ```bash aws cloudtrail validate-logs --trail-arn <trailarn> --start-time <start-time> --endtime <endtime>  --s3-bucket <bucketname> --s3-prefix <s3-prefix> --verbose```
+
+## AWS CloudTrail Secondary account Account-B accessing log of primary account (Account-A)
+
+* Create new role
+* Apply policy to only allow access for Account-B's folder in S3
+* Establish trus relationship between AccountA and AccountB
+* Create new account in AccountB
+* Create a policy and apply sts:AssumeRole to this user in AccountB
+* Example steps
+  * Swith to Account-A (Primary)
+  * Create new role named 'Cross-Account-CloudTrail-Log' and assign Role-For cross account access
+  * Select secondary account-id for that we need provide access (in Role-For cross account)
+  * Attach a policy to this role (allow read-only acccess to bucket)
+  * Swith to Account-B (Primary)
+  * Create policy for AssumeRoleCloudTrail
+  * Create user-xyz in Account-B
+  * And attache AssumeRoleCloudTrail policy to user-xyz in Account-B
+
+## AWS CloudTrail S3 policy for readonly account and AssumeRlePolicy
+
+```json
+  {
+   "Version":"2012-10-17",
+   "Statement":[
+      {
+         "Effect":"Allow",
+         "Action":[
+            "s3:GetBucket",
+            "s3:ListBucket",
+         ],
+         "Resource":"arn:aws:s3:::awsexamplebucket"
+      }
+   ]
+}
+```
+
+```json
+  {
+   "Version":"2012-10-17",
+   "Statement":[
+      {
+         "Effect":"Allow",
+         "Action":["sts:AssumeRole"],
+         "Resource":"arn:aws:iam::primary-account-A:role/Cross-account-cloudtrail"
+      }
+   ]
+}
 ```
 
 ## AWS Config
@@ -118,6 +185,14 @@
 * AWS Config permission
   * Requires read only permission to record all information
   * Requires access to S3 and SNS
+
+## CloudTrail lab notes
+
+* CloudTrail records the last 90 days of events for AWS accounts. 
+* The default events do not support triggering alerts, event metrics, and long term storage. We require Trail for that.
+* 
+
+
 
 ## Configuration Item
 
