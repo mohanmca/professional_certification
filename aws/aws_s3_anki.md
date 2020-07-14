@@ -119,8 +119,21 @@ S3, Snapshots are incremental
 * Reboot retain data, but stopped and terminated would loose data
 * It is in the price of instance
 
+## S3 encryption mechanism to secure data
 
+* [AWS S3 Encryption Infographic](https://awsinfographics.s3.amazonaws.com/S3_Encryption_Infographic.png)
+* S3 Encrption mechanism
+* Server side encrypted
+  * SSE-S3 (S3 maanged keys)
+  * SSE-KMS (KMS maanged keys)
+  * SSE-C  (Customer provided keys)
+* Client side encrypted
+  * CSE-KMS (KMS managed)
+  * CSE-C (customer provided, and client side encrypte)
 
+* [New – Amazon S3 Server Side Encryption for Data at Rest](https://aws.amazon.com/blogs/aws/new-amazon-s3-server-side-encryption/)
+* [AWS Key Management Service Cryptographic Details
+](https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf)
 ## References
 
 * https://cloudacademy.com/blog/how-to-encrypt-an-ebs-volume-the-new-amazon-ebs-encryption/

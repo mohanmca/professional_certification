@@ -132,6 +132,82 @@
 }
 ```
 
+## AWS CloudTrail can be monitored by CloudWatch
+
+* Useful CloudTrail monitoring by CloudWatch
+  * IAM SecurityPolicy
+  * EC2 SecurityGroup changes
+  * API Calls requestion significant resource changes
+  * EC2 events (start/stop/reboot/scaling)
+  * Failed login attempts to management console
+  * UnSuccessful attempts
+* Steps to configure
+  * Create new CloudTrail
+  * CloudTrail has to use CloudWatch LogGroups (roles/permissions)
+  * CloudTrails should be able to create new log-group to log API/mangement events
+  * Configure CloudTrail_CloudWatchLogs_Role for new Trail
+  * Configure MetricFilter for monitoring/dashboard/alarm
+* CloudWatch has 256KB size limits, CloudTrail won't send events larger than 256KB
+* [aws_lab_cloudtrail_monitor_alarm.md](aws_lab_cloudtrail_monitor_alarm.md)
+
+## AWS CloudFront Access Logs
+
+* CloudFront === CDN
+* Logs are distributed across regions
+* CloudFront can forward the logs to S3 (only storage is cost)
+* The name of each log file that CloudFront saves to  S3 bucket uses the file name format: /<optional prefix>/<distribution ID>.YYYY-MM-DD-HH.unique-ID.gz
+  * butcket-name.s3.amazonaws.com/optional-prefix/EMLARXS9EXAMPLE.2019-11-14-20.RT4KCN4SGK9.gz
+  * Distribution ID: EMLARXS9EXAMPLE
+* Steps to enable
+  * CloudFront > Select Distribution > Distribution Settings > General Tab > Edit > "Logging:On, Bucket for Logs: CloudFrontAccessLogs, LogPrefix: access, Cookie Logging: On"
+  * CookieLogging is only required when orgin is not S3 (such as EC2)
+* To Enable logging, user should have following role
+  * FULL_Control
+  * s3:GetBucketAcl/s3:PutBucketAcl
+* Why ACL Role for CloudFront?
+  * The user account activating log to S3 must have full control on the ACL for the S3 bucket, along with the S3 GetBucketAcl and S3 PutBucketAcl.
+  * The reason is during the configuration process, CloudFront will use your credentials to add the AWS data-feeds account to the ACL with full control access.
+  * data-feeds account used by AWS which will write the data to the log file and deliver it to your designated S3 login bucket. 
+  * Therefore, if you're trying to enable the loging feature for your distribution and it's failing, then you should check your access to ensure you have the required permissions.
+
+## AWS VPC Flow logs
+
+* VPC has 100s or 1000s of resources connected and communicating each other
+* Capture IP Information that flow within your VPC
+* VPC Flow logs are not sent to S3, they are sent to CloudWatch
+* EC2-classic is not in scope
+* VPC Flow logs has been created, it can't be changed (delete/recreate)
+* Many limitations (DNS can't be captured)
+* What is Flow logs are allowed?
+  * A network interace on one of your EC2 instance
+  * A subnet within VPC
+  * VPC itself
+* Few permissions are required
+  * logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents, logs:DescribeLogGroups, logs:DescribeLogStreams
+  * ec2:CreateFlowLogs, ec2:DescribeFlowLogs, ec2:DeleteFlowLogs, logs: GetLogData, iam:passrole
+* Steps for VPC flow-logs (ENI/Subnet/VPC)
+  * Mgmt Console > Network and Security >  Network Interface > select ENI > "Flow Logs: Tab" > "Create Flow Log" > "Filter: Accept/All/Reject" > Select Role to push to CloudWathLog > "Destination Log Group"
+  * Mgmt Console > VPC > Subnet > PublicSubnet > FlowLogs >... (just like above)
+  * Similar steps for VPC
+* [Flow log record - Available fields](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html)
+  * version
+  * account-id
+  * interface-id
+  * srcaddr
+  * dstaddr
+  * srcport
+  * dstport
+  * protocol
+  * packets
+  * bytes
+  * start
+  * end
+  * action (if security group rejected, we have clue here)
+  * log-status  
+
+
+
+
 ## AWS Config
 
 * Why AWS config?
