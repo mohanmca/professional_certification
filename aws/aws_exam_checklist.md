@@ -16,6 +16,7 @@
 - [][CloudAcademey Practice exam]
 - [][O'Reily Practice exam]
 - [][Pluralsight Questions]
+- [][Official study guide practice exam]
 
 
 
