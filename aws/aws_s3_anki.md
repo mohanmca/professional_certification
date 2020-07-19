@@ -124,12 +124,17 @@ S3, Snapshots are incremental
 * [AWS S3 Encryption Infographic](https://awsinfographics.s3.amazonaws.com/S3_Encryption_Infographic.png)
 * S3 Encrption mechanism
 * Server side encrypted
-  * SSE-S3 (S3 maanged keys)
-  * SSE-KMS (KMS maanged keys)
+  * SSE-S3 (S3 manged keys)
+  * SSE-KMS (KMS manged keys)
   * SSE-C  (Customer provided keys)
 * Client side encrypted
   * CSE-KMS (KMS managed)
   * CSE-C (customer provided, and client side encrypte)
+
+## SSE S3 headers
+
+*    "s3:x-amz-server-side-encryption": "aws:kms"
+*    "s3:x-amz-server-side-encryption-aws-kms-key-id" : "arn:aws:kms:us-west-2:568157667383:key/86b02606-7d41-4a20-a694-d2b4d93cb522"
 
 * [New – Amazon S3 Server Side Encryption for Data at Rest](https://aws.amazon.com/blogs/aws/new-amazon-s3-server-side-encryption/)
 * [AWS Key Management Service Cryptographic Details

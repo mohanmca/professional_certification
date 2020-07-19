@@ -6,6 +6,19 @@
 * Practice 25 Anki per day
 
 
+## Essential (just before exams)
+- [][AWS Well architected framework overview](https://d1.awsstatic.com/whitepapers/architecture/AWS_Well-Architected_Framework.pdf)
+- [][AWS Migration Whitepaper](https://d1.awsstatic.com/whitepapers/Migration/aws-migration-whitepaper.pdf)
+- [][A CLOUD GURU Final exam](https://www.udemy.com/course/aws-certified-solutions-architect-associate/learn/lecture/13888030?start=15#overview)
+- [][Amazon Sample Exam - SAA-C01](https://d1.awsstatic.com/training-and-certification/docs/AWS_Certified_Solutions_Architect_Associate_Sample_Questions.pdf)
+- [][Amazon Sample Exam - SAA-C02](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Sample-Questions_v4.1_FINAL.pdf)
+- [][Amazon Sample Exam - Developer-DVA-C01](https://d1.awsstatic.com/training-and-certification/docs-dev-associate/AWS_Certified_Developer-Associate_Sample_Questions_v2.0_FINAL.pdf)
+- [][CloudAcademey Practice exam]
+- [][O'Reily Practice exam]
+- [][Pluralsight Questions]
+
+
+
 WHITEPAPERS To read: https://aws.amazon.com/whitepapers/
  -  [] AWS Security Best Practices
  -  [] AWS Well-Architected Framework
