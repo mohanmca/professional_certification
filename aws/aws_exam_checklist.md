@@ -21,30 +21,30 @@
 
 ##  Order of study
 
-1. aws_vpc_anki.md
-1. aws_efs_anki.md
-1. aws_optimize_storage_cost.md
-1. aws_ec2_anki.md
-1. aws_elb_as_anki.md
-1. aws_networking_anki.md
-1. aws_multi-tier_architecture_anki.md
-1. aws_53_cdn_anki.md
-1. aws_event_driven_architecture_anki.md
-1. aws_aurora_anki.md
-1. aws_dynamodb_anki.md
-1. aws_elasticache_anki.md
-1. aws_iam_anki.md
-1. aws_deepracer_anki.md
-1. aws_orgnization_anki.md
-1. aws_waf_shield_firewall_manager_ddos.md
-1. aws_cloudacademy_labs.md
-1. aws_cloudtrail_config_kms_anki.md
-1. aws_lab_cloudtrail_monitor_alarm.md
-1. aws_cloudtrail_config_kms_anki.md
-1. aws_multi-az_multi-region_rr_anki.md
-1. aws_logging_anki.md
-1. aws_kms_anki.md
-1. aws_cost_optimization_anki.md
+1. [aws_vpc_anki.md](aws_vpc_anki.md)
+1. [aws_efs_anki.md](aws_efs_anki.md)
+1. [aws_optimize_storage_cost.md](aws_optimize_storage_cost.md)
+1. [aws_ec2_anki.md](aws_ec2_anki.md)
+1. [aws_elb_as_anki.md](aws_elb_as_anki.md)
+1. [aws_networking_anki.md](aws_networking_anki.md)
+1. [aws_multi-tier_architecture_anki.md](aws_multi-tier_architecture_anki.md)
+1. [aws_53_cdn_anki.md](aws_53_cdn_anki.md)
+1. [aws_event_driven_architecture_anki.md](aws_event_driven_architecture_anki.md)
+1. [aws_aurora_anki.md](aws_aurora_anki.md)
+1. [aws_dynamodb_anki.md](aws_dynamodb_anki.md)
+1. [aws_elasticache_anki.md](aws_elasticache_anki.md)
+1. [aws_iam_anki.md](aws_iam_anki.md)
+1. [aws_deepracer_anki.md](aws_deepracer_anki.md)
+1. [aws_orgnization_anki.md](aws_orgnization_anki.md)
+1. [aws_waf_shield_firewall_manager_ddos.md](aws_waf_shield_firewall_manager_ddos.md)
+1. [aws_cloudacademy_labs.md](aws_cloudacademy_labs.md)
+1. [aws_cloudtrail_config_kms_anki.md](aws_cloudtrail_config_kms_anki.md)
+1. [aws_lab_cloudtrail_monitor_alarm.md](aws_lab_cloudtrail_monitor_alarm.md)
+1. [aws_cloudtrail_config_kms_anki.md](aws_cloudtrail_config_kms_anki.md)
+1. [aws_multiaz_multiregion_read_replica_anki.md](aws_multiaz_multiregion_read_replica_anki.md)
+1. [aws_logging_anki.md](aws_logging_anki.md)
+1. [aws_kms_anki.md](aws_kms_anki.md)
+1. [aws_cost_optimization_anki.md](aws_cost_optimization_anki.md)
 
 
 
