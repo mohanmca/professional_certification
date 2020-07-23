@@ -4,65 +4,75 @@
 * EBS - Block level storage (low latency service)
   * Persistent
 
-* EFS - File storage (Kind of SAN or NAS file storage)
-  * Low latency - file level
-  * Multiple instance can access the storage
-  * Acts as network resource
-  * Mount point
-  * Can be scaled to peta-bytes in size
-  * Suppots High level throughput
-  * NFS 4.1 and 4.0
-  * Replicated across single region but multiple AZ (Regional boundry)
+## AWS EFS - File storage (Kind of SAN or NAS file storage)
 
-* EFS - Storage class
-  * Standard
-  * IA (Infrequent access) - cheaper - higher latency
+* Low latency - file level
+* Multiple instance can access the storage
+* Acts as network resource
+* Mount point
+* Can be scaled to peta-bytes in size
+* Suppots High level throughput
+* NFS 4.1 and 4.0
+* Replicated across single region but multiple AZ (Regional boundry)
 
-* EFS LifeCycle Management
-  * Move to IA after 30/60/days
-  * If it accessed, it would automatically move from IA to standard
-  * Metadata would not be moved to IA
+## AWS EFS - Storage class
 
-* EFS - Peformance modes
-  * General Purpose
-  * Max I/O
-  * Test before choosing between MaxIO or General Purpose
+* Standard
+* IA (Infrequent access) - cheaper - higher latency
 
-* EFS - Througput mode
-  * Bursting throughput mode
-  * Provisioned throughput mode
+## AWS EFS LifeCycle Management
 
-* EC2 instance - EFS - Mounting methods
-  * Linux NFS
-  * EFS Mount helper (new and recommended)
-    * Log to /var/log/amazon/efs
-    * Automatically connect to EFS at startup by editing /etc/fstab
-        * ```bash
-            sudo yum install -y amazon-efs-utils
-            sudo mkdir efs
-            sudo mount -t efs fs-0bc8309:/ efs
-            sudo mount -t efs -o tls fs-0bc8309:/ efs
-            ```
-  * EC2 instances connect to EFS using mount-target
-    * Each mount target has ip-address
-  * EFS - has dns name
+* Move to IA after 30/60/days
+* If it accessed, it would automatically move from IA to standard
+* Metadata would not be moved to IA
+
+## AWS EFS - Peformance modes
+
+## AWS EFS - General Purpose
+
+* Max I/O
+* Test before choosing between MaxIO or General Purpose
+
+## AWS EFS - Througput mode
+
+* Bursting throughput mode
+* Provisioned throughput mode
+
+## AWS EFS - EC2 instance - EFS - Mounting methods
+
+* Linux NFS
+* EFS Mount helper (new and recommended)
+  * Log to /var/log/amazon/efs
+  * Automatically connect to EFS at startup by editing /etc/fstab
+  * ```bash
+      sudo yum install -y amazon-efs-utils
+      sudo mkdir efs
+      sudo mount -t efs fs-0bc8309:/ efs
+      sudo mount -t efs -o tls fs-0bc8309:/ efs
+      ```
+* EC2 instances connect to EFS using mount-target
+  * Each mount target has ip-address
+* EFS - has dns name
 
 
-* EFS
-  * Allow access to 
-    * elasticfilesystem:CreateFileSystem
-    * elasticfilesystem:CreateMountTarget
-  * Allow access to mount
-    * ec2:DescribeSubnet
-    * ec2:CreateNetworkInterface
-    * ec2:DescribeNetworkInterfaces
+## AWS EFS Overview
 
-* EFS - Security
-  * Data at rest - AWS KMS
-  * Data at transit - tls
-  * Uses stunnel (is an open source multi-platform application)
+* Allow access to 
+  * elasticfilesystem:CreateFileSystem
+  * elasticfilesystem:CreateMountTarget
+* Allow access to mount
+  * ec2:DescribeSubnet
+  * ec2:CreateNetworkInterface
+  * ec2:DescribeNetworkInterfaces
 
-* EFS - Import existing data
+## AWS EFS Security
+
+* Data at rest - AWS KMS
+* Data at transit - tls
+* Uses stunnel (is an open source multi-platform application)
+
+## AWS EFS - Import existing data
+
 * Aws DataSynch - securely move data from prop network to AWS
 * Download dataysync agent and should be installed as VMWare ESXi host to your site
 * The AWS DataSync In-cloud Transfer Quick Start and Scheduler can be used for a wide variety of use cases to transfer NFS file data from one file system to another. Below are a few examples.
@@ -102,7 +112,8 @@
 }
 ```
 
-* Demo
-  * Create EC2 security group (EC2 -> SecurityGroup -> Create)
-  * Add inbound rule within VPC security-group
-  * Create EFS
+## AWS EFS Demo
+
+* Create EC2 security group (EC2 -> SecurityGroup -> Create)
+* Add inbound rule within VPC security-group
+* Create EFS

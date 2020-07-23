@@ -7,6 +7,7 @@
 
 
 ## Essential (just before exams)
+
 - [][AWS Well architected framework overview](https://d1.awsstatic.com/whitepapers/architecture/AWS_Well-Architected_Framework.pdf)
 - [][AWS Migration Whitepaper](https://d1.awsstatic.com/whitepapers/Migration/aws-migration-whitepaper.pdf)
 - [][A CLOUD GURU Final exam](https://www.udemy.com/course/aws-certified-solutions-architect-associate/learn/lecture/13888030?start=15#overview)
@@ -17,6 +18,33 @@
 - [][O'Reily Practice exam]
 - [][Pluralsight Questions]
 - [][Official study guide practice exam]
+
+##  Order of study
+
+1. aws_vpc_anki.md
+1. aws_efs_anki.md
+1. aws_optimize_storage_cost.md
+1. aws_ec2_anki.md
+1. aws_elb_as_anki.md
+1. aws_networking_anki.md
+1. aws_multi-tier_architecture_anki.md
+1. aws_53_cdn_anki.md
+1. aws_event_driven_architecture_anki.md
+1. aws_aurora_anki.md
+1. aws_dynamodb_anki.md
+1. aws_elasticache_anki.md
+1. aws_iam_anki.md
+1. aws_deepracer_anki.md
+1. aws_orgnization_anki.md
+1. aws_waf_shield_firewall_manager_ddos.md
+1. aws_cloudacademy_labs.md
+1. aws_cloudtrail_config_kms_anki.md
+1. aws_lab_cloudtrail_monitor_alarm.md
+1. aws_cloudtrail_config_kms_anki.md
+1. aws_multi-az_multi-region_rr_anki.md
+1. aws_logging_anki.md
+1. aws_kms_anki.md
+1. aws_cost_optimization_anki.md
 
 
 
