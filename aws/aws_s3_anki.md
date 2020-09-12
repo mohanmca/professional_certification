@@ -119,6 +119,22 @@ S3, Snapshots are incremental
 * Reboot retain data, but stopped and terminated would loose data
 * It is in the price of instance
 
+## S3 - URL - Virtual-hosted–style and path-style URLs
+
+* ```bash
+  https://my-bucket.s3.us-west-2.amazonaws.com # Virtual hosted style
+  https://my-bucket.s3-us-west-2.amazonaws.com # Old style some legacy region supports (deprecated)
+  https://s3.Region.amazonaws.com/bucket-name/key name # Path style
+```
+* Buckets created after September 30, 2020, will support only virtual hosted-style requests. Path-style requests will continue to be supported for buckets created on or before this date.
+
+## S3 - AWS Route53
+
+* To route domain traffic to an S3 bucket, use Amazon Route 53 to create an alias record that points to your bucket. An alias record is a Route 53 extension to DNS. 
+  * Alias record is similar to a CNAME record
+  * An alias record can be crated for both for the root domain, such as example.com, and for subdomains, such as www.example.com.
+  * CNAME records can be created only for subdomains.
+
 ## S3 encryption mechanism to secure data
 
 * [AWS S3 Encryption Infographic](https://awsinfographics.s3.amazonaws.com/S3_Encryption_Infographic.png)
