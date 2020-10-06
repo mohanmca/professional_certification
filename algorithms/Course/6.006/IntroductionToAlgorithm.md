@@ -44,6 +44,11 @@
 * Insertion sort  - Theta(n.log-n) for comparision, but still Theta(n.n) for swaps
 
 
+## Sample input for sorting
+
+* 314285714286
+
 * [bigocheatsheet](https://www.bigocheatsheet.com/)
 * [Big o cheatsheet - PDF](http://www.cheat-sheets.org/saved-copy/bigoposter.pdf)
 * [Big o cheatsheetp - Quiz](http://stevezease.github.io/bigOPractice.html)
+* [Visualize Quicksort](https://www.hackerearth.com/practice/algorithms/sorting/quick-sort/visualize/)
