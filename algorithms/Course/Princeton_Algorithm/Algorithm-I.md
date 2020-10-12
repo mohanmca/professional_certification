@@ -34,6 +34,8 @@ for(int i=0;i<n;i++){
 ```
   * Not all triple loops have cubic running times. For a given value of i and j, the k-loop requires only 3 lg n array access. As in the 2-SUM and 3-SUM analysis, the number of times the k-loop is executed is {n \choose 2}. 
   * Above is 3/2n^2(lg n)
+* We can always use an explicit stack to remove recursion.
+
 
 ## Power law
 * Plot running time T (N) vs. input size N using log-log scale.
