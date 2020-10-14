@@ -15,12 +15,12 @@
 * [Percolation-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php)
 * [Queue-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/queues/specification.php)
 * [Collinear-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/collinear/specification.php)
-* [Collinear-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/8puzzle/specification.php)
-* [Collinear-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/8puzzle/specification.php)
-* [8puzzle](https://coursera.cs.princeton.edu/algs4/assignments/8puzzle/specification.php)
+* [8puzzle-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/8puzzle/specification.php)
 * [kd-Trees-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/kdtree/specification.php)
 * [Local Tex](D:/Apps/texlive/2020 or D:\Apps\pandoc-2.10.1\mitex\miktex\bin\x64)
 * [Windows LatexSetup](https://www.youtube.com/watch?v=fLP0QVFaeAU)
+* [Mohan's Anki Decks](Mohan::Algorithm::GeeksForGeeks)
+
 ## Notes
 
 ```java
@@ -60,6 +60,11 @@ for(int i=0;i<n;i++){
 * 2^n
   * Combinatorial search or check all subsets or exhaustive search
 
+## Repeated errors
+
+* Multiple if's without propber else would create issue, especially OBO and insufficient else - would make it complext
+* if > is covered in one branch, ensure <= is covered in another branch
+
 ## Latex extension
 * Latex preview
 
@@ -68,5 +73,5 @@ for(int i=0;i<n;i++){
 * [OpenJdk Java-7 code](https://github.com/openjdk-mirror/jdk7u-jdk/blob/master/src/share/classes/java/lang/String.java)
 * [Java-11 code](https://github.com/AdoptOpenJDK/openjdk-jdk11/blob/master/src/java.base/share/classes/java/lang/String.java)
 * [Java data-types](http://orion.towson.edu/~izimand/237/LectureNotes/236-Lecture-DataTypes.htm)
-
+* [Visual algorithm comparision](https://www.toptal.com/developers/sorting-algorithms)
 
