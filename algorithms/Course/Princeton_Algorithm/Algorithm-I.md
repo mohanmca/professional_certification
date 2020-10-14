@@ -9,18 +9,6 @@
    * Engages in the discussion forums
 
 
-## Assignments
-
-* [Local path](C:\git\algorithms\percolation)
-* [Percolation-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php)
-* [Queue-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/queues/specification.php)
-* [Collinear-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/collinear/specification.php)
-* [8puzzle-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/8puzzle/specification.php)
-* [kd-Trees-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/kdtree/specification.php)
-* [Local Tex](D:/Apps/texlive/2020 or D:\Apps\pandoc-2.10.1\mitex\miktex\bin\x64)
-* [Windows LatexSetup](https://www.youtube.com/watch?v=fLP0QVFaeAU)
-* [Mohan's Anki Decks](Mohan::Algorithm::GeeksForGeeks)
-
 ## Notes
 
 ```java
@@ -28,14 +16,18 @@ for(int i=0;i<n;i++){
    for(int j=i+1;j<n;i++){
       for(int k=1;k<n;k=k*2){
          //
-      }      
+      }  
    }
 }
 ```
   * Not all triple loops have cubic running times. For a given value of i and j, the k-loop requires only 3 lg n array access. As in the 2-SUM and 3-SUM analysis, the number of times the k-loop is executed is {n \choose 2}. 
   * Above is 3/2n^2(lg n)
 * We can always use an explicit stack to remove recursion.
+* How many comparision does mergesort for the pure version without any optimization (to sort a existing sorted array)
+  * 1/2 * n * lg n
+  * n-1 with optimization (a[mid] < a [mid+1]>) = just append two array
 
+  
 
 ## Power law
 * Plot running time T (N) vs. input size N using log-log scale.
@@ -68,7 +60,24 @@ for(int i=0;i<n;i++){
 ## Latex extension
 * Latex preview
 
+
+
+## Assignments
+
+* [Local path](C:\git\algorithms\percolation)
+* [Percolation-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/percolation/specification.php)
+* [Queue-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/queues/specification.php)
+* [Collinear-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/collinear/specification.php)
+* [8puzzle-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/8puzzle/specification.php)
+* [kd-Trees-Assignment](https://coursera.cs.princeton.edu/algs4/assignments/kdtree/specification.php)
+* [Local Tex](D:/Apps/texlive/2020 or D:\Apps\pandoc-2.10.1\mitex\miktex\bin\x64)
+* [Windows LatexSetup](https://www.youtube.com/watch?v=fLP0QVFaeAU)
+* [Mohan's Anki Decks](Mohan::Algorithm::GeeksForGeeks)
+
+
 ## Reference
+* [Sedgewick javadoc - BinarySearch](https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/BinarySearch.html)
+* [Sedgewick javadoc - MergeSort Bottom up](https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/MergeBU.html)
 * [3-Sum problem](https://en.wikipedia.org/wiki/3SUM)
 * [OpenJdk Java-7 code](https://github.com/openjdk-mirror/jdk7u-jdk/blob/master/src/share/classes/java/lang/String.java)
 * [Java-11 code](https://github.com/AdoptOpenJDK/openjdk-jdk11/blob/master/src/java.base/share/classes/java/lang/String.java)
