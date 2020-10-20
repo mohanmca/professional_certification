@@ -26,7 +26,12 @@ for(int i=0;i<n;i++){
 * How many comparision does mergesort for the pure version without any optimization (to sort a existing sorted array)
   * 1/2 * n * lg n
   * n-1 with optimization (a[mid] < a [mid+1]>) = just append two array
-
+* Stability of the algorithm
+  * A stable sort is a sort that preserves the relative order of items with equal keys.
+  * Insertion-sort and Merge-Sorts are stable
+  * Selection-sort or Shellsort are not stable
+  * Quick-sort is not stable algorithm
+  * Long-distance exchange might move an item past some equal item.
   
 
 ## Power law
@@ -56,6 +61,7 @@ for(int i=0;i<n;i++){
 
 * Multiple if's without propber else would create issue, especially OBO and insufficient else - would make it complext
 * if > is covered in one branch, ensure <= is covered in another branch
+* When a bug is fixed, try to recollect similar fix that is required in few other places. We fix in one place, but forget logic fix in other places.
 
 ## Latex extension
 * Latex preview
@@ -73,6 +79,7 @@ for(int i=0;i<n;i++){
 * [Local Tex](D:/Apps/texlive/2020 or D:\Apps\pandoc-2.10.1\mitex\miktex\bin\x64)
 * [Windows LatexSetup](https://www.youtube.com/watch?v=fLP0QVFaeAU)
 * [Mohan's Anki Decks](Mohan::Algorithm::GeeksForGeeks)
+* [Problems](http://ravindrababuravula.com/interviewpreperation.php)
 
 
 ## Reference
@@ -83,4 +90,5 @@ for(int i=0;i<n;i++){
 * [Java-11 code](https://github.com/AdoptOpenJDK/openjdk-jdk11/blob/master/src/java.base/share/classes/java/lang/String.java)
 * [Java data-types](http://orion.towson.edu/~izimand/237/LectureNotes/236-Lecture-DataTypes.htm)
 * [Visual algorithm comparision](https://www.toptal.com/developers/sorting-algorithms)
-
+* [Tim Roughgarden](http://timroughgarden.org/videos.html)
+* [Tim Roughgarden book Algorithms illuminated](http://www.algorithmsilluminated.org/)
