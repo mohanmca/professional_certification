@@ -71,7 +71,17 @@ mdanki System_Design_Anki.md System_Design_Anki.apkg --deck "System_Design_Anki:
 
 * How many ports are there - 2^16-1 - 65535 (256  * 256) TCP and 65535 UDP ports
 
-## System Design - Referemce
+## Availability
+
+* Redundancy is key for availability
+* What part of the system is extreemly critical and available is more important?
+* How many 9s of availablity is required - 99% can accomadate 3.65 days per year
+* Increasing every 9s in HA, would double/multiply cost of design/operate
+* [Highly Availability](https://en.wikipedia.org/wiki/High_availability)
+* Active Reduandancy might leads to problem of leader election
+
+
+## System Design - Reference
 
 * [System Design Git-books](https://aaronice.gitbook.io/system-design/)
 * [Reference for latency](https://gist.github.com/jboner/2841832)
