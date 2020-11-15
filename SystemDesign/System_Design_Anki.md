@@ -81,6 +81,14 @@ mdanki System_Design_Anki.md System_Design_Anki.apkg --deck "System_Design_Anki:
 * Active Reduandancy might leads to problem of leader election
 
 
+## Caching
+
+* Decreases latency
+  * Cache very complex calculation
+  * Cache data from higer-latency database / (reduce io operation)
+  * 
+d
+
 ## System Design - Reference
 
 * [System Design Git-books](https://aaronice.gitbook.io/system-design/)

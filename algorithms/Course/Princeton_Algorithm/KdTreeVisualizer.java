@@ -1,7 +1,7 @@
 /******************************************************************************
  *  Compilation:  javac KdTreeVisualizer.java
  *  Execution:    java KdTreeVisualizer
- *  Dependencies: KdTree.java
+ *  Dependencies: KdTree3.java
  *
  *  Add the points that the user clicks in the standard draw window
  *  to a kd-tree and draw the resulting kd-tree.
@@ -28,7 +28,7 @@ public class KdTreeVisualizer {
                 if (rect.contains(p)) {
                     StdOut.printf("%8.6f %8.6f\n", x, y);
                     kdtree.insert(p);
-                    //StdDraw.clear();
+                    StdDraw.clear();
                     kdtree.draw();
                     StdDraw.show();
                 }

@@ -8,8 +8,10 @@ import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.RectHV;
 import edu.princeton.cs.algs4.StdDraw;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 
 /**
@@ -20,11 +22,135 @@ import java.util.NoSuchElementException;
  */
 public class KdTree {
 
-    private Node root = null;
+    private static final RectHV CONTAINER = new RectHV(0, 0, 1, 1);
 
+    private Node root = null;
 
     public KdTree() {
 
+    }
+
+    /**
+     * A  0.0 0.75
+     * B  0.25 1.0
+     * C  0.5 0.5
+     * D  1.0 1.0
+     * E  1.0 0.25
+     * F  0.25 1.0
+     * G  0.25 1.0
+     * H  0.75 0.75
+     * I  0.25 1.0
+     * J  1.0 1.0
+     * - query point                   = (0.0, 0.0)
+     * - student   nearest()           = (1.0, 0.25)
+     * - reference nearest()           = (0.5, 0.5)
+     * - student   distanceSquaredTo() = 1.0625
+     * - reference distanceSquaredTo() = 0.5
+     * <p>
+     * A  0.5 0.75
+     * B  1.0 1.0
+     * C  0.75 0.75
+     * D  0.25 0.75
+     * E  1.0 0.75
+     * F  1.0 0.0
+     * G  1.0 0.25
+     * H  0.5 0.5
+     * I  0.25 1.0
+     * J  0.0 0.5
+     * - query point                   = (0.0, 0.0)
+     * - student   nearest()           = (1.0, 0.0)
+     * - reference nearest()           = (0.0, 0.5)
+     * - student   distanceSquaredTo() = 1
+     * - reference distanceSquaredTo() = 0.25     * @param args
+     */
+
+    public static void main(String[] args) {
+        KdTree kdTree = new KdTree();
+
+
+        List<Point2D> points = Arrays
+                .asList(of(0.2, 0.75), of(0.25, 1.0),
+                        of(0.5, 0.5), of(1.0, 1.0),
+                        of(1.0, 0.25), of(0.75, 0.75));
+
+
+        points.forEach(kdTree::insert);
+        System.out.println(kdTree.nearest(of(0.0, 0.0)).equals(of(0.5, 0.5)));
+        assertExpression("Size of the kdTree", kdTree.size() == 6);
+
+        kdTree = new KdTree();
+
+        points = Arrays
+                .asList(
+                        of(0.1, 0.1),
+                        of(0.2, 0.2),
+                        of(0.3, 0.3),
+                        of(0.4, 0.4),
+                        of(0.5, 0.5),
+                        of(0.6, 0.6),
+                        of(0.7, 0.7),
+                        of(0.8, 0.8),
+                        of(0.9, 0.9),
+                        of(1.0, 1.0)
+                );
+        points.forEach(kdTree::insert);
+
+        Iterable<Point2D> availablePoints = kdTree.range(new RectHV(0.25, 0.25, 0.75, 0.75));
+        for (Point2D point : availablePoints) {
+            System.out.println("Available points :: " + point.toString());
+        }
+
+        kdTree = new KdTree();
+        points = Arrays
+                .asList(
+                        of(0.125, 0.625),
+                        of(0.375, 0.5),
+                        of(0.0, 0.375),
+                        of(0.625, 0.5),
+                        of(0.125, 0.0),
+                        of(0.25, 0.5),
+                        of(0.25, 0.125),
+                        of(0.875, 0.0),
+                        of(0.875, 0.625),
+                        of(0.5, 0.5),
+                        of(1.0, 0.0),
+                        of(0.625, 0.75),
+                        of(0.25, 0.25),
+                        of(0.375, 1.0),
+                        of(0.0, 1.0)
+
+                );
+        points.forEach(kdTree::insert);
+        System.out.println(kdTree.nearest(of(0.625, 1.0)));
+        System.out.println(
+                "Nearest point : " + kdTree.nearest(of(0.625, 1.0)).equals(of(0.625, 0.75)));
+
+
+        points = Arrays
+                .asList(of(0.0, 0.5), of(1.0, 0.5), of(0.25, 0.75), of(0.75, 0.0),
+                        of(0.0, 0.25), of(0.25, 0.25), of(0.25, 0.25), of(0.75, 0.0),
+                        of(0.25, 0.5), of(0.5, 1.0));
+
+        kdTree = new KdTree();
+        points.forEach(kdTree::insert);
+        assertExpression("Size of the kdTree", kdTree.size() == 8);
+        System.out.println(kdTree.nearest(of(1.0, 0.25)).equals(of(1.0, 0.5)));
+        Point2D queryPoint = of(0.1, 0.5);
+        System.out.println(kdTree.nearest(of(1.0, 0.25)).distanceSquaredTo(queryPoint));
+        points = Arrays
+                .asList(of(0.05, 0.05), of(0.1, 0.1), of(0.2, 0.2), of(0.3, 0.3),
+                        of(0.4, 0.4), of(0.5, 0.5), of(0.6, 0.6), of(0.7, 0.7),
+                        of(0.8, 0.8), of(0.9, 0.9), of(1.0, 1.0));
+
+        kdTree = new KdTree();
+        points.forEach(kdTree::insert);
+        assertExpression("Size of the kdTree", kdTree.size() == 11);
+        System.out.println(kdTree.nearest(of(1.0, 0.0)));
+        System.out.println(kdTree.nearest(of(0.06, 0.06)));
+    }
+
+    private static Point2D of(double x, double y) {
+        return new Point2D(x, y);
     }
 
     private static void assertExpression(String message, boolean expression) {
@@ -32,304 +158,133 @@ public class KdTree {
             throw new IllegalArgumentException(message);
     }
 
-
-    public static void main(String[] args) {
-        KdTree kdTree = new KdTree();
-        assertExpression("1. Size should have been zero!", kdTree.size() == 0);
-        Point2D point2D = new Point2D(0.5, 0.5);
-        kdTree.insert(point2D);
-        point2D = new Point2D(0.4, 0.4);
-        kdTree.insert(point2D);
-        point2D = new Point2D(0.3, 0.3);
-        kdTree.insert(point2D);
-        point2D = new Point2D(0.36, 0.36);
-        kdTree.insert(point2D);
-        point2D = new Point2D(0.45, 0.45);
-        kdTree.insert(point2D);
-        assertExpression("2. Size should be 5!", kdTree.size() == 5);
-
-        point2D = new Point2D(0.42, 0.43);
-        kdTree.insert(point2D);
-
-        point2D = new Point2D(0.6, 0.4);
-        kdTree.insert(point2D);
-        assertExpression("3. Size should be 5!", kdTree.size() == 7);
-        point2D = new Point2D(0.7, 0.3);
-        kdTree.insert(point2D);
-        point2D = new Point2D(0.7, 0.8);
-        kdTree.insert(point2D);
-
-        point2D = new Point2D(0.3, 0.2);
-        kdTree.insert(point2D);
-        point2D = new Point2D(0.2, 0.2);
-        kdTree.insert(point2D);
-
-        assertExpression("2. Point should be there! = " + kdTree.toString(),
-                         kdTree.contains(point2D));
-        assertExpression("3. Point shouldn't exist!", !kdTree.contains(new Point2D(0.9, 0.9)));
-        assertExpression("4. Size should be 4!", kdTree.size() == 11);
-
-        Node ceiling = kdTree.getCeilingOf(null, new Point2D(0.42, 0.31));
-        System.out.println(ceiling.key);
-
-        Iterator<Point2D> iter = kdTree.range(new RectHV(0.4, 0.3, 0.8, 0.6)).iterator();
-        System.out.println(iter.hasNext());
-        System.out.println(iter.next());
-        kdTree.insert(new Point2D(0.44, 0.33));
-        System.out.println(kdTree.nearest(new Point2D(0.42, 0.31)));
-    }
-
     public boolean contains(Point2D point2D) {
         return contains(root, point2D);
     }
 
 
-    private boolean contains(Node node, Point2D point2D) {
-        if (node.key.equals(point2D))
+    private boolean contains(Node node, Point2D point2d) {
+        if (point2d == null) throw new IllegalArgumentException("Null argument while contains!");
+
+        if (node == null)
+            return false;
+        if (node.point.equals(point2d))
             return true;
-        else if (node.rect.contains(point2D))
-            return contains(node.lb, point2D);
-        else if (node.rt != null)
-            contains(node.rt, point2D);
-        return false;
+
+        if (node.compareToPoint(point2d) < 0) {
+            return contains(node.lb, point2d);
+        }
+        return contains(node.rt, point2d);
+
     }
 
-    public Point2D nearest(Point2D point2D) {
-        Node ceiling = getCeilingOf(null, point2D);
-        Node floor = getFloorOf(null, point2D);
-        return shortestPoint(point2D, ceiling.key, floor.key);
-    }
-
-
-    private Point2D shortestPoint(Point2D basePoint, Point2D ceiling, Point2D floor) {
-        double distanceSqauredToCeil = ceiling.distanceSquaredTo(basePoint);
-        double distanceSqauredToFloor = floor.distanceSquaredTo(basePoint);
-        if (distanceSqauredToCeil < distanceSqauredToFloor)
-            return ceiling;
-        return floor;
-    }
-
-    private Node shortestNode(Point2D basePoint, Node ceilingNode, Node floorNode) {
-        double distanceSqauredToCeil = ceilingNode.key.distanceSquaredTo(basePoint);
-        double distanceSqauredToFloor = floorNode.key.distanceSquaredTo(basePoint);
-        if (distanceSqauredToCeil < distanceSqauredToFloor)
-            return ceilingNode;
-        return floorNode;
-    }
 
     public void insert(Point2D point) {
+        if (point == null) throw new IllegalArgumentException("Null argument while insert!");
+        // System.out.printf("\nBefore inserting Point %s", point.toString());
         if (root == null) {
-            root = new Node(point);
+            Node node = new Node(point, CONTAINER, 1);
+            root = node;
             return;
         }
-        insert(root, point, 1);
-        System.out.printf("\nAfter inserting Point %s - Current state of root \n[ %s \n]",
-                          point.toString(), root.toString());
+        root.insert(point);
+        // System.out.printf("\nAfter inserting Point %s - Current state of root \n[ %s \n]", point.toString(), root.toString());
     }
 
-    private void insert(Node node, Point2D point, int depth) {
-        if (node == null || point == null)
-            throw new IllegalArgumentException(
-                    "Should try to search into root and point shouldn't be null!");
-        if (node.key.equals(point)) {
-            node.key = point;
-        }
-        if (node.rect.contains(point)) {
-            if (node.lb != null) {
-                insert(node.lb, point, ++depth);
-            }
-            else {
-                node.lb = createNewNode(node, point, ++depth);
-            }
-        }
-        else {
-            if (node.rt != null) {
-                insert(node.rt, point, ++depth);
-            }
-            else {
-                ++depth;
-                RectHV rectHV = node.findRightRectangle(depth);
-                node.rt = createNewNode(rectHV, point, depth);
-            }
-        }
-    }
-
-    private Node createNewNode(RectHV rectHV, Point2D point, int depth) {
-        if (depth % 2
-                == 0) { //vertical partitioning - height adjusted to current point-y, width retains to existing rectangle (X<-R) (Y<-P)
-            RectHV newPartition = partitionV(rectHV, point)[0];
-            return Node.create(point, newPartition, depth);
-        }
-        else {  //horizontal partitioning - width adjusted to current point-x, height retains to existing rectangle (X<-P)(Y<-R)
-            RectHV newPartition = partitionH(rectHV, point)[0];
-            return Node.create(point, newPartition, depth);
-        }
-    }
-
-    private Node createNewNode(Node node, Point2D point, int depth) {
-        if (depth % 2
-                == 0) { //vertical partitioning - height adjusted to current point-y, width retains to existing rectangle (X<-R) (Y<-P)
-            RectHV newPartition = partitionV(node.rect, point)[0];
-            return Node.create(point, newPartition, depth);
-        }
-        else {  //horizontal partitioning - width adjusted to current point-x, height retains to existing rectangle (X<-P)(Y<-R)
-            RectHV newPartition = partitionH(node.rect, point)[0];
-            return Node.create(point, newPartition, depth);
-        }
-    }
-
-    private RectHV[] partitionV(RectHV rectHV, Point2D point2D) {
-        return new RectHV[] {
-                new RectHV(rectHV.xmin(), rectHV.ymin(), rectHV.xmax(), point2D.y())
-                //,new RectHV(rectHV.xmin(), point2D.y(), rectHV.xmax(), 1),
-        };
-    }
-
-    private RectHV[] partitionH(RectHV rectHV, Point2D point2D) {
-        return new RectHV[] {
-                new RectHV(rectHV.xmin(), rectHV.ymin(), point2D.x(), rectHV.ymax())
-                //,new RectHV(point2D.x(), rectHV.ymin(), rectHV.xmax(), rectHV.ymax()),
-        };
-    }
 
     public Iterable<Point2D> range(RectHV rect) {
         if (rect == null) throw new IllegalArgumentException("Null argument while range!");
-        return new Iterable<Point2D>() {
-            public Iterator<Point2D> iterator() {
-                return new Iterator<Point2D>() {
-                    Point2D lowerLeft = new Point2D(rect.xmin(), rect.ymin());
-                    Point2D topRight = new Point2D(rect.xmax(), rect.ymax());
-                    Node pointerNode = null;
-                    boolean isNextPoint = false;
-                    boolean isXAxis = true;
-
-                    public boolean hasNext() {
-                        pointerNode = getCeilingOf(pointerNode, lowerLeft);
-                        isNextPoint = (pointerNode.key.compareTo(topRight) <= 0);
-                        return isNextPoint;
-                    }
-
-
-                    public Point2D next() {
-                        if (isNextPoint) {
-                            isNextPoint = false;
-                            lowerLeft = pointerNode.key;
-                            return pointerNode.key;
-                        }
-                        else
-                            throw new NoSuchElementException("No such element");
-                    }
-                };
-            }
-        };
+        return range(rect, root);
     }
 
-
-    private Node search(Node node, Point2D key) {
-        if (node == null)
-            throw new IllegalArgumentException("Should try to search into root!");
-        else if (node.key.equals(key)) {
-            return node;
+    private List<Point2D> range(RectHV queryRect, Node node) {
+        if (node == null || !queryRect.intersects(node.rect))
+            return Collections.emptyList();
+        // System.out.println(queryRect.toString() + " - " + node.toString()  + " - " + depth);
+        ArrayList<Point2D> listOfPoints = new ArrayList<Point2D>();
+        if (queryRect.contains(node.point)) {
+            listOfPoints.add(node.point);
         }
-        else {
-            if (node.rect.contains(key)) {
-                if (node.key.y() < key.y()) {
-                    return search(node.rt, key);
-                }
-                else {
-                    return search(node.lb, key);
-                }
-            }
-            else {
-                //hroizontal
-                if (node.key.x() < key.x()) {
-                    return search(node.lb, key);
-                }
-                else {
-                    return search(node.rt, key);
-                }
-            }
-        }
+        List<Point2D> subPoints = range(queryRect, node.lb);
+        listOfPoints.addAll(subPoints);
+        subPoints = range(queryRect, node.rt);
+        listOfPoints.addAll(subPoints);
+        return listOfPoints;
     }
 
-    private Node getCeilingOf(Node pointerNode, Point2D point) {
-        if (pointerNode == null)
-            pointerNode = root;
-        if (pointerNode.key.x() == point.x() && pointerNode.key.y() == point.y())
-            return pointerNode;
-        while (pointerNode.key.x() >= point.x()
-                && pointerNode.key.y() >= point.y()
-                && pointerNode.lb != null
-                && pointerNode.lb.key.x() >= point.x()
-                && pointerNode.lb.key.y() >= point.y()
-        ) {
-            pointerNode = pointerNode.lb;
-        }
-        Node leftMax = pointerNode;
-        if (leftMax.rt == null) {
-            return leftMax;
-        }
+    public Point2D nearest(Point2D point) {
+        if (point == null)
+            throw new IllegalArgumentException(
+                    "Should try to search into root and point shouldn't be null!");
+        if (root == null)
+            return null;
 
-        pointerNode = leftMax.rt;
-        Node rightMax = getCeilingOf(pointerNode, point);
-        return shortestNode(point, leftMax, rightMax);
-
+        return nearest(root, point, null, Double.MAX_VALUE);
     }
 
-    private Node getFloorOf(Node pointerNode, Point2D point) {
-        if (pointerNode == null)
-            pointerNode = root;
-        if (pointerNode.key.x() == point.x() && pointerNode.key.y() == point.y())
-            return pointerNode;
-        while (pointerNode.key.x() <= point.x()
-                && pointerNode.key.y() <= point.y()
-                && pointerNode.rt != null
-                && pointerNode.rt.key.x() <= point.x()
-                && pointerNode.rt.key.y() <= point.y()
-        ) {
-            pointerNode = pointerNode.rt;
+    private Point2D nearest(Node node, Point2D queryPoint, Point2D nearest,
+                            double nearestDistanceSquared) {
+        if (node == null) return nearest;
+        double dsFromNode = node.point.distanceSquaredTo(queryPoint);
+        if (nearest == null || dsFromNode < nearestDistanceSquared) {
+            nearest = node.point;
+            nearestDistanceSquared = dsFromNode;
         }
-        Node rightMin = pointerNode;
-        if (rightMin.lb == null) {
-            return rightMin;
-        }
-        pointerNode = rightMin.lb;
-        Node leftMin = getFloorOf(pointerNode, point);
-        return shortestNode(point, rightMin, leftMin);
-    }
 
+        double leftNearest = node.lb != null ? node.lb.rect.distanceSquaredTo(queryPoint) :
+                             Double.MAX_VALUE;
+        double rightNearest = node.rt != null ? node.rt.rect.distanceSquaredTo(queryPoint) :
+                              Double.MAX_VALUE;
+
+        // Here line is split equally on both the sides
+        if (leftNearest < nearestDistanceSquared && Math.min(leftNearest, rightNearest) == leftNearest) {
+            nearest = nearest(node.lb, queryPoint, nearest, nearestDistanceSquared);
+            nearestDistanceSquared = queryPoint.distanceSquaredTo(nearest);
+            if (rightNearest < nearestDistanceSquared)
+                return nearest(node.rt, queryPoint, nearest, nearestDistanceSquared);
+            else
+                return nearest;
+        }
+        else if (rightNearest < nearestDistanceSquared) {
+            nearest = nearest(node.rt, queryPoint, nearest, nearestDistanceSquared);
+            nearestDistanceSquared = queryPoint.distanceSquaredTo(nearest);
+            if (leftNearest < nearestDistanceSquared)
+                return nearest(node.lb, queryPoint, nearest, nearestDistanceSquared);
+            else
+                return nearest;
+        }
+
+        return nearest;
+    }
 
     public void draw() {
-        draw(root, 1);
+        draw(root);
     }
 
-    private void draw(Node node, int depth) {
+
+    private void draw(Node node) {
         if (root == null)
             return;
-        drawPoint(node.key);
-        drawLine(node.rect, depth);
+        drawPoint(node.point);
+        drawLine(node);
         if (node.lb != null)
-            draw(node.lb, depth + 1);
+            draw(node.lb);
         if (node.rt != null)
-            draw(node.rt, depth + 1);
+            draw(node.rt);
 
 
     }
 
-    private void drawLine(RectHV key, int depth) {
-        if (depth % 2 == 0)
-            StdDraw.setPenColor(StdDraw.RED);
-        else
+    private void drawLine(Node node) {
+        StdDraw.setPenRadius(0.001);
+        if (node.isHorizontalLine()) {
             StdDraw.setPenColor(StdDraw.BLUE);
-        StdDraw.setPenRadius(0.01);
-        // bottom line
-        StdDraw.line(key.xmin(), key.ymin(), key.xmax(), key.ymin());
-        // top line
-        StdDraw.line(key.xmin(), key.ymax(), key.xmax(), key.ymax());
-        // left line
-        StdDraw.line(key.xmin(), key.ymin(), key.xmin(), key.ymax());
-        // right line
-        StdDraw.line(key.xmax(), key.ymin(), key.xmax(), key.ymax());
+            StdDraw.line(node.rect.xmin(), node.point.y(), node.rect.xmax(), node.point.y());
+        }
+        else {
+            StdDraw.setPenColor(StdDraw.RED);
+            StdDraw.line(node.point.x(), node.rect.ymin(), node.point.x(), node.rect.ymax());
+        }
     }
 
 
@@ -350,89 +305,134 @@ public class KdTree {
     }
 
     public int size() {
-        if (!isEmpty()) {
-            return 1 + size(root.lb) + size(root.rt);
-        }
-        return 0;
+        if (isEmpty())
+            return 0;
+        return root.size;
     }
 
     private int size(Node node) {
         if (node != null) {
-            return 1 + size(node.lb) + size(node.rt);
+            return root.size;
         }
         return 0;
     }
 
-
     private static class Node {
-        private Point2D key;      // the point
-        private RectHV rect;    // the axis-aligned rectangle corresponding to this node
+        private final Point2D point;      // the point
+        private final RectHV rect;    // the axis-aligned rectangle corresponding to this node
+        private final int depth;
+        private int size;
         private Node lb;        // the left/bottom subtree
         private Node rt;        // the right/top subtree
-        private int depth;        // the right/top subtree
 
-        Node(Point2D key) {
-            this.key = key;
-            this.depth = 1;
-            //rect = new RectHV(key.x(), 0, key.x(), 1);
-            rect = new RectHV(0, 0, key.x(), 1);
+        Node(Point2D point, RectHV rect, int depth) {
+            this.point = point;
+            this.rect = rect;
+            this.depth = depth;
+            this.size = 1;
         }
 
-        private Node(Point2D key, RectHV partitionedRect, int depth) {
-            this.key = key;
-            this.rect = partitionedRect;
+        private boolean isHorizontalLine() {
+            return depth % 2 == 0;
         }
 
-        private static Node create(Point2D newPoint, RectHV space, int depth) {
-            return new Node(newPoint, space, depth);
-        }
-
-        /** Use only when lb!=null **/
-        private RectHV findRightRectangle(int depth) {
-            if (lb == null) {
-                if (depth % 2 == 0)
-                    return new RectHV(rect.xmax(), rect.ymin(), 1, rect.ymax());
-                else
-                    return new RectHV(rect.xmax(), rect.ymin(), 1, rect.ymax());
+        private RectHV createLeftBottom() {
+            if (isHorizontalLine()) {
+                // horizontal split - divide the space using y co-ordinate, and retain x as it is
+                return new RectHV(rect.xmin(), rect.ymin(),
+                                  rect.xmax(),
+                                  point.y());
             }
-            if (depth % 2 == 0)
-                return new RectHV(lb.rect.xmax(), rect.ymin(), rect.xmax(), rect.ymax());
-            else
-                return new RectHV(rect.xmin(), lb.rect.ymax(), rect.xmax(), 1);
+            // Vertical split - divide the space using x co-ordinate, and retain y as it is
+            return new RectHV(rect.xmin(), rect.ymin(),
+                              point.x(),
+                              rect.ymax());
         }
 
+        private RectHV createTopRight() {
+
+            // By now depth is already increased hence logic is swapped
+            if (isHorizontalLine()) {
+                // horizontal split - divide the space using x co-ordinate, and retain y as it is
+                return new RectHV(rect.xmin(), point.y(), rect.xmax(), rect.ymax());
+            }
+            // vertical split - divide the space using y co-ordinate, and retain x as it is
+            return new RectHV(point.x(), rect.ymin(), rect.xmax(), rect.ymax());
+        }
+
+
+        private Node createLeft(Point2D newPoint) {
+            return new Node(newPoint, createLeftBottom(), depth + 1);
+        }
+
+        private Node createRight(Point2D newPoint) {
+            return new Node(newPoint, createTopRight(), depth + 1);
+        }
+
+        private void insert(Point2D newPoint) {
+            // odd -- horizontal split
+            if (point.equals(newPoint)) {
+                return;
+            }
+            double diffToPoint = compareToPoint(newPoint);
+            if (diffToPoint < 0) {
+                if (lb == null) {
+                    lb = createLeft(newPoint);
+                    size = size + 1;
+                }
+                else {
+                    lb.insert(newPoint);
+                }
+            }
+            else if (diffToPoint >= 0) {
+                if (rt == null) {
+                    rt = createRight(newPoint);
+                    size = size + 1;
+                }
+                else {
+                    rt.insert(newPoint);
+                }
+            }
+            this.size = 1 + (lb == null ? 0 : lb.size) + (rt == null ? 0 : rt.size);
+        }
+
+        public double compareToPoint(Point2D queryPoint) {
+            if (isHorizontalLine()) {
+                return Point2D.Y_ORDER.compare(queryPoint, point);
+            }
+            return Point2D.X_ORDER.compare(queryPoint, point);
+        }
 
         public String toString() {
             return "\nNode{" +
-                    "key=" + (key != null ? key.toString() : '-') +
+                    "key=" + (point != null ? point.toString() : '-') +
                     ", rect=" + (rect != null ? rect.toString() : '-')
-                    + toLbString(depth)
-                    + toRtString(depth) +
-                    ", depth = " + depth +
+                    + toLbString(1)
+                    + toRtString(1) +
+                    ", depth = " + 1 +
                     " }";
         }
 
-
-        public String toString(int depth) {
-            String tab = new String(new char[depth]).replace("\0", "\t");
+        public String toString(int levelDepth) {
+            String tab = new String(new char[levelDepth]).replace("\0", "\t");
             return tab + "\nNode {\n" +
-                    "key=" + (key != null ? key.toString() : '-') + ", depth = " + depth +
+                    "key=" + (point != null ? point.toString() : '-') + ", depth = "
+                    + levelDepth +
                     ", rect=" + (rect != null ? rect.toString() : '-')
-                    + toLbString(depth)
-                    + toRtString(depth)
+                    + toLbString(levelDepth + 1)
+                    + toRtString(levelDepth + 1)
                     + "}";
         }
 
-        public String toLbString(int depth) {
+        public String toLbString(int levelDepth) {
             if (lb == null) return ", lb = - ";
-            return "\nlb=" + lb.toString(depth + 1);
+            return "\nlb=" + lb.toString(levelDepth + 1);
         }
 
-        public String toRtString(int depth) {
+        public String toRtString(int levelDepth) {
             if (rt == null) return ", rt = - ";
-            return "\nrt =" + rt.toString(depth + 1);
+            return "\nrt =" + rt.toString(levelDepth + 1);
         }
-
     }
-
 }
+
