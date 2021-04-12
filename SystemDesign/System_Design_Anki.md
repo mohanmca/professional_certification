@@ -96,3 +96,14 @@ d
 * [System Design Cheatsheet](https://gist.github.com/vasanthk/485d1c25737e8e72759f)
 * [System Design Interview Tips](https://github.com/checkcheckzz/system-design-interview)
 * [System Design Primer](https://github.com/donnemartin/system-design-primer)
+
+## System Design - Reference (from comments - https://www.amazon.com/dp/B08B3FWYBX/ref=cm_cr_dp_d_vote_lft?ie=UTF8&voteInstanceId=R4JVS78AO38EX&voteValue=1&csrfT=gliD0sT3FjR1bD94shUAM1JjKtkKracQ9MuvL0gAAAABAAAAAF%2B2IIFyYXcAAAAA%2B4kUEk%2F7iMGR3xPcX6iU#R4JVS78AO38EX&)
+
+-- designing data-intensive applications. Highly recommended.
+-- system design primer github repo. Highly recommended free resource.
+-- Leetcode discussion forum about system designs.
+-- Grokking the system interview course. This is an ok resource but not very deep.
+-- Various youtube channels. I like channels like Tushar Roy, System Design Interview, Success in Tech, etc. There are a lot more but I found them most useful for senior engineer positions.
+-- Various tech blogs: Facebook, Netflix, Uber, AirBnb, etc. Those tech blogs are extremely valuable to help us understand real-life systems.
+-- highscalability website. The website contains lots of real world systems.
+-- InfoQ youtube channel. Many tech companies talk about how they scale their systems at infoQ. I find sometimes it’s quite hard to find useful videos on google but when I narrow down it to a specific channel, it’s much easier to find. For example, I found a lot of useful tech talks about uber there. It’s invaluable when I interviewed there.
