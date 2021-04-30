@@ -98,5 +98,3 @@
 * Which edge locations
 * Different caching behaviour
 * WAF (ACL) can be enabled
-* 
-
