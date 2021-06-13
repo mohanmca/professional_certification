@@ -1,5 +1,7 @@
 ## Graph terminology
 
+* Connections vs Edges (UnDigraph it is connections vs Digraph Edges)
+  * Edges has direction from to to, whereas conenctions are bothways and direction less (applicaplble to both the direction)
 * Path - Sequences of vertices connected by edges
 * Cycle - Path whose first and last vertices are same
 * Degree of vertices - Number of edges connected to it (Undirected)
@@ -163,3 +165,9 @@ Question 3
 
 1. Tarjan
 2. Shortest path - Dijkstra
+
+## How to create anki
+
+```bash
+mdanki UndirectedGraph.md UndirectedGraph.apkg --deck "Sedgewick::Part2::UndirectedGraph"
+```
