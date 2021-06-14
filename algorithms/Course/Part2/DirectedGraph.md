@@ -1,13 +1,11 @@
 ## DiGraph terminology
 
-* Most of the algorithm learnt for Undirected Graph would just work for DirectedGraph
 * Connections vs Edges (UnDigraph it is connections vs Digraph Edges)
   * Edges has direction from to to, whereas conenctions are bothways and direction less (applicaplble to both the direction)
 * How many differetn digraph possible with Vertices V
   * There are V**2 possible edges
   * Every edge is in the graph or not, so 2**(V**2)
-* Most of the di-graph problems can be solved by DFS
-* DFS Reverse postorder for Topological sort was simple, but it was not discovered for many years
+* Most of the algorithm learnt for Undirected Graph would just work for DirectedGraph
 
 ## Some Digraph problems
 
@@ -17,6 +15,7 @@
 1. SCC - Strong Connectivity - Is there a directed between all pairs of vertices?
 1. Transitive-Closure: For which vertices v and w, is there a path from v to w?
 1. Page Rank: What is the importance of a web-page?
+1. Most of the di-graph problems can be solved by DFS
 
 
 
@@ -94,6 +93,7 @@ while (!queue.isEmpty())
 ## Toplogical Sort (in DAG)
 
 * DFS + ReversePostOrder
+* DFS Reverse postorder for Topological sort was simple, but it was not discovered for many years
 * ReversePostOrder : Use simple DFS, and when there were no-were adjacent vertices to navigate, it should goes to Stack
 1. 
 
@@ -132,7 +132,6 @@ private void dfs(Digraph G, int v){
 1. Case 3: dfs(w) has already been called, but has not yet returned.
    1. Can’t happen in a DAG: function call stack contains path from w to v, so v→w would complete a cycle.
 
-
 ## Proposition. A digraph has a topological order iff no directed cycle.
 
 * Proof 
@@ -148,6 +147,7 @@ private void dfs(Digraph G, int v){
 
 ## Strongly-connected components
 
+* SCC is maximal set of mutually reachable nodes
 * Vertices v and w are strongly connected
   1. if there is both a directed path from v to w 
   1. And a directed path from w to v.
@@ -176,7 +176,7 @@ private void dfs(Digraph G, int v){
 public CC(Graph G) {                    |   public SCC(Graph G) {                    
     marked = new boolean[G.V()];        |      marked = new boolean[G.V()];        
     id = new int[G.V()];                |      id = new int[G.V()];                
-    for (int v = 0; v < G.V(); v++) {   |      for (int v = 0; v < new DepthFirstOrder(G.reverse()).reversePost(); v++) {   
+    for (int v = 0; v < G.V(); v++) {   |      for (int v : new DepthFirstOrder(G.reverse()).reversePostOrder()) {   
         if (!marked[v]) {               |          if (!marked[v]) {               
             dfs(G, v);                  |              dfs(G, v);                  
             count++;                    |              count++;                    

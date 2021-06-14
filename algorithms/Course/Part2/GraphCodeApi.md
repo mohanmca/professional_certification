@@ -30,7 +30,13 @@ public class DepthFirstDirectedPaths  {
     public DepthFirstDirectedPaths (Digraph G, int s);
     private void dfs(Digraph G, int v);
     public boolean hasPathTo(int v);
-    public Iterable<Integer> pathTo(int v);    
+    public Iterable<Integer> pathTo(int v) {
+        Stack<Integer> path = new Stack<Integer>();
+        for (int x = v; x != s; x = edgeTo[x])
+            path.push(x);
+        path.push(s);
+        return path;
+    }    
 }
 ```
 
