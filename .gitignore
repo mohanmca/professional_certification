@@ -1,0 +1,5 @@
+algorithms/Course/Princeton_Algorithm/wordnet
+**/*.apkg
+**/*.zip
+**/package-lock.json
+**node_modules/

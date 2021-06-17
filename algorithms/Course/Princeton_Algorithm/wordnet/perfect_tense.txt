@@ -1,0 +1,7 @@
+** Cases - Two parts of the sentence doesn’t work one event happened before the other event. (but both of them in the past) -- Had
+
+1. Many people have complained to the city council about the lack of parking place
+2. Did you know that the sadwich shop on Main Street has closed?
+3. Our parents have cleared out the basement, so now we can put our old couch
+4. I will have gathered all of the supplies by the time you get there.
+5. The telephone rang after we had left the house.

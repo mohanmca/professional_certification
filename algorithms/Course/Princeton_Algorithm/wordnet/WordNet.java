@@ -7,6 +7,7 @@
 import edu.princeton.cs.algs4.DepthFirstDirectedPaths;
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
+import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.TransitiveClosure;
 
 import java.util.Arrays;
@@ -70,13 +71,10 @@ public class WordNet {
     // a synset (second field of synsets.txt) that is the common ancestor of nounA and nounB
     // in a shortest ancestral path (defined below)
     public String sap(String nounA, String nounB) {
-        Integer ancestor = DepthFirstDiGraph.findAncestor(graph, synsetMap.get(nounA));
-        DepthFirstDirectedPaths dfsPaths = new DepthFirstDirectedPaths(graph, synsetMap.get(nounA));
-        Iterable<Integer> ancestors = dfsPaths.pathTo(ancestor);
-        DepthFirstDirectedPaths dfsPathsOfB = new DepthFirstDirectedPaths(graph,
-                                                                          synsetMap.get(nounB));
-        for (Integer w : ancestors) {
-            if (dfsPathsOfB.hasPathTo(w)) {
+        DepthFirstDiGraph dfsPathA = new DepthFirstDiGraph(graph, synsetMap.get(nounA));
+        DepthFirstDiGraph dfsPathB = new DepthFirstDiGraph(graph, synsetMap.get(nounB));
+        for (Integer w : dfsPathA.pathToAncestor()) {
+            if (dfsPathB.hasPathTo(w)) {
                 return synsetReverseMap.get(w);
             }
         }
@@ -96,29 +94,48 @@ public class WordNet {
     private static class DepthFirstDiGraph {
         private Digraph graph;
         private boolean[] marked;
-        private int anscestor = -99;
-
-        private static Integer findAncestor(Digraph g, int s) {
-            return new DepthFirstDiGraph(g, s).getAnscestor();
-        }
+        private Integer[] edgeTo;
+        private int ancestor = -99;
+        private int s;
 
         public DepthFirstDiGraph(Digraph g, int s) {
             marked = new boolean[g.V()];
+            edgeTo = new Integer[g.V()];
             graph = g;
+            this.s = s;
             dfs(s);
         }
 
         private void dfs(int v) {
             marked[v] = true;
             for (int w : graph.adj(v)) {
-                if (!marked[w])
+                if (!marked[w]) {
+                    edgeTo[w] = v;
                     dfs(w);
+                }
             }
-            if (anscestor == -99) anscestor = v;
+            if (ancestor == -99) ancestor = v;
         }
 
-        private int getAnscestor() {
-            return anscestor;
+        private Iterable<Integer> pathToAncestor() {
+            return pathTo(ancestor);
+        }
+
+        private boolean hasPathTo(int v) {
+            return marked[v];
+        }
+
+        private Iterable<Integer> pathTo(int v) {
+            Stack<Integer> trace = new Stack<>();
+            for (int x = v; x != s; x = edgeTo[x]) {
+                trace.push(x);
+            }
+            trace.push(s);
+            return trace;
+        }
+
+        private int getAncestor() {
+            return ancestor;
         }
     }
 
