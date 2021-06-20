@@ -9,13 +9,15 @@ import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Stack;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
 public class WordNet {
-    private Map<String, Integer> synsetMap;
+    private Map<String, List<Integer>> synsetMap;
     private Map<Integer, String> synsetReverseMap;
     private Digraph graph;
     private SAP shortestAncestorPathFinder;
@@ -51,9 +53,12 @@ public class WordNet {
         int count = 0;
         while (syntax.hasNextLine()) {
             String[] columns = syntax.readLine().split(",");
+            int synsetId = Integer.parseInt(columns[0]);
             for (String noun : columns[1].split(" ")) {
-                synsetMap.put(noun, Integer.parseInt(columns[0]));
-                synsetReverseMap.put(count++, noun);
+                List<Integer> synsetIds = synsetMap.getOrDefault(noun, new ArrayList<Integer>());
+                synsetIds.add(synsetId);
+                synsetMap.put(noun, synsetIds);
+                synsetReverseMap.put(synsetId, noun);
             }
         }
     }
@@ -80,10 +85,22 @@ public class WordNet {
     }
 
     private int lengthOfPath(String nounB, DepthFirstDirectedPaths paths) {
+        List<Integer> vertices = synsetMap.get(nounB);
+        if (vertices.size() > 1)
+            throw new IllegalArgumentException("Why do we have more than one noun for - " + nounB);
         int c = 0;
-        for (Integer i : paths.pathTo(synsetMap.get(nounB)))
+        for (Integer i : paths.pathTo(vertices.get(0)))
             c++;
         return c;
+    }
+
+    private int size(Iterable<Integer> data) {
+        if (data instanceof java.util.Collection) {
+            return ((java.util.Collection<Integer>) data).size();
+        }
+        int counter = 0;
+        for (Object i : data) counter++;
+        return counter;
     }
 
     // a synset (second field of synsets.txt) that is the common ancestor of nounA and nounB

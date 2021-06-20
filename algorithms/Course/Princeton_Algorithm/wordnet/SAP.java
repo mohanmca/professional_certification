@@ -12,13 +12,13 @@ import edu.princeton.cs.algs4.StdOut;
 
 public class SAP {
 
-    private DepthFirstDiGraph[] graphPaths;
+    private BreathFirstDigraph[] graphPaths;
     private Digraph graph;
 
     // constructor takes a digraph (not necessarily a DAG)
     public SAP(Digraph g) {
         this.graph = g;
-        graphPaths = new DepthFirstDiGraph[g.V()];
+        graphPaths = new BreathFirstDigraph[g.V()];
     }
 
     // length of shortest ancestral path between v and w; -1 if no such path
@@ -33,9 +33,9 @@ public class SAP {
     public int ancestor(int v, int w) {
         if (v >= graph.V() || w >= graph.V()) return -1;
         if (graphPaths[v] == null)
-            graphPaths[v] = new DepthFirstDiGraph(graph, v);
+            graphPaths[v] = new BreathFirstDigraph(graph, v);
         if (graphPaths[w] == null)
-            graphPaths[w] = new DepthFirstDiGraph(graph, w);
+            graphPaths[w] = new BreathFirstDigraph(graph, w);
         if (graphPaths[v].getAncestor() != -1 && graphPaths[w].getAncestor() != -1) {
             for (Integer x : graphPaths[v].pathToAncestor()) {
                 if (graphPaths[w].hasPathTo(x)) {
@@ -73,30 +73,40 @@ public class SAP {
     }
 
 
-    private static class DepthFirstDiGraph {
+    private static class BreathFirstDigraph {
         private Digraph graph;
         private boolean[] marked;
         private Integer[] edgeTo;
         private int ancestor = -1;
         private int s;
 
-        public DepthFirstDiGraph(Digraph g, int s) {
+        public BreathFirstDigraph(Digraph g, int s) {
             marked = new boolean[g.V()];
             edgeTo = new Integer[g.V()];
             graph = g;
             this.s = s;
-            dfs(s);
+            bfs(s);
         }
 
-        private void dfs(int v) {
-            marked[v] = true;
-            for (int w : graph.adj(v)) {
-                if (!marked[w]) {
-                    edgeTo[w] = v;
-                    dfs(w);
+        private void bfs(int s) {
+            java.util.ArrayDeque<Integer> deque = new java.util.ArrayDeque<Integer>();
+            marked[s] = true;
+            deque.add(s);
+            while (!deque.isEmpty()) {
+                int v = deque.poll();
+                if (graph.outdegree(v) == 0 && ancestor == -1) {
+                    ancestor = v;
+                }
+                else {
+                    for (int w : graph.adj(v)) {
+                        if (!marked[w]) {
+                            marked[w] = true;
+                            edgeTo[w] = v;
+                            deque.add(w);
+                        }
+                    }
                 }
             }
-            if (ancestor == -1) ancestor = v;
         }
 
         private Iterable<Integer> pathToAncestor() {
