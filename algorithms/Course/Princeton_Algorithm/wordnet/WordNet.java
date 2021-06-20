@@ -4,7 +4,6 @@
  *  Description:
  **************************************************************************** */
 
-import edu.princeton.cs.algs4.DepthFirstDirectedPaths;
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Stack;
@@ -19,8 +18,7 @@ import java.util.Map;
 public class WordNet {
     private Map<String, List<Integer>> synsetMap;
     private Map<Integer, String> synsetReverseMap;
-    private Digraph graph;
-    private SAP shortestAncestorPathFinder;
+    private final SAP shortestAncestorPathFinder;
 
     // constructor takes the name of the two input files
     public WordNet(String synsets, String hypernyms) {
@@ -28,7 +26,7 @@ public class WordNet {
             throw new IllegalArgumentException("Arguments should not be null!");
         populateSynsetMap(synsets);
 
-        graph = new Digraph(synsetReverseMap.size());
+        Digraph graph = new Digraph(synsetReverseMap.size());
 
         In hypIn = new In(hypernyms);
         while (hypIn.hasNextLine()) {
@@ -82,16 +80,6 @@ public class WordNet {
         if (!isNoun(nounA) || !isNoun(nounB)) return Integer.MAX_VALUE;
         if (nounA.equals(nounB)) return 0;
         return shortestAncestorPathFinder.length(synsetMap.get(nounA), synsetMap.get(nounB));
-    }
-
-    private int lengthOfPath(String nounB, DepthFirstDirectedPaths paths) {
-        List<Integer> vertices = synsetMap.get(nounB);
-        if (vertices.size() > 1)
-            throw new IllegalArgumentException("Why do we have more than one noun for - " + nounB);
-        int c = 0;
-        for (Integer i : paths.pathTo(vertices.get(0)))
-            c++;
-        return c;
     }
 
     private int size(Iterable<Integer> data) {

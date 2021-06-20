@@ -12,12 +12,12 @@ import edu.princeton.cs.algs4.StdOut;
 
 public class SAP {
 
-    private BreathFirstDigraph[] graphPaths;
-    private Digraph graph;
+    private final BreathFirstDigraph[] graphPaths;
+    private final Digraph graph;
 
     // constructor takes a digraph (not necessarily a DAG)
     public SAP(Digraph g) {
-        this.graph = g;
+        graph = g;
         graphPaths = new BreathFirstDigraph[g.V()];
     }
 
