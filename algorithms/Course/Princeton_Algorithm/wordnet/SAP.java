@@ -24,8 +24,9 @@ public class SAP {
     // length of shortest ancestral path between v and w; -1 if no such path
     public int length(int v, int w) {
         int parent = ancestor(v, w);
-        if (parent != -1)
+        if (parent != -1) {
             return graphPaths[v].pathTo(parent).size() + graphPaths[w].pathTo(parent).size() - 2;
+        }
         return parent;
     }
 
@@ -36,6 +37,14 @@ public class SAP {
             graphPaths[v] = new BreathFirstDigraph(graph, v);
         if (graphPaths[w] == null)
             graphPaths[w] = new BreathFirstDigraph(graph, w);
+        if (graphPaths[v].hasPathTo(w) && graphPaths[w].hasPathTo(v)) {
+            Stack<Integer> pathvw = graphPaths[v].pathTo(w);
+            Stack<Integer> pathwv = graphPaths[w].pathTo(v);
+            if (pathvw.size() > pathwv.size()) return v;
+            return w;
+        }
+        if (graphPaths[v].hasPathTo(w)) return w;
+        if (graphPaths[w].hasPathTo(v)) return v;
         if (graphPaths[v].getAncestor() != -1 && graphPaths[w].getAncestor() != -1) {
             for (Integer x : graphPaths[v].pathToAncestor()) {
                 if (graphPaths[w].hasPathTo(x)) {
