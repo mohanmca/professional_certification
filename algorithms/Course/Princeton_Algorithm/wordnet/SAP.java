@@ -4,7 +4,6 @@
  *  Description:
  **************************************************************************** */
 
-import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Queue;
@@ -39,6 +38,9 @@ public class SAP {
 
     // a common ancestor of v and w that participates in a shortest ancestral path; -1 if no such path
     public int ancestor(int v, int w) {
+        if (v >= graph.V() || w >= graph.V()) throw new IllegalArgumentException();
+        if (v < 0 || w < 0) throw new IllegalArgumentException();
+
         if (graphPaths[v] == null)
             graphPaths[v] = new BreathFirstDigraph(graph, v);
         if (graphPaths[w] == null)
@@ -127,7 +129,7 @@ public class SAP {
                         ancestor = w;
                     }
                 }
-                if (((Bag<Integer>) G.adj(v)).isEmpty() && ancestor == -1) {
+                if (!G.adj(v).iterator().hasNext() && ancestor == -1) {
                     ancestor = v;
                 }
             }
