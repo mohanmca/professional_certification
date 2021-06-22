@@ -78,6 +78,8 @@ public class SAP {
 
     // a common ancestor that participates in shortest ancestral path; -1 if no such path
     public int ancestor(Iterable<Integer> vs, Iterable<Integer> ws) {
+        if (vs == null || ws == null)
+            throw new IllegalArgumentException("Vertex should not be null!");
         int min = Integer.MAX_VALUE;
         int parent = -1;
         for (Integer v : vs) {
@@ -96,6 +98,8 @@ public class SAP {
 
     // length of shortest ancestral path between any vertex in v and any vertex in w; -1 if no such path
     public int length(Iterable<Integer> vs, Iterable<Integer> ws) {
+        if (vs == null || ws == null)
+            throw new IllegalArgumentException("Vertex should not be null!");
         int min = Integer.MAX_VALUE;
         for (Integer v : vs) {
             for (Integer w : ws) {
