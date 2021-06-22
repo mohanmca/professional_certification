@@ -20,7 +20,7 @@ public class SAP {
 
     private void validateVertex(int v) {
         if (v < 0 || v >= graph.V())
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (graph.V()-1));
     }
 
     // constructor takes a digraph (not necessarily a DAG)
