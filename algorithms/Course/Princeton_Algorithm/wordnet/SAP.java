@@ -82,6 +82,8 @@ public class SAP {
         int parent = -1;
         for (Integer v : vs) {
             for (Integer w : ws) {
+                if (v == null || w == null)
+                    throw new IllegalArgumentException("Vertex should not be null!");
                 int len = length(v, w);
                 if (len != -1 && len < min) {
                     parent = ancestor(v, w);
