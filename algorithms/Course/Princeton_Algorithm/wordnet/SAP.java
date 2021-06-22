@@ -14,19 +14,19 @@ import java.util.Arrays;
 
 public class SAP {
 
-
     private final BreadthFirstDirectedPaths[] bfsPaths;
     private final Digraph graph;
 
-    private void validateVertex(int v) {
-        if (v < 0 || v >= graph.V())
-            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (graph.V()-1));
-    }
-
     // constructor takes a digraph (not necessarily a DAG)
     public SAP(Digraph g) {
-        graph = g;
+        graph = new Digraph(g);
         bfsPaths = new BreadthFirstDirectedPaths[graph.V()];
+    }
+
+    private void validateVertex(int v) {
+        if (v < 0 || v >= graph.V())
+            throw new IllegalArgumentException(
+                    "vertex " + v + " is not between 0 and " + (graph.V() - 1));
     }
 
     // length of shortest ancestral path between v and w; -1 if no such path
@@ -50,7 +50,7 @@ public class SAP {
         int minDistance = Integer.MAX_VALUE;
         int ancestor = -1;
 
-        //If they are in cycle, find the shortest one
+        // If they are in cycle, find the shortest one
         if (bfsPaths[v].hasPathTo(w)) {
             ancestor = w;
             minDistance = bfsPaths[v].distTo(w);
@@ -62,7 +62,7 @@ public class SAP {
         }
 
         BreadthFirstDirectedPaths bfs = new BreadthFirstDirectedPaths(graph, Arrays.asList(v, w));
-        //if they have common ancestor
+        // if they have common ancestor
         for (int x = 0; x < graph.V(); x++) {
             if (x != v && x != w && bfs.hasPathTo(x)) {
                 if (bfsPaths[v].hasPathTo(x) && bfsPaths[w].hasPathTo(x)
@@ -76,32 +76,34 @@ public class SAP {
         return ancestor;
     }
 
-    // length of shortest ancestral path between any vertex in v and any vertex in w; -1 if no such path
-    public int length(Iterable<Integer> vs, Iterable<Integer> ws) {
-        int min = 99999;
-        for (int v : vs) {
-            for (int w : ws) {
-                min = Math.min(length(v, w), min);
-            }
-        }
-        return min == 99999 ? -1 : min;
-    }
-
     // a common ancestor that participates in shortest ancestral path; -1 if no such path
     public int ancestor(Iterable<Integer> vs, Iterable<Integer> ws) {
-        int min = 99999;
+        int min = Integer.MAX_VALUE;
         int parent = -1;
-        for (int v : vs) {
-            for (int w : ws) {
+        for (Integer v : vs) {
+            for (Integer w : ws) {
                 int len = length(v, w);
                 if (len != -1 && len < min) {
                     parent = ancestor(v, w);
+                    min = len;
                 }
             }
         }
         return parent;
     }
 
+    // length of shortest ancestral path between any vertex in v and any vertex in w; -1 if no such path
+    public int length(Iterable<Integer> vs, Iterable<Integer> ws) {
+        int min = Integer.MAX_VALUE;
+        for (Integer v : vs) {
+            for (Integer w : ws) {
+                if (v == null || w == null)
+                    throw new IllegalArgumentException("Vertex should not be null!");
+                min = Math.min(length(v, w), min);
+            }
+        }
+        return min == Integer.MAX_VALUE ? -1 : min;
+    }
 
     public static void main(String[] args) {
         In in = new In(args[0]);

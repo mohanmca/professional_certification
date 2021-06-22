@@ -5,8 +5,8 @@
  **************************************************************************** */
 
 import edu.princeton.cs.algs4.Digraph;
+import edu.princeton.cs.algs4.DirectedCycle;
 import edu.princeton.cs.algs4.In;
-import edu.princeton.cs.algs4.Stack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +37,7 @@ public class WordNet {
             }
         }
 
-        DepthFirstDirectedCycle cycleFinder = new DepthFirstDirectedCycle(graph);
+        DirectedCycle cycleFinder = new DirectedCycle(graph);
         if (cycleFinder.hasCycle()) {
             throw new IllegalArgumentException("Graph is not DAG, It has cycle!");
         }
@@ -48,7 +48,6 @@ public class WordNet {
         In syntax = new In(synsets);
         synsetMap = new HashMap<>();
         synsetReverseMap = new HashMap<>();
-        int count = 0;
         while (syntax.hasNextLine()) {
             String[] columns = syntax.readLine().split(",");
             int synsetId = Integer.parseInt(columns[0]);
@@ -82,15 +81,6 @@ public class WordNet {
         return shortestAncestorPathFinder.length(synsetMap.get(nounA), synsetMap.get(nounB));
     }
 
-    private int size(Iterable<Integer> data) {
-        if (data instanceof java.util.Collection) {
-            return ((java.util.Collection<Integer>) data).size();
-        }
-        int counter = 0;
-        for (Object i : data) counter++;
-        return counter;
-    }
-
     // a synset (second field of synsets.txt) that is the common ancestor of nounA and nounB
     // in a shortest ancestral path (defined below)
     public String sap(String nounA, String nounB) {
@@ -116,48 +106,5 @@ public class WordNet {
         System.out.println(net.sap("corn_gluten", "elastin"));
     }
 
-    private static class DepthFirstDirectedCycle {
-        private boolean[] marked;
-        private Integer[] edgeTo;
-        private boolean[] onStack;
-        private Stack<Integer> cycle;
 
-        public DepthFirstDirectedCycle(Digraph graph) {
-            marked = new boolean[graph.V()];
-            onStack = new boolean[graph.V()];
-            edgeTo = new Integer[graph.V()];
-
-            for (int v = 0; v < graph.V() && cycle == null; v++) {
-                if (!marked[v]) {
-                    dfs(graph, v);
-                }
-            }
-        }
-
-        public boolean hasCycle() {
-            return cycle != null;
-        }
-
-        private void dfs(Digraph graph, int v) {
-            onStack[v] = true;
-            marked[v] = true;
-            for (int w : graph.adj(v)) {
-                if (cycle != null) return;
-                if (!marked[w]) {
-                    edgeTo[w] = v;
-                    dfs(graph, w);
-                }
-                else if (onStack[w]) {
-                    cycle = new Stack<>();
-                    for (int x = v; x != w; x = edgeTo[x]) {
-                        cycle.push(x);
-                    }
-                    cycle.push(w);
-                    cycle.push(v);
-                    return;
-                }
-            }
-            onStack[v] = false;
-        }
-    }
 }
