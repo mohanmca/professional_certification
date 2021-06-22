@@ -18,6 +18,11 @@ public class SAP {
     private final BreadthFirstDirectedPaths[] bfsPaths;
     private final Digraph graph;
 
+    private void validateVertex(int v) {
+        if (v < 0 || v >= graph.V())
+            throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+    }
+
     // constructor takes a digraph (not necessarily a DAG)
     public SAP(Digraph g) {
         graph = g;
@@ -35,11 +40,12 @@ public class SAP {
 
     // a common ancestor of v and w that participates in a shortest ancestral path; -1 if no such path
     public int ancestor(int v, int w) {
+        validateVertex(v);
+        validateVertex(w);
         if (bfsPaths[v] == null)
             bfsPaths[v] = new BreadthFirstDirectedPaths(graph, v);
         if (bfsPaths[w] == null)
             bfsPaths[w] = new BreadthFirstDirectedPaths(graph, w);
-
 
         int minDistance = Integer.MAX_VALUE;
         int ancestor = -1;
