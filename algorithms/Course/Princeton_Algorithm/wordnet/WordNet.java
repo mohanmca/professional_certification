@@ -27,7 +27,6 @@ public class WordNet {
             throw new IllegalArgumentException("Arguments should not be null!");
         populateSynsetMap(synsets);
 
-
         In hypIn = new In(hypernyms);
         String[] hypernymLinks = hypIn.readAllLines();
         Digraph graph = new Digraph(hypernymLinks.length);
@@ -45,17 +44,6 @@ public class WordNet {
         shortestAncestorPathFinder = new SAP(graph);
     }
 
-    private boolean isRootedGraph(Digraph graph) {
-        int zeroOutDegree = 0;
-        for (int i = 0; i < graph.V(); i++) {
-            int count = 0;
-            for (int v : graph.adj(i))
-                count++;
-            if (count == 1) zeroOutDegree++;
-        }
-        return zeroOutDegree == 1;
-    }
-
     private void populateSynsetMap(String synsets) {
         In syntax = new In(synsets);
         synsetIdSetKeyedByNoun = new HashMap<String, Set<Integer>>();
@@ -63,12 +51,12 @@ public class WordNet {
         while (syntax.hasNextLine()) {
             String[] columns = syntax.readLine().split(",");
             int synsetId = Integer.parseInt(columns[0]);
+            nounsKeyedBySynsetId.put(synsetId, columns[1]);
             for (String noun : columns[1].split(" ")) {
                 if (!synsetIdSetKeyedByNoun.containsKey(noun)) {
                     synsetIdSetKeyedByNoun.put(noun, new HashSet<Integer>());
                 }
                 synsetIdSetKeyedByNoun.get(noun).add(synsetId);
-                nounsKeyedBySynsetId.put(synsetId, noun);
             }
         }
     }
@@ -122,6 +110,8 @@ public class WordNet {
         System.out.println(net.distance("a", "d"));
         net = new WordNet("synsets11.txt", "hypernyms11AmbiguousAncestor.txt");
         System.out.println(net.distance("a", "g"));
+        net = new WordNet("synsets100-subgraph.txt", "hypernyms100-subgraph.txt");
+        System.out.println(net.sap("supermolecule", "factor_X"));
     }
 
 }
