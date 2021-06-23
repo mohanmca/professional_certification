@@ -11,14 +11,13 @@ import edu.princeton.cs.algs4.In;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 
 public class WordNet {
-    private final Map<String, Set<Integer>> synsetIdSetKeyedByNoun;
-    private final Map<Integer, String> nounsKeyedBySynsetId;
+    private Map<String, Set<Integer>> synsetIdSetKeyedByNoun;
+    private Map<Integer, String> nounsKeyedBySynsetId;
 
     private final SAP shortestAncestorPathFinder;
 
@@ -26,9 +25,8 @@ public class WordNet {
     public WordNet(String synsets, String hypernyms) {
         if (synsets == null || hypernyms == null)
             throw new IllegalArgumentException("Arguments should not be null!");
-        List<Map> maps = populateSynsetMap(synsets);
-        synsetIdSetKeyedByNoun = (Map<String, Set<Integer>>) maps.get(0);
-        nounsKeyedBySynsetId = (Map<Integer, String>) maps.get(0);
+        populateSynsetMap(synsets);
+
 
         In hypIn = new In(hypernyms);
         String[] hypernymLinks = hypIn.readAllLines();
@@ -44,9 +42,6 @@ public class WordNet {
         if (new DirectedCycle(graph).hasCycle()) {
             throw new IllegalArgumentException("Graph has cycle!");
         }
-        if (!isRootedGraph(graph)) {
-            throw new IllegalArgumentException("Graph is not DAG!");
-        }
         shortestAncestorPathFinder = new SAP(graph);
     }
 
@@ -61,22 +56,21 @@ public class WordNet {
         return zeroOutDegree == 1;
     }
 
-    private List<Map> populateSynsetMap(String synsets) {
+    private void populateSynsetMap(String synsets) {
         In syntax = new In(synsets);
-        Map<String, Set<Integer>> synsetMap = new HashMap<>();
-        Map<Integer, String> synsetReverseMap = new HashMap<>();
+        synsetIdSetKeyedByNoun = new HashMap<String, Set<Integer>>();
+        nounsKeyedBySynsetId = new HashMap<Integer, String>();
         while (syntax.hasNextLine()) {
             String[] columns = syntax.readLine().split(",");
             int synsetId = Integer.parseInt(columns[0]);
             for (String noun : columns[1].split(" ")) {
-                if (!synsetMap.containsKey(noun)) {
-                    synsetMap.put(noun, new HashSet<Integer>());
+                if (!synsetIdSetKeyedByNoun.containsKey(noun)) {
+                    synsetIdSetKeyedByNoun.put(noun, new HashSet<Integer>());
                 }
-                synsetMap.get(noun).add(synsetId);
-                synsetReverseMap.put(synsetId, noun);
+                synsetIdSetKeyedByNoun.get(noun).add(synsetId);
+                nounsKeyedBySynsetId.put(synsetId, noun);
             }
         }
-        return Arrays.asList(synsetMap, synsetReverseMap);
     }
 
     // returns all WordNet nouns
@@ -123,9 +117,9 @@ public class WordNet {
 
     // do unit testing of this class
     public static void main(String[] args) {
-        WordNet net = new WordNet("synsets.txt", "hypernyms.txt");
-        String v = "basidiomycetous_fungi";
-        String w = "Battle_of_Pydna";
+        WordNet net = new WordNet("synsets15.txt", "hypernyms15Path.txt");
+        String v = "j";
+        String w = "m";
         System.out.println(net.isNoun(v));
         System.out.println(net.isNoun(w));
         System.out.println(net.distance(v, w));
