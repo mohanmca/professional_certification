@@ -36,7 +36,7 @@ public class WordNet {
             int[] columns = Arrays.stream(relation.split(",")).map(Integer::parseInt)
                                   .mapToInt(Integer::intValue).toArray();
             for (int i = 1; i < columns.length; i++) {
-                graph.addEdge(columns[0], columns[1]);
+                graph.addEdge(columns[0], columns[i]);
             }
         }
         if (new DirectedCycle(graph).hasCycle()) {
@@ -118,12 +118,10 @@ public class WordNet {
 
     // do unit testing of this class
     public static void main(String[] args) {
-        WordNet net = new WordNet("synsets6.txt", "hypernyms6TwoAncestors.txt");
-        System.out.println(net.distance("a", "b"));
+        WordNet net = new WordNet("synsets8.txt", "hypernyms8ManyAncestors.txt");
+        System.out.println(net.distance("a", "d"));
         net = new WordNet("synsets11.txt", "hypernyms11AmbiguousAncestor.txt");
         System.out.println(net.distance("a", "g"));
-        net = new WordNet("synsets15.txt", "hypernyms15Path.txt");
-        System.out.println(net.distance("x", "b"));
     }
 
 }
