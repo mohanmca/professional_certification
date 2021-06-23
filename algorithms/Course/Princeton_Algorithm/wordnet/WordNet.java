@@ -16,15 +16,17 @@ import java.util.Map;
 
 
 public class WordNet {
-    private Map<String, List<Integer>> synsetMap;
-    private Map<Integer, String> synsetReverseMap;
+    private final Map<String, List<Integer>> synsetMap;
+    private final Map<Integer, String> synsetReverseMap;
     private final SAP shortestAncestorPathFinder;
 
     // constructor takes the name of the two input files
     public WordNet(String synsets, String hypernyms) {
         if (synsets == null || hypernyms == null)
             throw new IllegalArgumentException("Arguments should not be null!");
-        populateSynsetMap(synsets);
+        List<Map> maps = populateSynsetMap(synsets);
+        synsetMap = (Map<String, List<Integer>>) maps.get(0);
+        synsetReverseMap = (Map<Integer, String>) maps.get(0);
 
         Digraph graph = new Digraph(synsetReverseMap.size());
 
@@ -44,20 +46,22 @@ public class WordNet {
         shortestAncestorPathFinder = new SAP(graph);
     }
 
-    private void populateSynsetMap(String synsets) {
+    private List<Map> populateSynsetMap(String synsets) {
         In syntax = new In(synsets);
-        synsetMap = new HashMap<>();
-        synsetReverseMap = new HashMap<>();
+        Map<String, List<Integer>> synsetMap = new HashMap<>();
+        Map<Integer, String> synsetReverseMap = new HashMap<>();
         while (syntax.hasNextLine()) {
             String[] columns = syntax.readLine().split(",");
             int synsetId = Integer.parseInt(columns[0]);
             for (String noun : columns[1].split(" ")) {
-                List<Integer> synsetIds = synsetMap.getOrDefault(noun, new ArrayList<Integer>());
-                synsetIds.add(synsetId);
-                synsetMap.put(noun, synsetIds);
+                if (!synsetMap.containsKey(noun)) {
+                    synsetMap.put(noun, new ArrayList<Integer>());
+                }
+                synsetMap.get(noun).add(synsetId);
                 synsetReverseMap.put(synsetId, noun);
             }
         }
+        return Arrays.asList(synsetMap, synsetReverseMap);
     }
 
     // returns all WordNet nouns
@@ -98,13 +102,12 @@ public class WordNet {
 
     // do unit testing of this class
     public static void main(String[] args) {
-        WordNet net = new WordNet("synsets15.txt", "hypernyms15Path.txt");
-        System.out.println(net.isNoun("n"));
-        System.out.println(net.isNoun("l"));
-        System.out.println(net.sap("n", "m"));
-        net = new WordNet("synsets100-subgraph.txt", "hypernyms100-subgraph.txt");
-        System.out.println(net.sap("corn_gluten", "elastin"));
+        WordNet net = new WordNet("synsets.txt", "hypernyms.txt");
+        String v = "basidiomycetous_fungi";
+        String w = "Battle_of_Pydna";
+        System.out.println(net.isNoun(v));
+        System.out.println(net.isNoun(w));
+        System.out.println(net.distance(v, w));
     }
-
 
 }

@@ -10,8 +10,6 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
-import java.util.Arrays;
-
 public class SAP {
 
     private final BreadthFirstDirectedPaths[] bfsPaths;
@@ -50,26 +48,11 @@ public class SAP {
         int minDistance = Integer.MAX_VALUE;
         int ancestor = -1;
 
-        // If they are in cycle, find the shortest one
-        if (bfsPaths[v].hasPathTo(w)) {
-            ancestor = w;
-            minDistance = bfsPaths[v].distTo(w);
-        }
-
-        if (bfsPaths[w].hasPathTo(v) && bfsPaths[w].distTo(v) < minDistance) {
-            ancestor = v;
-            minDistance = bfsPaths[w].distTo(v);
-        }
-
-        BreadthFirstDirectedPaths bfs = new BreadthFirstDirectedPaths(graph, Arrays.asList(v, w));
-        // if they have common ancestor
         for (int x = 0; x < graph.V(); x++) {
-            if (x != v && x != w && bfs.hasPathTo(x)) {
-                if (bfsPaths[v].hasPathTo(x) && bfsPaths[w].hasPathTo(x)
-                        && bfsPaths[v].distTo(x) + bfsPaths[w].distTo(x) < minDistance) {
-                    minDistance = bfsPaths[w].distTo(x) + bfsPaths[v].distTo(x);
-                    ancestor = x;
-                }
+            if (bfsPaths[v].hasPathTo(x) && bfsPaths[w].hasPathTo(x)
+                    && bfsPaths[v].distTo(x) + bfsPaths[w].distTo(x) < minDistance) {
+                minDistance = bfsPaths[w].distTo(x) + bfsPaths[v].distTo(x);
+                ancestor = x;
             }
         }
 
