@@ -89,7 +89,8 @@ public class WordNet {
     public int distance(String nounA, String nounB) {
         if (nounA == null || nounB == null)
             throw new IllegalArgumentException("nouns are not allowed to be null!");
-        if (!isNoun(nounA) || !isNoun(nounB)) return Integer.MAX_VALUE;
+        if (!isNoun(nounA) || !isNoun(nounB))
+            throw new IllegalArgumentException("word should not be null!");
         if (nounA.equals(nounB)) return 0;
         return shortestAncestorPathFinder
                 .length(synsetIdSetKeyedByNoun.get(nounA), synsetIdSetKeyedByNoun
@@ -117,12 +118,12 @@ public class WordNet {
 
     // do unit testing of this class
     public static void main(String[] args) {
-        WordNet net = new WordNet("synsets15.txt", "hypernyms15Path.txt");
-        String v = "j";
-        String w = "m";
-        System.out.println(net.isNoun(v));
-        System.out.println(net.isNoun(w));
-        System.out.println(net.distance(v, w));
+        WordNet net = new WordNet("synsets6.txt", "hypernyms6TwoAncestors.txt");
+        System.out.println(net.distance("a", "b"));
+        net = new WordNet("synsets11.txt", "hypernyms11AmbiguousAncestor.txt");
+        System.out.println(net.distance("a", "g"));
+        net = new WordNet("synsets15.txt", "hypernyms15Path.txt");
+        System.out.println(net.distance("x", "b"));
     }
 
 }
