@@ -41,8 +41,6 @@ public class SAP {
         validateVertex(v);
         validateVertex(w);
 
-        if (ancestorCache[v][w] != null) return ancestorCache[v][w];
-
         if (bfsPaths[v] == null)
             bfsPaths[v] = new BreadthFirstDirectedPaths(graph, v);
         if (bfsPaths[w] == null)
