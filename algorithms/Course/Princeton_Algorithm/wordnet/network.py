@@ -2,8 +2,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 def main():
-    file_name = "digraph1.txt"
-    f = open(file_name, 'r')
+    file_name = ["digraph1.txt", "hypernyms15Tree.txt"]
+    f = open(file_name[1], 'r')
     content = f.read()
     graph = content.split("\n")
     graph.pop()
