@@ -14,11 +14,13 @@ public class SAP {
 
     private final BreadthFirstDirectedPaths[] bfsPaths;
     private final Digraph graph;
+    private final Integer[][] ancestorCache;
 
     // constructor takes a digraph (not necessarily a DAG)
     public SAP(Digraph g) {
         graph = new Digraph(g);
         bfsPaths = new BreadthFirstDirectedPaths[graph.V()];
+        ancestorCache = new Integer[g.V()][g.V()];
     }
 
     private void validateVertex(int v) {
@@ -40,6 +42,9 @@ public class SAP {
     public int ancestor(int v, int w) {
         validateVertex(v);
         validateVertex(w);
+
+        if (ancestorCache[v][w] != null) return ancestorCache[v][w];
+
         if (bfsPaths[v] == null)
             bfsPaths[v] = new BreadthFirstDirectedPaths(graph, v);
         if (bfsPaths[w] == null)
@@ -55,8 +60,8 @@ public class SAP {
                 ancestor = x;
             }
         }
-
-        return ancestor;
+        ancestorCache[v][w] = ancestor;
+        return ancestorCache[v][w];
     }
 
     // a common ancestor that participates in shortest ancestral path; -1 if no such path
