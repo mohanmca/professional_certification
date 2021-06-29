@@ -8,3 +8,7 @@
 * [ibillett/designing-data-intensive-applications-notes](https://github.com/ibillett/designing-data-intensive-applications-notes)
 * [Timelearning - Learning Diary: Designing Data Intensive Applications by Martin Kleppmann](https://timilearning.com/posts/ddia/notes/)
 * [keyvanakbary/learning-notes](https://github.com/keyvanakbary/learning-notes/blob/master/books/designing-data-intensive-applications.md)
+
+## Engineering Blogs
+
+* [Scaling Datastores at Slack with Vitess](https://slack.engineering/scaling-datastores-at-slack-with-vitess/)
