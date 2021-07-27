@@ -81,7 +81,7 @@
 1. https://discord.com/channels/477997689867468800/714846876624748676
 
 
-## System Design Peer Interviews Recommended
+## System Design Resources Recommended
 1. https://www.educative.io/courses/grokking-the-system-design-interview
 1. https://github.com/donnemartin/system-design-primer
 1. https://www.youtube.com/playlist?list=PLCfguwhZH5DnHl2yldI781yR6FAgky0Np
@@ -90,24 +90,25 @@
 
 ## System Design Peer Interviews - Others
 
-1. https://www.hiredintech.com/classrooms/system-design/lesson/52
-1. https://www.youtube.com/playlist?list=PLA8lYuzFlBqAy6dkZHj5VxUAaqr4vwrka
 1. http://highscalability.com/all-time-favorites/
-1. https://lethain.com/introduction-to-architecting-systems-for-scale/
-1. https://docs.google.com/document/d/1iKk6vJbWtI02AllnIEZTrKWQb4dT2QthJdRt05vq6Hw/edit
-1. https://github.com/shashank88/system_design
-1. https://www.youtube.com/watch?v=3loACSxowRU&list=PLhgw50vUymycJPN6ZbGTpVKAJ0cL4OEH3&ab_channel=codeKarle
 1. http://highscalability.com/blog/category/example  
 1. http://www.hiredintech.com/system-design
-1. https://hackernoon.com/10-tips-for-using-diagrams-to-ace-the-system-design-interview-906p3609
-1. https://gist.github.com/vasanthk/485d1c25737e8e72759f
-1. https://www.youtube.com/channel/UCkQX1tChV7Z7l1LFF4L9j_g
 1. https://courses.systeminterview.com/courses/system-design-interview-an-insider-s-guide?ref=ec9cc5
-1. https://www.youtube.com/channel/UCJ8590hU1VY8YcZb7k5-IhQ
-1. https://medium.com/@anilkkurmi/top-20-infoq-presentation-to-prepare-for-system-design-interview-ad218fab80dd
-1. https://matthewdbill.medium.com/back-of-envelope-calculations-cheat-sheet-d6758d276b05#:~:text=Back%20of%20envelope%20calculations%20is,expected%20in%20system%20design%20interviews
+1. https://docs.google.com/document/d/1iKk6vJbWtI02AllnIEZTrKWQb4dT2QthJdRt05vq6Hw/edit
 1. https://engineering.fb.com/2014/08/08/production-engineering/making-facebook-s-software-infrastructure-more-energy-efficient-with-autoscale/
+1. https://gist.github.com/vasanthk/485d1c25737e8e72759f
+1. https://github.com/shashank88/system_design
+1. https://hackernoon.com/10-tips-for-using-diagrams-to-ace-the-system-design-interview-906p3609
+1. https://lethain.com/introduction-to-architecting-systems-for-scale/
+1. https://matthewdbill.medium.com/back-of-envelope-calculations-cheat-sheet-d6758d276b05#:~:text=Back%20of%20envelope%20calculations%20is,expected%20in%20system%20design%20interviews
+1. https://medium.com/@anilkkurmi/top-20-infoq-presentation-to-prepare-for-system-design-interview-ad218fab80dd
+1. https://www.hiredintech.com/classrooms/system-design/lesson/52
+1. https://www.youtube.com/channel/UCJ8590hU1VY8YcZb7k5-IhQ
+1. https://www.youtube.com/channel/UCkQX1tChV7Z7l1LFF4L9j_g
+1. https://www.youtube.com/playlist?list=PLA8lYuzFlBqAy6dkZHj5VxUAaqr4vwrka
+1. https://www.youtube.com/watch?v=3loACSxowRU&list=PLhgw50vUymycJPN6ZbGTpVKAJ0cL4OEH3&ab_channel=codeKarle
 1. https://www.youtube.com/watch?v=ZgdS0EUmn70
+
 
 ## Caching
 
