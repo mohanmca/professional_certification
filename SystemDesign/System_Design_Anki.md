@@ -1,10 +1,3 @@
-## How to create anki from this boot mock question file
-
-```
-mdanki System_Design_Anki.md System_Design_Anki.apkg --deck "System_Design_Anki::MdAnki::WebSecurity"
-```
-
-
 ## What kind of question would improve learning System Design kowledge
 
 * Know about things that scale extreemly well
@@ -80,6 +73,41 @@ mdanki System_Design_Anki.md System_Design_Anki.apkg --deck "System_Design_Anki:
 * [Highly Availability](https://en.wikipedia.org/wiki/High_availability)
 * Active Reduandancy might leads to problem of leader election
 
+## System Design Peer Interviews
+
+1. https://www.pramp.com/
+1. https://discord.com/channels/806944316941402133/816211520480084009
+1. https://discord.com/channels/821903927565615145/829905305671303170
+1. https://discord.com/channels/477997689867468800/714846876624748676
+
+
+## System Design Peer Interviews Recommended
+1. https://www.educative.io/courses/grokking-the-system-design-interview
+1. https://github.com/donnemartin/system-design-primer
+1. https://www.youtube.com/playlist?list=PLCfguwhZH5DnHl2yldI781yR6FAgky0Np
+1. https://drive.google.com/file/d/1m6UgeWa0ttIdAIJ5Y1NljGE3_nOPlSe9/view
+1. https://www.youtube.com/channel/UC9vLsnF6QPYuH51njmIooCQ
+
+## System Design Peer Interviews - Others
+
+1. https://www.hiredintech.com/classrooms/system-design/lesson/52
+1. https://www.youtube.com/playlist?list=PLA8lYuzFlBqAy6dkZHj5VxUAaqr4vwrka
+1. http://highscalability.com/all-time-favorites/
+1. https://lethain.com/introduction-to-architecting-systems-for-scale/
+1. https://docs.google.com/document/d/1iKk6vJbWtI02AllnIEZTrKWQb4dT2QthJdRt05vq6Hw/edit
+1. https://github.com/shashank88/system_design
+1. https://www.youtube.com/watch?v=3loACSxowRU&list=PLhgw50vUymycJPN6ZbGTpVKAJ0cL4OEH3&ab_channel=codeKarle
+1. http://highscalability.com/blog/category/example  
+1. http://www.hiredintech.com/system-design
+1. https://hackernoon.com/10-tips-for-using-diagrams-to-ace-the-system-design-interview-906p3609
+1. https://gist.github.com/vasanthk/485d1c25737e8e72759f
+1. https://www.youtube.com/channel/UCkQX1tChV7Z7l1LFF4L9j_g
+1. https://courses.systeminterview.com/courses/system-design-interview-an-insider-s-guide?ref=ec9cc5
+1. https://www.youtube.com/channel/UCJ8590hU1VY8YcZb7k5-IhQ
+1. https://medium.com/@anilkkurmi/top-20-infoq-presentation-to-prepare-for-system-design-interview-ad218fab80dd
+1. https://matthewdbill.medium.com/back-of-envelope-calculations-cheat-sheet-d6758d276b05#:~:text=Back%20of%20envelope%20calculations%20is,expected%20in%20system%20design%20interviews
+1. https://engineering.fb.com/2014/08/08/production-engineering/making-facebook-s-software-infrastructure-more-energy-efficient-with-autoscale/
+1. https://www.youtube.com/watch?v=ZgdS0EUmn70
 
 ## Caching
 
@@ -107,3 +135,9 @@ d
 -- Various tech blogs: Facebook, Netflix, Uber, AirBnb, etc. Those tech blogs are extremely valuable to help us understand real-life systems.
 -- highscalability website. The website contains lots of real world systems.
 -- InfoQ youtube channel. Many tech companies talk about how they scale their systems at infoQ. I find sometimes it’s quite hard to find useful videos on google but when I narrow down it to a specific channel, it’s much easier to find. For example, I found a lot of useful tech talks about uber there. It’s invaluable when I interviewed there.
+
+## How to create anki from this boot mock question file
+
+```
+mdanki System_Design_Anki.md System_Design_Anki.apkg --deck "System_Design_Anki::MdAnki::WebSecurity"
+```
