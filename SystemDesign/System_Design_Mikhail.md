@@ -191,4 +191,4 @@
     1. Has to monitor visibility of customer experience
     1. Customer of queue system should have ability to trace the state of their queues
     1. Each service has to emit metrics and logs data
-    1. 
+    1. We need to create Dashboard, Trends and Setup alerts
