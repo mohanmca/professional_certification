@@ -10,8 +10,6 @@
 
 * Each component in a decoupled solution is effectively unaware of changes to other components due to the segregation of boundaries applied.
 * Each service within a decoupled environment communicates with others using specific interfaces which remain constant
-* 
-
 
 ## Event-Driven Architectures.
 

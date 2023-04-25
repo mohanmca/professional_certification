@@ -5,10 +5,10 @@
 
 ## Well architected is basic requirement for reliability
 
-### How to increase reliabilit
+### How to increase reliability
 * Test recover procedures (Every failure can be used to test recovery procedurs)
   * Simulate system failure (Chaos monkey)
-* Automatic reocvery  
+* Automatic recovery  
   * Plan for automatic recovery
   * By monitoring a system for key performance indicators (KPIs), you can trigger automation when a threshold is breached.
   * KPIs should be a measure of business value, not of the technical aspects of the operation of the service.  
@@ -17,7 +17,7 @@
 * Manage change in automation
 
 
-### Reliablity measurment using availability
+### Reliability measurement using availability
 * Service availability over period of time
 * 99% - 3 days 15 hours
 * 99.9% - 8 hours 45 minutes
@@ -53,40 +53,39 @@
 ## Planning network topology to ensure the resiliency of connectivity
 
 * How are you going to be resilient to failures in your topology?
-* What happens if you misconfigure something and remove connectivity?
+* What happens if you configure something and remove connectivity?
 * Will you be able to handle an unexpected increase in traffic/use of your services?
 * Will you be able to absorb an attempted Denial of Service (DoS) attack?
 
 
 
-## High availablity example - ATM network
-* Devices themselves are not available all of the time, nor is the network connectivity of any single device
+## High availability example - ATM network
+* Devices themselves are not available all the time, nor is the network connectivity of any single device
 * Deploy a large number of them to enable a customer to easily use a different device if one is down or lacks connectivity.
 * In “availability-speak”, they are redundant and fail independently.
 
 
-## Conlcusion
+## Conclusion
 
 * High availability is costly
-* High availability requires redundancy
-* High avialability requires
+* High availability requires
+  * Redundancy
   * Automated canary deployment
   * Automated recovery testing
-  * High availablity for every dependency
+  * High availability for every dependency
 
 ### Business value related questions
 
-  * What are the most valuable transactions to your customers and to your business?
-  * Can you predict when certain geographies have the greatest demand?
-  * What times of day, week, month, quarter, or year are your peak times?
+* What are the most valuable transactions to your customers and to your business?
+* Can you predict when certain geographies have the greatest demand?
+* What times of day, week, month, quarter, or year are your peak times?
 
 
 ### Understanding Availability Needs
 
-
-  * Which part of the system is critical
-  * When it is critical
-  * Control plane vs Data plane - which is critical
+* Which part of the system is critical
+* When it is critical
+* Control plane vs Data plane - which is critical
 
 
 ### Application Design for Availability  
@@ -122,13 +121,13 @@
 
 ### Monitoring and Alarming
 
-  * Worst failures are the ones that fails silently - Your customer knows before you do.
-  * Monitoring steps
-    * Generating
-    * Aggregation
-    * Real-time processing and alarming
-    * Storage
-    * Analytics
+* Worst failures are the ones that fails silently - Your customer knows before you do.
+* Monitoring steps
+  * Generating
+  * Aggregation
+  * Real-time processing and alarming
+  * Storage
+  * Analytics
 
 ## Operational Readiness Reviews
 

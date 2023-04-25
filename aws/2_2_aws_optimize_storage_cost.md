@@ -1,7 +1,7 @@
 ### Understanding and Optimizing Costs with AWS Storage Services
 
 #### Amazon S3 and Glacier (Glacier deep archive)
-* S3 has muliple storage classes
+* S3 has multiple storage classes
 * [Performance across the S3 Storage Classes](https://aws.amazon.com/s3/storage-classes/#Performance across the S3 Storage Classes)
 * Lifecycle Transition & Intelligent tiering can be used to move between storage classes and reduce cost
 

@@ -9,7 +9,7 @@
 
 ## [Multi-AZ deployments, multi-region deployments, and read replicas](https://aws.amazon.com/rds/features/multi-az/)
 
-* Comparision
+* Comparison
 
 ## Multi-AZ deployments
 
@@ -20,7 +20,7 @@
 * Automatic failover to standby (non-Aurora) or read replica (Aurora) when a problem is detected
 
 
-## Multi-AZ deployments Failover mechnism
+## Multi-AZ deployments Failover mechanism
 
 * Secondary instance would take over from primary instance
 * It changes based on databse engine type

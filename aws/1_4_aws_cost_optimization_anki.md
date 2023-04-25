@@ -10,10 +10,10 @@
 
 ## AWS Cost optimization
 
-* Continiously measure
+* Continuously measure
 * Pay for what you need than "Pay for what you use"
 * Use consolidated billing
-* Use AWS Orgnization to centrally manage governance policies
+* Use AWS Organization to centrally manage governance policies
 * Prefer convertible RI if not standard RI
 
 ## AWS Governance

@@ -35,7 +35,7 @@
 1. [aws_dynamodb_anki.md](aws_dynamodb_anki.md)
 1. [aws_elasticache_anki.md](aws_elasticache_anki.md)
 1. [aws_iam_anki.md](aws_iam_anki.md)
-1. [aws_deepracer_anki.md](aws_deepracer_anki.md)
+1. [aws_deepracer_anki.md](Miscellaneous/aws_deepracer_anki.md)
 1. [aws_orgnization_anki.md](aws_orgnization_anki.md)
 1. [aws_waf_shield_firewall_manager_ddos.md](aws_waf_shield_firewall_manager_ddos.md)
 1. [aws_cloudacademy_labs.md](aws_cloudacademy_labs.md)

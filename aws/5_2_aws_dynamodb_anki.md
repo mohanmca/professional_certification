@@ -101,6 +101,10 @@ aws dynamodb restore-table-to-point-in-time --source-table-name Music --target-t
 
 ```
 
+## How to access DynamoDB from javascript
+
+* Use API Gateway to build custom api
+
 
 ## Reference
 

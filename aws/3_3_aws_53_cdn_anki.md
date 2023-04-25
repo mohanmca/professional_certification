@@ -49,7 +49,7 @@
 * SRV
 * TXT
 
-## AWS route 53 - roouting policy
+## AWS route 53 - routing policy
 
 * Simple
 * Failover
@@ -87,7 +87,7 @@
   * It should be served from S3, can't be served from webserver
 
 
-## AWS - OAI (Origin access identiy)
+## AWS - OAI (Origin access identity)
 
 * Works only with S3 based content
 * Prevents direct access, can't circumvent
