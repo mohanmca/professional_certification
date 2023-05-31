@@ -39,12 +39,17 @@
 * Not metrics, prices, and limits (these are not tested)
 * 1 of 4 (multiple choice) or 2 of 5 (multiple response)
 
-
-
 ## AWS UI tips
+* /Resources (in search we can use operator)
 
-* /Resources
+## Must study resources for Developer Exam (step-by-step, screenshot and exam centric)
 
+* [AWS Security Groups: Instance Level Security](https://cloudacademy.com/blog/aws-security-groups-instance-level-security/)
+* [Creating an AWS IAM Policy: AWS Security](https://cloudacademy.com/blog/aws-iam-policy/)
+* [Amazon S3 Security: master S3 bucket polices and ACLs](https://cloudacademy.com/blog/amazon-s3-security-master-bucket-polices-acls/)
+* [AWS Security: Bastion Hosts, NAT instances and VPC Peering](https://cloudacademy.com/blog/aws-bastion-host-nat-instances-vpc-peering-security/)
+* [Cloud Academy Sketches: Encryption in S3](https://cloudacademy.com/blog/sketches-encryption-in-s3/)
+* [Written by Stuart Scott site:https://cloudacademy.com/blog/](https://www.google.com/search?as_q=Written+by+Stuart+Scott&as_sitesearch=https%3A%2F%2Fcloudacademy.com%2Fblog&num=100)
 
 ## EC2 Rules 
 * Rules with source of 0.0.0.0/0 allow all IP addresses to access your instance. We recommend setting security group rules to allow access from known IP addresses only.
