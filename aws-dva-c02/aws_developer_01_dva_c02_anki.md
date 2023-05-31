@@ -54,6 +54,7 @@
 ## AWS Concepts blog
 * [https://cloudacademy.com/blog/amazon-elasticache/](https://cloudacademy.com/blog/amazon-elasticache/)
 * [https://cloudacademy.com/blog/aws-step-functions-a-serverless-orchestrator/](https://cloudacademy.com/blog/aws-step-functions-a-serverless-orchestrator/)
+* [What is HashiCorp Vault? How to Secure Secrets Inside Microservices](https://cloudacademy.com/blog/hashicorp-vault-how-to-secure-secrets-inside-microservices/)
 
 ## EC2 Rules 
 * Rules with source of 0.0.0.0/0 allow all IP addresses to access your instance. We recommend setting security group rules to allow access from known IP addresses only.
