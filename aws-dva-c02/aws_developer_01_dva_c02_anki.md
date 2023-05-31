@@ -51,6 +51,10 @@
 * [Cloud Academy Sketches: Encryption in S3](https://cloudacademy.com/blog/sketches-encryption-in-s3/)
 * [Written by Stuart Scott site:https://cloudacademy.com/blog/](https://www.google.com/search?as_q=Written+by+Stuart+Scott&as_sitesearch=https%3A%2F%2Fcloudacademy.com%2Fblog&num=100)
 
+## AWS Concepts blog
+* [https://cloudacademy.com/blog/amazon-elasticache/](https://cloudacademy.com/blog/amazon-elasticache/)
+* [https://cloudacademy.com/blog/aws-step-functions-a-serverless-orchestrator/](https://cloudacademy.com/blog/aws-step-functions-a-serverless-orchestrator/)
+
 ## EC2 Rules 
 * Rules with source of 0.0.0.0/0 allow all IP addresses to access your instance. We recommend setting security group rules to allow access from known IP addresses only.
 * EC2- UserData (script /commands that needs to be executed)
