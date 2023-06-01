@@ -85,6 +85,18 @@
    1. Terminate
 9. Configure for optional CloudWatch
 
+## AWS EC2 Autoscalling
+1. scale new instances based on
+   1. Response time
+   1. CPU > 70%
+   1. Memory usage
+1. We can also scale-back/scale up
+   2. scale-in (downsize)
+1. Advantages
+   2. Automation
+   3. Customer satisfaction
+   4. Cost reduction
+
 ## Autoscaling readings
 
 1. [Using Elastic Load Balancers and EC2 Auto Scaling to Support AWS Workloads](https://cloudacademy.com/blog/elastic-load-balancers-ec2-auto-scaling-to-support-aws-workloads/)
