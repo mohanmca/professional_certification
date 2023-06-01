@@ -23,7 +23,7 @@
    1. Marketplace also has paid AMI
    1. Community AMI
 2. InstanceType
-   1. ![Attributes of InstanceType](./img/compute_instance_type.png)
+   1. ![Attributes of InstanceType](img/compute/compute_instance_type.png)
    1. [Family types](https://aws.amazon.com/ec2/instance-types/)
 3. Instance Purchasing Option
    1. On-Demand
@@ -78,8 +78,10 @@
 1. Select AMI
 2. InstanceType
 3. SecurityGroup
+   4. We can select SecurityGroup for a given template
 4. VPC (Select)
 5. Subnet (Select)
+   6. We can select multiple subject for a given template
 6. Shutdown Behavior
    1. Stop
    1. Terminate
@@ -96,11 +98,149 @@
    2. Automation
    3. Customer satisfaction
    4. Cost reduction
+1. [**Launch configuration vs Launch Template**](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
+   2. Iam Profile vs IAM Profile Instance
+   
+1. ![Launch-Template vs Launch-Configuration](img/compute/Auto-Scaling-Launch-Template-vs-Launch-Configuration.jpg)
+   2. ![Launch-Template Instance](img/compute/create_launch_template_1.png)
+   3. ![Launch-Template Storage](img/compute/create_launch_template_2.png)
+   4. ![Launch-Template Advanced](img/compute/create_launch_template_3.png)
 
-## Autoscaling readings
+## AWS Launch Configuration
+1. ![Launch-Configuration](img/compute/Launch-Configuration.png)
+
+## Autoscaling steps
+
+1. From Launch Configuration or Launch Template
+2. Can override puchase-option from launch template
+3. ![create_auto_scaling_group](img/compute/create_auto_scaling_group.png)
+3. ![Add Alarm](img/compute/alarm_to_add_node.png)
+4. ![alarm_to_remove_node](img/compute/alarm_to_remove_node.png)
+4. ![create_auto_scaling_group](img/compute/create_auto_scaling_increase_decrease.png)
+5. ![auto_scaling_summary](img/compute/auto_scaling_summary.png)
+
+## Autoscaling policy types
+
+* Manual Scaling
+  * Creating scale ahead of any marketing campaign
+  * Ideal for planned events
+* Dynamic Scaling
+  * Step scaling
+    * Could be based on overall CPU usage
+    * Cooldown policy - adding new node would take few minutes... policy should consider that
+    * Trigger points using CloudWatch Alarm
+      * There could be multiple levels of alarm (60% 75% and 95% alarms)
+      * ![step_scaling_multiple_level_alarms](img/compute/step_scaling_multiple_level_alarms.png)
+    * Scale up quickly (it takes time to spin-up machines)
+    * Scale down slowly (it is nearly instantaneous to tear down)
+  * Target Tracking
+    * We don't need to setup alarms (it is built-in, automatically created, don't delete it)
+    * Auto-alarms are removed when target scaling policy is created
+* Predictive Scaling
+  * CloudWatch metrics (from archived data) used for ML predictive scaling
+  * Can run only forecast mode (without scaling)
+  * For start of every hour
+* Scheduled Scaling
+  * Batch process (when spot instances are lower)
+  * Time based trigger (preferably during less workload times)
+* Yaml/json
+  * stored with .config extension
+  * .ebextensions folder of the source code
+* ![elastic_bean_stalk](img/compute/elastic_bean_stalk.png)
+
+
+## AWS Beanstalk
+
+1. [Amazon EC2 Container Service and Elastic Beanstalk: Docker on AWS](https://cloudacademy.com/blog/amazon-ec2-container-service-docker-aws/)
+2. [Deployment Orchestration with AWS Elastic Beanstalk](https://cloudacademy.com/blog/deployment-orchestration-with-aws-elastic-beanstalk/)
+3. [How to Deploy Docker Containers on AWS Elastic Beanstalk Applications](https://cloudacademy.com/blog/how-to-deploy-docker-containers-on-aws-elastic-beanstalk/)
+
+## AWS Beanstalk notes
+
+* [Step by step notes](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/GettingStarted.html)
+* Cloud web application without explicitly using cloud API
+  * Whether you’ve written your app in Python, Ruby, Java, Node.js, Go, or PHP
+  * Elastic Beanstalk only requires you to set the appropriate platform (including an operating system and platform version) from a pull-down menu
+  * Upload your application, and run it. 
+  * AWS will take care of all the details 
+    * Compute, networking, autoscaling, load balancing, and monitoring – invisibly.
+* Bealstalk core components
+  * Applications
+  * Application Version
+  * Configuration Template
+  * Environment Configuration
+  * Environment Template
+  * Environment
+  * Platform
+
+
+## ElasticBeanStalk Environment Tiers (Two tiers)
+
+* HTTP Requests - WebServer Environment
+  * Webserver Tier
+    * Route53
+      * Uses CName record
+      * Used by ELB
+    * ELB
+    * AutoScaling
+    * EC2 instance
+    * Security Groups
+    * Host Manager
+* SQS Queue - Worker Environment
+  * Auto Scaling
+  * IAM Service Role
+  * EC2 instances
+  * Daemon (similar to Host manager)
+
+## AWS Beanstalk - Deployment Options
+
+* All at once
+  * Default choice
+* Rolling
+  * Minimize the amount of disruption that is caused
+  * Two different version at the same time
+  * Gradually rolled
+* Rolling with additional batch
+  * Similar to rolling
+  * Additional new batch of instances are started
+  * Application availability is maintained
+* Immutable
+  * Create entirely new instanced
+  * Double in size (in-between)
+
+## AWS Beanstalk - Steps
+* ![elastic_bean_stalk](img/compute/beanstalk/elastic_beanstalk_step1.png)
+* ![elastic_bean_stalk](img/compute/beanstalk/elastic_beanstalk_step2.png)
+* ![elastic_bean_stalk](img/compute/beanstalk/elastic_beanstalk_step3.png)
+* ![elastic_bean_stalk](img/compute/beanstalk/elastic_beanstalk_step4.png)
+* ![elastic_bean_stalk](img/compute/beanstalk/elastic_beanstalk_step5.png)
+* ![elastic_bean_stalk](img/compute/beanstalk/elastic_beanstalk_step6.png)
+
+## AWS Beanstalk - Monitoring
+
+* Two different level
+  * Basic Health Reporting
+    * 5 Minute interval
+    * 4 color update
+    * 10 sec autoscaling for ELB interval
+  * Two status check
+    * System status check (h/w check)
+    * Instance status check (health monitoring urls)
+      * Failure reasons
+        * Incorrect network configurations
+        * Corrupt file systems
+        * Exhausted memory
+        * Incompatible kernel
+  * Advanced Health Reporting
+    * 7 color update
+      * degraded/pending/severe/suspended/warning/ok
+    * Health agent is installed and monitors
+      * CloudWatch collect collects the data
+    * CloudWatch is integrated with additional cost
 
 1. [Using Elastic Load Balancers and EC2 Auto Scaling to Support AWS Workloads](https://cloudacademy.com/blog/elastic-load-balancers-ec2-auto-scaling-to-support-aws-workloads/)
 1. [Three Ways to Cut Your EC2 Costs with Hands-on Labs](https://cloudacademy.com/blog/three-ways-to-cut-your-ec2-costs/)
 1. [Application Load Balancer vs. Classic Load Balancer](https://cloudacademy.com/blog/application-load-balancer-vs-classic-load-balancer/)
 1. [Your First Day on Amazon Web Services: 10 AWS Pitfalls and How to Avoid Them](https://cloudacademy.com/blog/your-first-day-on-aws-10-pitfalls-and-how-to-avoid-them/)
 1. [Elastic File System: What You Need to Know](https://cloudacademy.com/blog/elastic-file-system-what-you-need-to-know-about-amazons-new-service/)
+
