@@ -215,7 +215,9 @@
 * ![elastic_bean_stalk](img/compute/beanstalk/elastic_beanstalk_step4.png)
 * ![elastic_bean_stalk](img/compute/beanstalk/elastic_beanstalk_step5.png)
 * ![elastic_bean_stalk](img/compute/beanstalk/elastic_beanstalk_step6.png)
-
+* ![elastic_bean_stalk](img/compute/beanstalk/beanstalk_webtier_summary.png)
+* ![elastic_bean_stalk](img/compute/beanstalk/beanstalk_sqs_summary.png)
+  
 ## AWS Beanstalk - Monitoring
 
 * Two different level
@@ -237,6 +239,10 @@
     * Health agent is installed and monitors
       * CloudWatch collect collects the data
     * CloudWatch is integrated with additional cost
+* ![elastic_bean_stalk](img/compute/beanstalk/basic_health_monitoring_1.png)
+* ![elastic_bean_stalk](img/compute/beanstalk/basic_health_monitoring_2.png)
+* ![elastic_bean_stalk](img/compute/beanstalk/basic_health_monitoring_3.png)
+* ![elastic_bean_stalk](img/compute/beanstalk/basic_health_monitoring_4.png)
 
 1. [Using Elastic Load Balancers and EC2 Auto Scaling to Support AWS Workloads](https://cloudacademy.com/blog/elastic-load-balancers-ec2-auto-scaling-to-support-aws-workloads/)
 1. [Three Ways to Cut Your EC2 Costs with Hands-on Labs](https://cloudacademy.com/blog/three-ways-to-cut-your-ec2-costs/)
