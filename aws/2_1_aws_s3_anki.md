@@ -1,19 +1,15 @@
 ## What is the cardinality relationship between EC2 and EBS Volume
-
 1. An EBS volume can be attached to only one EC2 instance in the same AZ
 1. Multiple EBS volume can be attached to one EC2 instance in the same AZ
 
 
 ## What are storage types
-
-Block Storage, File storage, Object Storage
+1. Block Storage, File storage, Object Storage
 
 ## Where does EBS volumes are stored
-
-S3, Snapshots are incremental
+1. S3, Snapshots are incremental
 
 ## EBS Volumes
-
 * They are only in one AZ
 * EBS volume types are - SSD backed and HDD backed
 * SSD Types - 3000 IOPS,  3 IO OPS upto 10000, 128MB upto 170GB
@@ -27,12 +23,11 @@ S3, Snapshots are incremental
 
 
 ## S3 
-
 * There are 5 storage classes, Standard, OneZone-IA, Standard IA, Intelligent Tiering, Glacier, Glacier-Deep-Archive
 * Amazon Glacier is an extremely low-cost storage service that provides secure and durable storage for data archiving and backup. To keep costs low, Amazon Glacier is optimized for data that is infrequently accessed and for which retrieval times of several hours are suitable. The standard retrieval option, which is the default option, takes 3-5 hours to complete. The other options are expedited, which downloads a small amount of data (250 MB maximum) in 5 minutes, and bulk, which downloads large amounts of data (petabytes) in 5-12 hours.
-* Stanard - Properties
+* Standard - Properties
    * Versioning, 
-   * Server acess logging
+   * Server access logging
    * Static website hosting
    * Object-level logging 
    * Default Encryption
@@ -44,18 +39,18 @@ S3, Snapshots are incremental
   * Requester Pays
 
 * Versioning - Not enabled by default
-  * Once we delete, object would have delete marker on it, with GET operation ends up with 404. But older version exist if we have enabled versioning.
+  * Once we delete, object would have deleted marker on it, with GET operation ends up with 404. But older version exist if we have enabled versioning.
 * Versioning - suspended
 * Server access logging
   * Default disabled (Enable by specifying Target bucket and Target prefix)
   * Requires LOG DELIVERY GROUP write access for the target bucket ACL to log
-  * Mangement console adds LOG DELIVERY GROUP by default when loggin is enabled.
+  * Management console adds LOG DELIVERY GROUP by default when loggin is enabled.
   * Access log will only be delivered - SSE-S3 - should be enabled and KMS is not supported
 * Static website hosting
   * Region specific end-point - HTTP only and requestor can't pay
   * Should add index document and error document
   * Redirect access to bucket
-  * By default blocked to public
+  * By default, blocked to public
   * Should we need to add policy to grant access for public
   * Policy  to access S3 bucket
       ```json
@@ -120,12 +115,12 @@ S3, Snapshots are incremental
 * It is in the price of instance
 
 ## S3 - URL - Virtual-hosted–style and path-style URLs
-
-* ```bash
+```bash
   https://my-bucket.s3.us-west-2.amazonaws.com # Virtual hosted style
   https://my-bucket.s3-us-west-2.amazonaws.com # Old style some legacy region supports (deprecated)
   https://s3.Region.amazonaws.com/bucket-name/key name # Path style
 ```
+
 * Buckets created after September 30, 2020, will support only virtual hosted-style requests. Path-style requests will continue to be supported for buckets created on or before this date.
 
 ## S3 - AWS Route53
@@ -148,14 +143,13 @@ S3, Snapshots are incremental
   * CSE-C (customer provided, and client side encrypte)
 
 ## SSE S3 headers
-
 *    "s3:x-amz-server-side-encryption": "aws:kms"
 *    "s3:x-amz-server-side-encryption-aws-kms-key-id" : "arn:aws:kms:us-west-2:568157667383:key/86b02606-7d41-4a20-a694-d2b4d93cb522"
 
 * [New – Amazon S3 Server Side Encryption for Data at Rest](https://aws.amazon.com/blogs/aws/new-amazon-s3-server-side-encryption/)
 * [AWS Key Management Service Cryptographic Details
 ](https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf)
-## References
 
-* https://cloudacademy.com/blog/how-to-encrypt-an-ebs-volume-the-new-amazon-ebs-encryption/
+## References
+* [how-to-encrypt-an-ebs-volume-the-new-amazon-ebs-encryption](https://cloudacademy.com/blog/how-to-encrypt-an-ebs-volume-the-new-amazon-ebs-encryption/)
 * Offers very high speed IO
