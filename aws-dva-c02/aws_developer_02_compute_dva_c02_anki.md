@@ -109,6 +109,15 @@
 ## AWS Launch Configuration
 1. ![Launch-Configuration](img/compute/Launch-Configuration.png)
 
+
+## Autoscaling Readings
+1. [Using Elastic Load Balancers and EC2 Auto Scaling to Support AWS Workloads](https://cloudacademy.com/blog/elastic-load-balancers-ec2-auto-scaling-to-support-aws-workloads/)
+1. [Three Ways to Cut Your EC2 Costs with Hands-on Labs](https://cloudacademy.com/blog/three-ways-to-cut-your-ec2-costs/)
+1. [Application Load Balancer vs. Classic Load Balancer](https://cloudacademy.com/blog/application-load-balancer-vs-classic-load-balancer/)
+1. [Your First Day on Amazon Web Services: 10 AWS Pitfalls and How to Avoid Them](https://cloudacademy.com/blog/your-first-day-on-aws-10-pitfalls-and-how-to-avoid-them/)
+1. [Elastic File System: What You Need to Know](https://cloudacademy.com/blog/elastic-file-system-what-you-need-to-know-about-amazons-new-service/)
+
+
 ## Autoscaling steps
 
 1. From Launch Configuration or Launch Template
@@ -244,9 +253,165 @@
 * ![elastic_bean_stalk](img/compute/beanstalk/basic_health_monitoring_3.png)
 * ![elastic_bean_stalk](img/compute/beanstalk/basic_health_monitoring_4.png)
 
-1. [Using Elastic Load Balancers and EC2 Auto Scaling to Support AWS Workloads](https://cloudacademy.com/blog/elastic-load-balancers-ec2-auto-scaling-to-support-aws-workloads/)
-1. [Three Ways to Cut Your EC2 Costs with Hands-on Labs](https://cloudacademy.com/blog/three-ways-to-cut-your-ec2-costs/)
-1. [Application Load Balancer vs. Classic Load Balancer](https://cloudacademy.com/blog/application-load-balancer-vs-classic-load-balancer/)
-1. [Your First Day on Amazon Web Services: 10 AWS Pitfalls and How to Avoid Them](https://cloudacademy.com/blog/your-first-day-on-aws-10-pitfalls-and-how-to-avoid-them/)
-1. [Elastic File System: What You Need to Know](https://cloudacademy.com/blog/elastic-file-system-what-you-need-to-know-about-amazons-new-service/)
+## AWS Lambda
+* What to focus with cloud (servers)
+  * Installation
+  * Patching
+  * Scaling
+  * Storage
+  * Coding
+  * Deployment
+* Lambda
+  * Code (functions)
+  * Permissions
+  * Env Variables
+  * CPU/Memory
+* Code
+  * Zip upload to S3
+  * Runtimes
+    * java/javascript/go/node.js/python/ruby/custom-runtime-api
+* Invocation Input
+  * via console
+  * sdk
+  * toolkit
+  * cli
+  * function URL
+  * triggers
+    * S3/SQS/Time
+* Events
+  * S3 Event
+    * putObject
+  * SQS Event
+* Output
+  * S3
+  * SQS
+  * Dynamodb
+  * SnS/SQS
+* Monitoring
+  * CloudWatch
+  * log streams
+* Cost
+  * Amount of request that send to your function
+  * duration (1 ms rounded)
+  * Amount of compute power provisioned
+
+## Steps required for AWS lambda function
+* ![aws_lambda_function](img/compute/lambda/aws_lambda_function.png)
+```python
+import json
+import urllib.parse
+import boto3
+print('Loading function')
+
+s3 = boto3.client('s3')
+
+def lambda_handler(event, context):
+    #print("Received event: " + json.dumps(event, indent=2))
+
+    # Get the object from the event and show its content type
+    bucket = event['Records'][0]['s3']['bucket']['name']
+    key = urllib.parse.unquote_plus(event['Records'][0]['s3']['object']['key'], encoding='utf-8')
+    try:
+        response = s3.get_object(Bucket=bucket, Key=key)
+        print("CONTENT TYPE: " + response['ContentType'])
+        return response['ContentType']
+    except Exception as e:
+        print(e)
+        print('Error getting object {} from bucket {}. Make sure they exist and your bucket is in the same region as this function.'.format(key, bucket))
+        raise e              
+```
+* Boto3 - python AWS-SDK
+1. Create function
+   1. Author from scratch
+   1. Use a blueprint
+   1. Container image
+   1. Browse serverless app respository
+1. AWS Lambda deployment
+  1. Container-images
+  1. zip-file archive
+1. Create function wizard has 5 components
+1. ![aws_lambda_create_function](img/compute/lambda/aws_lambda_create_function.png)
+1. Add a trigger
+1. ![aws_lambda_add_trigger](img/compute/lambda/aws_lambda_add_trigger.png)
+2. S3-Warning and guidelines
+   1. S3 bucket should be added for LambdaRole
+   1. Don't use same bucket as input and output, causes recursive invocations
+   1. Without role enabled in bucket, lambda will not be created
+2. Select lambda > Monitor (for metrics and invocation counts) > CloudWatch for logs
+
+## Lamdba configurations
+
+* Runtime settings
+  * Runtime
+    * Python
+  * Architecture
+    * x86
+    * ARM
+  * Handler info
+    * file_name + function_name
+    * lamdba_function.lambda_handler (default)
+* Basic Settings
+  * 128MB (10240MB is maximum)
+  * Ephemeral storage - 512
+  * 0min-3sec
+  * Execution role
+* Permissions
+  * By-Action
+  * Resource-based policy
+    * Add permissions
+* Environment variables
+  * Key-value pairs
+* Tags
+* VPC
+* Monitoring and operation tools
+* Concurrency
+  * Unreserved account concurrency - 50
+  * Provisions concurrency
+    * Cold start (pre initialize)
+
+## Invocation of Lambda Function
+
+* Synchronous (Push-based) Invocation
+  * if fails, no-retry
+* ```aws lambda invoke --function-name lambda.function --cli-binary-format raw-in-base-out --payload '{"key"" "value"}'``` response.json
+* Asynchronous (Event-based) Invocation (uses built-in queue)
+  * S3
+  * SQS
+  * Automatic retries
+    * Failed event sends to dead-letter queue
+    * Or Lambda destination (has request and response context)
+* Stream (Poll-based) invocation
+  * Lambda service runs poller behalf of function
+  * Requires Event source mapping
+  * Famous
+    * Dynamodb streams
+    * Kinesis Streams
+    * SQS
+  * ```
+    aws lambda create-event-source-mapping \
+    --function-name my-function \
+    --maximum-batching-window-in-seconds 5 \
+    --batch-size 5 \
+    --event-source-arn arn:aws:sqs:us-west-2:123456789012:mySQSqueue
+    --event-source-arn arn:aws:dynamodb:us-west-2:45456789012:table/my-table/stream/2021-0610T19:26:16:525
+    ```
+
+## Lambda monitoring
+1. ![aws_lambda_monitoring_metrics](img/compute/lambda/aws_lambda_monitoring_metrics.png)
+2. CloudWatch logstream
+
+## AWS SAM model
+* Open source framework
+* Any language that supports lambda
+* YAML template
+* During deployment sam will transform these template into CloudFormation
+* SAM CLI provides environment
+  * sam build
+    * yaml to cloudformation template
+  * sam package
+    * upload to S3
+  * sam deploy
+
+* [AWS Lambda: an Introduction and Practical Walkthrough](https://cloudacademy.com/blog/aws-lambda-introduction/)
+* [AWS Lambda Adds Amazon Simple Queue Service to Supported Event Sources](https://aws.amazon.com/blogs/aws/aws-lambda-adds-amazon-simple-queue-service-to-supported-event-sources/)
 

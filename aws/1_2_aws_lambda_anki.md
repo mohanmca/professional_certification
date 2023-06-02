@@ -1,7 +1,7 @@
 ## AWS Lambda
 
 * Introduced in 2014
-* Event-driven servelss compute service
+* Event-driven serverless compute service
 
 ## What is AWS Lambda?
 
@@ -23,13 +23,13 @@
 * Memory increment in 128MB to 1536MB
 * Execution maximum of 5 minutes
 * Response can't exceed 6 MB
-* Number of times * each 100 millsecond = Billed
+* Number of times * each 100 millisecond = Billed
 
 ## Aws Lambda Overview
 
 * Event source triggers
 * AWS Lambda function execute code upon trgger
-* Lambda function interracts with service
+* Lambda function interacts with service
 * IAM resource policy to access the underlying service
 * ```java
     interce AWSLambdaHandler {
@@ -61,7 +61,6 @@ sam local start-api
 sam local invoke "HelloWorldFunction" -e events/event.json
 ```
 
-
 ## AWS Lambda package
 
 * Organize your functions into services
@@ -70,12 +69,12 @@ sam local invoke "HelloWorldFunction" -e events/event.json
 ## AWS Lambda unit test
 
 * DynamoDB local and localstack (for unit test)
-* Create cutom Mock
+* Create custom Mock
 * Use dedicated test environment
 
 ## AWS Lambda debug
 
-* SAM allows to run local version of lambda function insdie docker container locally.
+* SAM allows to run local version of lambda function inside docker container locally.
 * SAM CLI and use your IDE debugger on the docker container that it provides.
 
 
