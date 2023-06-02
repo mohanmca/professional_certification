@@ -26,7 +26,7 @@
 * There are 5 storage classes, Standard, OneZone-IA, Standard IA, Intelligent Tiering, Glacier, Glacier-Deep-Archive
 * Amazon Glacier is an extremely low-cost storage service that provides secure and durable storage for data archiving and backup. To keep costs low, Amazon Glacier is optimized for data that is infrequently accessed and for which retrieval times of several hours are suitable. The standard retrieval option, which is the default option, takes 3-5 hours to complete. The other options are expedited, which downloads a small amount of data (250 MB maximum) in 5 minutes, and bulk, which downloads large amounts of data (petabytes) in 5-12 hours.
 * Standard - Properties
-   * Versioning, 
+   * Versioning
    * Server access logging
    * Static website hosting
    * Object-level logging 
@@ -37,14 +37,13 @@
   * Transfer acceleration
   * Events
   * Requester Pays
-
 * Versioning - Not enabled by default
   * Once we delete, object would have deleted marker on it, with GET operation ends up with 404. But older version exist if we have enabled versioning.
 * Versioning - suspended
 * Server access logging
   * Default disabled (Enable by specifying Target bucket and Target prefix)
   * Requires LOG DELIVERY GROUP write access for the target bucket ACL to log
-  * Management console adds LOG DELIVERY GROUP by default when loggin is enabled.
+  * Management console adds LOG DELIVERY GROUP by default when logging is enabled.
   * Access log will only be delivered - SSE-S3 - should be enabled and KMS is not supported
 * Static website hosting
   * Region specific end-point - HTTP only and requestor can't pay
@@ -84,7 +83,7 @@
     * CSE-C (customer manged keys)
 * Object lock
   * WORM - Write once read many
-  * Object lock withou version is not possible
+  * Object lock without version is not possible
   * We can't disable once we enabled
   * RetentionMode and Governance Mode
   * Retention Period can be enabled
@@ -98,7 +97,7 @@
 * Transfer Acceleration
   * Amazon CloudFront - is used to transfer acceleration
   * Additional Cost
-  * Should be domain accessisible without DOT in bucket name
+  * Should be domain accessible without DOT in bucket name
   * Does not support Get/Put/Delete, 
   * Cross region copies using Put Object Copy
 * Events
@@ -111,7 +110,7 @@
 ## Instance storage
 
 * Temporary and ephemeral
-* Reboot retain data, but stopped and terminated would loose data
+* Reboot retain data, but stopped and terminated would lose data
 * It is in the price of instance
 
 ## S3 - URL - Virtual-hosted–style and path-style URLs
@@ -127,13 +126,13 @@
 
 * To route domain traffic to an S3 bucket, use Amazon Route 53 to create an alias record that points to your bucket. An alias record is a Route 53 extension to DNS. 
   * Alias record is similar to a CNAME record
-  * An alias record can be crated for both for the root domain, such as example.com, and for subdomains, such as www.example.com.
+  * An alias record can be created for both for the root domain, such as example.com, and for subdomains, such as www.example.com.
   * CNAME records can be created only for subdomains.
 
 ## S3 encryption mechanism to secure data
 
 * [AWS S3 Encryption Infographic](https://awsinfographics.s3.amazonaws.com/S3_Encryption_Infographic.png)
-* S3 Encrption mechanism
+* S3 Encryption mechanism
 * Server side encrypted
   * SSE-S3 (S3 manged keys)
   * SSE-KMS (KMS manged keys)
