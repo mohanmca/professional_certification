@@ -24,6 +24,9 @@
 * Amazon EBS encryption 
   * Uses AWS Key Management Service (AWS KMS) customer master keys when creating encrypted volumes 
   * Uses above for any snapshots created from your encrypted volumes.
+* SSD-backed storage is better suited for scenarios that work with smaller blocks, such as databases using transactional workloads, or often as boot volumes for your EC2 instances. 
+* HDD-backed volumes are designed for better workloads that require a higher rate of throughput, such as processing big data and logging information. 
+  * So, essentially, they are designed for working with larger blocks of data.
 
 ## S3 
 * There are 5 storage classes, Standard, OneZone-IA, Standard IA, Intelligent Tiering, Glacier, Glacier-Deep-Archive
@@ -116,6 +119,13 @@
   * Reboot retain data, but stopped and terminated would lose data
 * It is in the price of instance
 
+## Amazon Glacier
+* Amazon Glacier is an extremely low-cost storage service that provides secure and durable storage for data archiving and backup. 
+  * To keep costs low, Amazon Glacier is optimized for data that is infrequently accessed and for which retrieval times of several hours are suitable. 
+  * The standard retrieval option, which is the default option, takes 3-5 hours to complete. 
+  * The other options are expedited, which downloads a small amount of data (250 MB maximum) in 5 minutes, and bulk, which downloads large amounts of data (petabytes) in 5-12 hours.
+* When using Amazon Glacier Flexible Retrieval's expedited retrieval option, Amazon Glacier takes 1-5 minutes to retrieve data.
+
 ## S3 - URL - Virtual-hosted–style and path-style URLs
 ```bash
   https://my-bucket.s3.us-west-2.amazonaws.com # Virtual hosted style
@@ -138,7 +148,11 @@
 * S3 Encryption mechanism
 * Server side encrypted
   * SSE-S3 (S3 manged keys)
+    * SE-S3 manages the keys for you; similarly, using SSE -S3 makes the encryption process invisible to the end user. 
+    * Thus limiting your ability to understand or mitigate the encryption key issue.
   * SSE-KMS (KMS manged keys)
+    * Choosing server-side encryption with Key Management Service (KMS) because it allows you to define policies that define how keys are used.
+    * Able to disable, rotate, and apply access controls to the KMS key, and audit against their usage using AWS Cloud Trail.
   * SSE-C  (Customer provided keys)
 * Client side encrypted
   * CSE-KMS (KMS managed)
