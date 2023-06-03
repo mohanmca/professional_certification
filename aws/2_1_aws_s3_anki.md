@@ -88,8 +88,8 @@
   * RetentionMode and Governance Mode
   * Retention Period can be enabled
   * Compliance mode would force retention period
-  * Governance mode can be disabled that have specific IAM permission
   * Compliance mode cannot be disabled by any user
+  * Governance mode can be disabled that have specific IAM permission
   * Legal hold - we can't delete even after retention period
 * Tags
   * Environment - Production/UAT/DEV
