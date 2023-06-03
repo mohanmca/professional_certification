@@ -2,7 +2,6 @@
 1. An EBS volume can be attached to only one EC2 instance in the same AZ
 1. Multiple EBS volume can be attached to one EC2 instance in the same AZ
 
-
 ## What are storage types
 1. Block Storage, File storage, Object Storage
 
@@ -19,8 +18,9 @@
 * Can restore volume on larger volume to increase the file-system size
 * GP2, IO1, ST1, SC1
 * Not suitable for temporary or multi-instance storage (S3 is suitable)
-* Amazon EBS encryption uses AWS Key Management Service (AWS KMS) customer master keys when creating encrypted volumes and any snapshots created from your encrypted volumes.
-
+* Amazon EBS encryption 
+  * Uses AWS Key Management Service (AWS KMS) customer master keys when creating encrypted volumes 
+  * Uses above for any snapshots created from your encrypted volumes.
 
 ## S3 
 * There are 5 storage classes, Standard, OneZone-IA, Standard IA, Intelligent Tiering, Glacier, Glacier-Deep-Archive
@@ -110,7 +110,7 @@
 ## Instance storage
 
 * Temporary and ephemeral
-* Reboot retain data, but stopped and terminated would lose data
+  * Reboot retain data, but stopped and terminated would lose data
 * It is in the price of instance
 
 ## S3 - URL - Virtual-hosted–style and path-style URLs
@@ -119,8 +119,8 @@
   https://my-bucket.s3-us-west-2.amazonaws.com # Old style some legacy region supports (deprecated)
   https://s3.Region.amazonaws.com/bucket-name/key name # Path style
 ```
-
-* Buckets created after September 30, 2020, will support only virtual hosted-style requests. Path-style requests will continue to be supported for buckets created on or before this date.
+* Buckets created after September 30, 2020, will support only virtual hosted-style requests. 
+* Path-style requests will continue to be supported for buckets created on or before this date.
 
 ## S3 - AWS Route53
 
@@ -139,7 +139,7 @@
   * SSE-C  (Customer provided keys)
 * Client side encrypted
   * CSE-KMS (KMS managed)
-  * CSE-C (customer provided, and client side encrypte)
+  * CSE-C (customer provided, and client side encrypt)
 
 ## SSE S3 headers
 *    "s3:x-amz-server-side-encryption": "aws:kms"
