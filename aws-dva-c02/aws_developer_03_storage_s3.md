@@ -1,3 +1,6 @@
+## AWS S3
+2. ![s3_cheat_sheet](img/storage/s3_cheat_sheet.jpg)
+
 ## What is the cardinality relationship between EC2 and EBS Volume
 1. An EBS volume can be attached to only one EC2 instance in the same AZ
 1. Multiple EBS volume can be attached to one EC2 instance in the same AZ
