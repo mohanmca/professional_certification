@@ -22,7 +22,7 @@
 ## AWS route 53 - DNS service
 
 * DNS Service
-* Woks inside and outside of the AWS
+* Woks inside and outside the AWS
 * secure and reliable routing of requests
 
 ## AWS route 53 - Hosted Zone
@@ -45,7 +45,7 @@
 * NS - Name server to hosted zones
 * PTR - map IP to domain name
 * SOA
-* SPF - No longer recommended, idetify of the sender email messages
+* SPF - No longer recommended, identify of the sender email messages
 * SRV
 * TXT
 
@@ -61,7 +61,7 @@
   * Policy based on location + users  
 * Latency
   * Chooses lowest latency resources
-* Mulit-value answer
+* Multi-value answer
   * DNS request upto 8 records, and randomly picked
 * Weighted
   * Weight of the individual resource record dividey by the sum of the total value in resource record
@@ -79,8 +79,8 @@
 * Web Distribution
   * Static and dynamic content (html, image, javascript)
   * MediaFiles using HTTP/HTTPS
-  * ADD/Upate/Delete/Submit data from webforms
-  * Live streaming to stream an event real time
+  * ADD/Upate/Delete/Submit data from web-forms
+  * Live-streaming to stream an event real time
 * RTMP Distribution
   * Streaming distribution using Adobe Flash Media Service RTMP protocol
   * RTMP doesn't require all media to be downloaded to view

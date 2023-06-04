@@ -33,7 +33,7 @@
 * PNI - Primary network interface (default one attached to EC2)
 
 
-## How to craete enhanced networking features to reach speeds of up to 100 Gbps?
+## How to create enhanced networking features to reach speeds of up to 100 Gbps?
 
 * Enhanced Elastic Network Adapter (ENA)
   * No additional cost involved
@@ -56,7 +56,7 @@
 * Interface Endpoints
   * Interface Endpoints are essentially ENIs
   * PrivateLink
-    * PrivatLink tartget would be Interface enpoints (that could in turn allow other AWS services accessble)
+    * PrivateLink target would be Interface enpoints (that could in turn allow other AWS services accessible)
     * Allows a private and secure connection between VPCs, AWS services, and on-premises applications, via the AWS internal network.
     * Private DNS name that resolved to the private IP address of the interface endpoint and will route through the internal AWS network instead of the internet
 * Gateway Endpoint
@@ -69,7 +69,7 @@
 
 * Enable client TCP/UDP connection quickly communicate with AWS Global infrastructure
 * Intelligently routes customer traffic (uses Edge locations)
-* Configure global accelarators
+* Configure global Accelerator
   * Requires 2 ip-address (that sits behind load-balancers)
   * Configure listeners for TCP/UDP - port + protocol-TCP/UDP
     * Can select client affinity
@@ -80,6 +80,6 @@
     * EC2 instance
     * ELB
     * EIP
-  * Global Accelarator - will have output DNS names to be used globally
+  * Global Accelerator - will have output DNS names to be used globally
 
   

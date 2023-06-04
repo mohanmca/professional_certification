@@ -44,12 +44,12 @@
   * WAF Metrics on CloudWatch
   * AllowedRequests, BlockedRequests, CountedRequests and PassedRequests
 
-## General prinple of monitoring or Monitoring checklist
+## General principle of monitoring or Monitoring checklist
 
 * What is the purpose of monitoring?
 * How often do you intend to monitor?
 * What elements do you want to monitor?
-* Are you looking to maintain reliablity and operational performance?
+* Are you looking to maintain reliability and operational performance?
 * Are you looking to understand trends to implement additional controls to your infrastructure?
 
 
@@ -102,7 +102,7 @@
 ## AWS Shield
 
 * Protects infrastructure from DDoS
-* DDoS prevents legimate requests getting through
+* DDoS prevents legitimate requests getting through
   * SYN Flood
   * DNS Flood
   * HTTP Flood/Cache-busting
@@ -119,7 +119,7 @@
 
 ## To add protection for an AWS resource using AWS Shield
 
-* Gototo AWS Shield > Protected resources.
+* Goto AWS Shield > Protected resources.
 * Choose Add protected resources. (using ARN)
   * Choose or enter the resource types and resources to protect. For Classic Load Balancer and Application Load Balancer resources, you also must choose a Region.
   * You can choose from the provided list or enter the Amazon Resource Name (ARN) of specific resources to protect. You can choose or enter any combination of resource types and resources.

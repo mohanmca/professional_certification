@@ -11,7 +11,7 @@
 * A subnet is private if it doesn't have route to internet gateway
 * Public subnet has a default route table enable us to allow inbound and outbound traffic
 * Private subnet need a route table to direct traffic flow within VPC
-* Always make sure your subnet has spare so it could be scaled for future use
+* Always make sure your subnet has spare, so it could be scaled for future use
 * Always makes sure we leave spare capacity for additional subnets.
 
 
@@ -22,14 +22,14 @@
 
 ## Scaling and securing web tier
 
-* AWS WAF - Aws web application firewall solution can be integrated with cloudFront
+* AWS WAF - Aws web application firewall solution can be integrated with CloudFront
 * AWS Shield - AWS Shield could be used to protect from DDoS attacks
 * AWS VPC Flow logs - can be used to audit/monitor VPC traffic
 
 ### Autoscaling default termination policy
 
-* Auto scaling selects the availability zone with two instances, and terminates the instance launched from the oldest launch configuration. 
-* If the instances were launched from the same launch configuration, then auto scaling selects the instance that is closest to the next billing hour and terminates that. 
+* Autoscaling selects the availability zone with two instances, and terminates the instance launched from the oldest launch configuration. 
+* If the instances were launched from the same launch configuration, then autoscaling selects the instance that is closest to the next billing hour and terminates that. 
 * This helps you maximize the use of your EC2 instances, while minimizing the number of hours you are billed for Amazon EC2 usage.
 
 
@@ -39,12 +39,12 @@
 * What is avoided?
   * No need to provision EC2 instances
   * No need for autoscaling groups, no autoscaling rules
-  * No need to install code interpretters
+  * No need to install code interpreters
   * No patching OS'es
   * No need to define AZ
-* What may be requried?
+* What may be required?
   * Some definition of VPC might require
-  * Some subnet configuratio may be required (based on design)  
+  * Some subnet configuration may be required (based on design)  
 * We can configure ENI for database kinds of resources
   * So they are accessible only lambda functions (not internet accessible)
   * Lambda function can access them only via private subnet or private ENI
