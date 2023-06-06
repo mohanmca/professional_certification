@@ -61,7 +61,7 @@
   * If you store more data, more bursting throughput is eligible
   * If you store less data but requires frequent and low-latency access, provisioned throughput is requried
   * Here storage IO is priced based on need, and noisy neighbour is forced to pay more
-
+![EFS_Lustre](img/EFS_Lustre.png)
 
 ### Amazon FSx
 * Amazon FSx for Lustre (for HPC)
