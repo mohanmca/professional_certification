@@ -24,9 +24,9 @@
 * Cost 0.04 per GB to trnasfer to internet from AWS S3 (US, Europe and other region as on 2020-June)
 * Cost 0.08 per GB to trnasfer to internet from AWS S3 (other region other region as on 2020-June)
 * Inter region replication would be priced upon the source region
-* Verisoning would cost additional
+* Versioning would cost additional
 * S3 Replication time control (RTC)
-  * 99% of the objects are replciated within 15 minutes (between region)
+  * 99% of the objects are replicated within 15 minutes (between region)
   * RTC has $ additional cost of 0.015 per GB
 * Lifecycle policies can be used to control cost for S3 and Glacier
 
