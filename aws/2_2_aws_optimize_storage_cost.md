@@ -77,6 +77,7 @@
   * De-duplication feature is free and would reduce actual storage and saves cost
 * Amazon FSx for OpenZFS
   * Amazon FSx for NetApp ONTAP
+* ![EFS_Lustre](img/FSx_Performance.png)
 * [Amazon FSx for Lustre Makes High Performance Computing More Accessible](https://cloudacademy.com/blog/amazon-fsx-for-lustre-makes-high-performance-computing-more-accessible/)
 
 
