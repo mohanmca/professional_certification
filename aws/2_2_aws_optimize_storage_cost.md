@@ -52,7 +52,7 @@
 * Can be accessed by 1000s of EC2 instance
 * Standard operating system API
 * Strong consistency - NFS 4.1 and NFS 4.0
-* Regionally accesible (from multiple AZ of the same region)
+* Regionally accessible (from multiple AZ of the same region)
 * EFS Standard vs EFS IA
 * EFS Lifecycle management (if file is accessed, moves from IA to standard)
   * Metadata and less than 128 KB files are not moved to IA
@@ -66,7 +66,7 @@
 ### Amazon FSx
 * Amazon FSx - windows file server
   * For windows based file server and based on windows system
-  * Sub-milllisecond latency with AD integration
+  * Sub-millisecond latency with AD integration
   * Windows NTFS (SSD storage)
   * Priced based on Capacity, Throughput and Backups
   * Multi-AZ is bit more expensive
