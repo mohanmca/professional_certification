@@ -170,6 +170,10 @@
 * S3 Transfer Acceleration
   * Uses edge location
   * CloudFront CDN to replicate
+* Upload using multi-part for performance critical
+* Download performance using multiple concurrent GET requests (byte-range)
+  * Add Range (HTTP header)
+  * Multiple smaller chunk of data
 
 ## References
 * [how-to-encrypt-an-ebs-volume-the-new-amazon-ebs-encryption](https://cloudacademy.com/blog/how-to-encrypt-an-ebs-volume-the-new-amazon-ebs-encryption/)
