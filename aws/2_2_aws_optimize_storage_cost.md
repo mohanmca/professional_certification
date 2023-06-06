@@ -5,7 +5,6 @@
 * [Performance across the S3 Storage Classes](https://aws.amazon.com/s3/storage-classes/#Performance across the S3 Storage Classes)
 * Lifecycle Transition & Intelligent tiering can be used to move between storage classes and reduce cost
 
-
 ### Free Data transfer
 * From internet into S3
 * From S3 to EC2
@@ -15,6 +14,19 @@
 * EBS IO traffic volume generally compete for network along with other network traffic
 * EBS-Optimized instance network separated from other network traffic
 * Network traffic is exclusively for I/O operations
+* 90% of provisioned IOS performance 99% of the time (gp2,gp3,st1,sc1)
+* 90% of provisioned IOS performance 99.9% of the time (io1,io2) (SSD)
+
+## EBS Snapshot performance impacts
+* Performance of st1 and sc1 volumes will be degraded while snapshotting 
+* New Volume from snapshot will be slow
+  * It has to download from S3
+* Can be mitigated two ways
+  * Initialization (running Linux dd for fio utilities)
+  * Enabling EBS fast snapshot restore (per-snapshot within an availability zone)
+* Other performance
+  * We can use Raid-0 and improve even higher performance
+    * But we could lose data
 
 ### Properties that affects the cost
 * Profile of your storage

@@ -162,10 +162,14 @@
 ## SSE S3 headers
 *    "s3:x-amz-server-side-encryption": "aws:kms"
 *    "s3:x-amz-server-side-encryption-aws-kms-key-id" : "arn:aws:kms:us-west-2:568157667383:key/86b02606-7d41-4a20-a694-d2b4d93cb522"
-
 * [New – Amazon S3 Server Side Encryption for Data at Rest](https://aws.amazon.com/blogs/aws/new-amazon-s3-server-side-encryption/)
-* [AWS Key Management Service Cryptographic Details
-](https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf)
+* [AWS Key Management Service Cryptographic Details](https://d0.awsstatic.com/whitepapers/KMS-Cryptographic-Details.pdf)
+
+## [S3 performance](https://aws.amazon.com/s3/transfer-acceleration/)
+* If we need to upload object to remote region extreemly faster
+* S3 Transfer Acceleration
+  * Uses edge location
+  * CloudFront CDN to replicate
 
 ## References
 * [how-to-encrypt-an-ebs-volume-the-new-amazon-ebs-encryption](https://cloudacademy.com/blog/how-to-encrypt-an-ebs-volume-the-new-amazon-ebs-encryption/)
