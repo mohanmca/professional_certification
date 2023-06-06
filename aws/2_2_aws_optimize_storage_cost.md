@@ -64,6 +64,10 @@
 
 
 ### Amazon FSx
+* Amazon FSx for Lustre (for HPC)
+  * 100Gbs per second
+  * Millions of IPS
+  * Integrated with S3
 * Amazon FSx - windows file server
   * For windows based file server and based on windows system
   * Sub-millisecond latency with AD integration
@@ -71,10 +75,8 @@
   * Priced based on Capacity, Throughput and Backups
   * Multi-AZ is bit more expensive
   * De-duplication feature is free and would reduce actual storage and saves cost
-* Amazon FSx for Lustre (for HPC)
-  * 100Gbs per second
-  * Millions of IPS
-  * Integrated with S3
+* Amazon FSx for OpenZFS
+  * Amazon FSx for NetApp ONTAP
 * [Amazon FSx for Lustre Makes High Performance Computing More Accessible](https://cloudacademy.com/blog/amazon-fsx-for-lustre-makes-high-performance-computing-more-accessible/)
 
 
