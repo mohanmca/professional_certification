@@ -14,10 +14,11 @@
 ## EBS Volumes
 * They are only in one AZ
 * EBS volume types are - SSD backed and HDD backed
-* SSD Types - 3000 IOPS,  3 IO OPS upto 10000, 128MB upto 170GB
+* SSD Types - 3000 IOPS,  3 IO OPS upto 16000, 250 MiB/s of throughput per volume
 * Provisioned 4-16TB
-* Can be encrypted (at rest and in-transit)
-* Can be elastic
+  * For database such as MongoDb, PostgreSQL
+  * Can be encrypted (at rest and in-transit)
+  * Can be elastic
 * Can restore volume on larger volume to increase the file-system size
 * GP2, IO1, ST1, SC1
 * Not suitable for temporary or multi-instance storage (S3 is suitable)
