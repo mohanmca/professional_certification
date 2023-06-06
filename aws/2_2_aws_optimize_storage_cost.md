@@ -11,11 +11,15 @@
 * From S3 to EC2
 * From S3 to CloudFront
 
+## [EBS Optimized Instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html)
+* EBS IO traffic volume generally compete for network along with other network traffic
+* EBS-Optimized instance network separated from other network traffic
+* Network traffic is exclusively for I/O operations
 
 ### Properties that affects the cost
 * Profile of your storage
 * Access pattern
-* Its criticallity (things can be destroyed would cost less)
+* Its criticality (things can be destroyed would cost less)
 * Availability
 * Latency factor of access
 

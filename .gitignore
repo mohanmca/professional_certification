@@ -3,3 +3,4 @@ algorithms/Course/Princeton_Algorithm/wordnet
 **/*.zip
 **/package-lock.json
 **node_modules/
+/.idea/

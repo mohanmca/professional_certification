@@ -15,28 +15,42 @@
 * NFS 4.1 and 4.0
 * Replicated across single region but multiple AZ (Regional boundry)
 
+
 ## AWS EFS - Storage class
 
 * Standard
+  * Access - Anytime
+  * Cost - Standard Cost
+  * Standard Latency
 * IA (Infrequent access) - cheaper - higher latency
+  * Access - Infrequent
+  * Cost - reduced
+  * Higher Latency
 
 ## AWS EFS LifeCycle Management
 
-* Move to IA after 30/60/days
+* Move to IA after 30/60/90/days
 * If it accessed, it would automatically move from IA to standard
+  * Time is reset for every read, and moved to IA
 * Metadata would not be moved to IA
+  * 128K in size (won't move)
+* Lifecycle can be switched on/off
 
-## AWS EFS - Peformance modes
-
-## AWS EFS - General Purpose
-
-* Max I/O
-* Test before choosing between MaxIO or General Purpose
-
-## AWS EFS - Througput mode
-
-* Bursting throughput mode
-* Provisioned throughput mode
+## AWS EFS - Performance modes
+* AWS EFS - General Purpose
+  * Standard Throughput
+    * 7k <=
+    * Test before choosing between MaxIO or General Purpose
+  * Low latency
+* AWS EFS - Throughput mode (Max/IO)
+  * Named as Max/IO
+  * 7K>=
+  * Unlimited throughput
+    * Bursting throughput mode
+      * 100 MiB/s per TiB
+      * BurstCreditBalance
+    * Provisioned throughput mode
+      * We can buy even if we store small amoount of data
 
 ## AWS EFS - EC2 instance - EFS - Mounting methods
 
