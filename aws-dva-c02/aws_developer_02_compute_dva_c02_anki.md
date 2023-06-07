@@ -27,7 +27,7 @@
    1. [Family types](https://aws.amazon.com/ec2/instance-types/)
 3. Instance Purchasing Option
    1. On-Demand
-      2. Per second billing - costlier
+      1. Per second billing - costlier
    1. Reserved Instances
       1. All upfront (High discount)
       1. Partial upfront
@@ -35,12 +35,12 @@
    1. Scheduled Instances
       1. Charged for schedule even if not used
    1. Spot Instances
-      2. Bid for unused EC2
+      1. Bid for unused EC2
    3. OnDemand capacity reservations
 4. Tenancy
-   5. Shared Tenancy - H/w shared by multiple customers
-   6. Dedicated Instances - H/2 not shared by other customers
-   7. Dedicated Hosts
+   1. Shared Tenancy - H/w shared by multiple customers
+   1. Dedicated Instances - H/2 not shared by other customers
+   1. Dedicated Hosts
       1. Additional visibility and control on the physical host
       1. License visibility
       1. VM flexibility
@@ -61,9 +61,9 @@
    1. SecurityGroup (firewall rules)
       1. Security group name and rule
          1. Type (SSH/SMTP)
-         2. Protocol
-         3. Port Range
-         4. Source (0.0.0.0/0) or CIDR or IP or SecurityGroup
+         1. Protocol
+         1. Port Range
+         1. Source (0.0.0.0/0) or CIDR or IP or SecurityGroup
    2. KeyPair
       1. Public Key
          1. Kept by AWS
@@ -78,10 +78,10 @@
 1. Select AMI
 2. InstanceType
 3. SecurityGroup
-   4. We can select SecurityGroup for a given template
+   1. We can select SecurityGroup for a given template
 4. VPC (Select)
 5. Subnet (Select)
-   6. We can select multiple subject for a given template
+   1. We can select multiple subject for a given template
 6. Shutdown Behavior
    1. Stop
    1. Terminate
@@ -93,18 +93,18 @@
    1. CPU > 70%
    1. Memory usage
 1. We can also scale-back/scale up
-   2. scale-in (downsize)
+   1. scale-in (downsize)
 1. Advantages
-   2. Automation
-   3. Customer satisfaction
-   4. Cost reduction
+   1. Automation
+   1. Customer satisfaction
+   1. Cost reduction
 1. [**Launch configuration vs Launch Template**](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
-   2. Iam Profile vs IAM Profile Instance
+   1. Iam Profile vs IAM Profile Instance
    
 1. ![Launch-Template vs Launch-Configuration](img/compute/Auto-Scaling-Launch-Template-vs-Launch-Configuration.jpg)
-   2. ![Launch-Template Instance](img/compute/create_launch_template_1.png)
-   3. ![Launch-Template Storage](img/compute/create_launch_template_2.png)
-   4. ![Launch-Template Advanced](img/compute/create_launch_template_3.png)
+   1. ![Launch-Template Instance](img/compute/create_launch_template_1.png)
+   1. ![Launch-Template Storage](img/compute/create_launch_template_2.png)
+   1. ![Launch-Template Advanced](img/compute/create_launch_template_3.png)
 
 ## AWS Launch Configuration
 1. ![Launch-Configuration](img/compute/Launch-Configuration.png)
@@ -123,10 +123,10 @@
 1. From Launch Configuration or Launch Template
 2. Can override puchase-option from launch template
 3. ![create_auto_scaling_group](img/compute/create_auto_scaling_group.png)
-3. ![Add Alarm](img/compute/alarm_to_add_node.png)
-4. ![alarm_to_remove_node](img/compute/alarm_to_remove_node.png)
-4. ![create_auto_scaling_group](img/compute/create_auto_scaling_increase_decrease.png)
-5. ![auto_scaling_summary](img/compute/auto_scaling_summary.png)
+4. ![Add Alarm](img/compute/alarm_to_add_node.png)
+5. ![alarm_to_remove_node](img/compute/alarm_to_remove_node.png)
+6. ![create_auto_scaling_group](img/compute/create_auto_scaling_increase_decrease.png)
+7. ![auto_scaling_summary](img/compute/auto_scaling_summary.png)
 
 ## Autoscaling policy types
 
