@@ -56,6 +56,6 @@
   * Low volume blog site.
   * You only pay for resources as you consume them on a per second basis.
 
-## Referene
+## Reference
 
 * [Amazon Aurora](https://github.com/alozano-77/AWS-SAA-C02-Course#Amazon Aurora)
