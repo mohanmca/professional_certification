@@ -60,7 +60,7 @@
   * Supports multiple data-types (string, hashes, lists, sets and sorted-sets, bitmaps)
 * Memcached
   * Simpler
-  * Need to run on multi-core and multi-threads
+  * Need to run on multicore and multi-threads
   * Scale-in/scale-out
 
 
@@ -78,7 +78,9 @@
 * A DB Subnet Group is a collection of subnets (typically private) that you create in a VPC and designate for your DB instances.
 * Each DB subnet group should have subnets in at least two Availability Zones in a given region. 
 * Note that SQL Server Mirroring with a SQL Server DB instance requires at least 3 subnets in distinct Availability Zones.
-* When creating a DB instance in a VPC, you must select a DB subnet group. Amazon RDS uses that DB subnet group and your preferred Availability Zone to select a subnet and an IP address within that subnet to associate with your DB instance.
+* When creating a DB instance in a VPC, 
+  1. You must select a DB subnet group. 
+  2. Amazon RDS uses that DB subnet group and your preferred Availability Zone to select a subnet and an IP address within that subnet to associate with your DB instance.
 * When Amazon RDS creates a DB instance in a VPC, it assigns a network interface to your DB instance by using an IP address selected from your DB Subnet Group.
 * If the primary DB instance of a Multi-AZ deployment fails, Amazon RDS can promote the corresponding standby and subsequently create a new standby using an IP address from an assigned subnet in one of the other Availability Zones.
 
