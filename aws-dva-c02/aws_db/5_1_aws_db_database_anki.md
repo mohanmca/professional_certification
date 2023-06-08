@@ -86,7 +86,7 @@
 
 ## AWS RDS (instead of own EC2)
 
-* scale compute metrics in or out independently
+* Scale compute metrics in or out independently
   * processor size, the amount of storage, or the IOPS speed, independently of each other.
 * The automatic backups and patching.
 * RDS run a synchronous, or asynchronous version of your database, in a different availability zone. (multi AZ support for all RDS)
@@ -97,7 +97,7 @@
 * Supports 5.5, 5.6, 5.7 and 8.0
 * Four instance types - micro-instances, general purpose, memory optimized, and the burstable
 * Can create read replicas of database and deploy those across more than one availability zone, using the multi-AZ feature of MySQL and RDS.
-* Increase the size of your database storage on the fly, with zero down time.
+* Increase the size of your database storage on the fly, with zero downtime.
 * Point-in-time restore and snapshot restore features for InnoDB storage engine.
 * MariaDB also supported
 
@@ -112,10 +112,9 @@
 
 ## Amazon RDS for Oracle
 
-* BYOL
 * Supports multiple edition - SE, SE1, SE2 and EE
 * Amazon Redshift is a supportive data-source for Oracle Business Intelligence versions 12.2.1.0 and 12.2.1.1
-
+* BYOL - Only oracle uses this license
 
 ## Amazon RDS for Postgres 
 
@@ -128,7 +127,7 @@
 * Designed and built from the ground up to be cloud native
 * Amazon Aurora replicates data across three availability zones by default
 * Aurora service also deploys a cloud native database cluster and this database cluster as the underlying data store
-* Each cluster has one primary instance which performs all of the data modifications to the cluster volume and supports read and write operations.
+* Each cluster has one primary instance which performs all the data modifications to the cluster volume and supports read and write operations.
 * Each cluster also has at least one Aurora replica which supports only read operations
 * Aurora DB cluster can have up to 15 Aurora replicas of the primary instance
 * Multiple Aurora replicas distribute the read workload
@@ -145,6 +144,7 @@
 * Encrypt database at rest and AWS KMS details
 * Backup retention and backup window
 * Maintenance window (for patching)
+
 
 
 ## Choosing between Database types
@@ -185,9 +185,7 @@ CREATE TABLE laboratory ( id INT, name VARCHAR(100) );
 1. Snapshot Export
 1. Data Transfer
 
-## BYOL
 
-* Only oracle uses this license
 
 
 

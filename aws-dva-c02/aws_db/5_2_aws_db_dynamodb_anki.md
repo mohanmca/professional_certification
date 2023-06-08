@@ -1,10 +1,10 @@
-## AWS DynamoDB - OVerview
+## AWS DynamoDB - Overview
 
 * Components of dynamodb
   * Tables, items, and attributes are the core components 
 * Fully managed proprietary NoSQL database service that supports key-value and document data structures
-* Supported local secondary index, recently global seconday index
-* Automatically replicated across multiple Availability Zones within an AWS Region.
+* Supported local secondary index, recently global secondary index
+* Automatically replicated across multiple availability zones within an AWS Region.
 * Automatically partition data and incoming traffic across multiple partitions which are themselves stored on numerous backend servers distributed across three availability zones within a single region.
 
 
@@ -26,19 +26,19 @@
 ## DynamoDB Keys
 
 * Partition key – A simple primary key, composed of one attribute known as the partition key. 
-* Partition key and sort key – Referred to as a composite primary key, this type of key is composed of two attributes. The first attribute is the partition key, and the second attribute is the sort key.
+* Partition key and sort key – Referred to as a composite primary key, this type of key is composed of two attributes. 
+  * The first attribute is the partition key
+  * The second attribute is the sort key.
 
 ## Global table  - Cross region replication
 
 * In DynamoDB, we can create tables that are automatically replicated across two or more AWS Regions, with full support for multimaster writes.
   * To build fast, massively scaled applications for a global user base without having to manage the replication process
-*   
-
 
 ## DynamoDB supports two kinds of indexes
 
 * Global secondary index – An index with a partition key and sort key that can be different from those on the table.
-  * GSI can span all of the data in the base table, across all partitions.
+  * GSI can span all the data in the base table, across all partitions.
   * Has own provisioned throughput settings for read and write activity that are separate from those of the table.
   * No size limit
 * Local secondary index – An index that has the same partition key as the table, but a different sort key.
@@ -60,11 +60,11 @@
 
 ## AWS DynamoDB DAX (Accelerator)
 
-* in-memory cache for DynamoDB that delivers up to a 10x performance improvement
+* in-memory cache for DynamoDB that deliver up to a 10x performance improvement
   * from milliseconds to microseconds – even at millions of requests per second.
 * Dynamo DB - milliseconds, DAX - MicroSeconds
 * DAX is compatible with DynamoDB (no application code change)
-* DAX supporst AES encryption
+* DAX supports AES encryption
 * DAX doesn't handle table related operations, they are handled by DynamoDB
 * All write operations ("write-through") are written to DynamoDB first and later to DAX (DAX is eventual consistency)
 * DAX is not ideal
@@ -73,7 +73,6 @@
   * Applications that are write-intensive, or that do not perform much read activity.
   * Applications that are already using a different caching solution with DynamoDB, and are using their own client-side logic for working with that caching solution.
 
-
 ## AWS DynamoDB DAX Cluster
 
 * Minimum of 3 nodes, maximum of 10 nodes (1 Primary, 9 Replicas)
@@ -81,7 +80,6 @@
 * DAX EC2 requires additional inbound rule for port 8111
 * We should install "DAX Client" software on those EC2 instances
 * Read Capacity Units can be reduced since DAX would take care most of the reads
-
 
 ## AWS DynamoDB Commands
 
