@@ -2,6 +2,7 @@
 * [Study notes](https://github.com/itsmostafa/certified-aws-developer-associate-notes)
 * [Further study notes](https://certification.kananinirav.com/aws-developer-associate/)
 * [SAA notes with screenshot](https://github.com/eMahtab/aws-solutions-architect-notes)
+* [Youtube-BeanStalk](https://www.youtube.com/@amazonwebservices/search?query=BeanStalk)
 * Development (32%)
   * Lambda
     * Resource allocation
