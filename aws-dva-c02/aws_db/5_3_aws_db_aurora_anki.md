@@ -142,6 +142,11 @@
   * You only pay for resources as you consume them on a per second basis.
 * Single connection endpoint
   * It is for both read/write
+* AWS Aurora Serverless secret sample
+  * arn:aws:secretmanager:us-west-2:331058736108:secret:demo/cloudacademy-serverless-nx5Ppo
+* AWS CLI can be used to query data
+  * aws rds-data execute-statement --region us-west-2 --secret-arn  arn:aws:secretmanager:us-west-2:331058736108:secret:demo/cloudacademy-serverless-nx5Ppo --resource-arn arn:aws:secretmanager:us-west-2:331058736108:cluster:cloud-serverless \
+  * --database demo --sql "INSERT INTO TABLE()"
 * Web Service Data API
   * Aurora serverless databases
 * ![amazong aurora serverless](../img/database/amazon_aurora_serverless.png)

@@ -15,10 +15,37 @@
 
 ## AWS Elasticache - When to use?
 
+* When demand is Sub-millisecond response time
 * Requires scaling
 * To improve performance
 * Compatible with MemCached and Redis
 * It is located part of Database (under management console)
+
+
+## AWS ElasticCache for MemCached
+1. when submillisecond latency memcached-compatible
+2. in memory key-value store service that can either be used as cache, in addition to a datastore
+3. Usecase
+   4. Caching
+   5. Session store
+
+## AWS ElasticCache for Redis
+1. when sub-milli0second latency *data-store* requires for high performance on a huge scale to real-time applications
+2. Use-case
+   3. Caching
+   4. Session store
+   5. Chat and Messaging
+   6. Gaming Leaderboards
+   7. Geospatial
+   8. Machine Learning
+   9. Queues
+1. Redis Cluster Mode (enabled/disabled)
+   2. With enabled each cluster can have 90 shards
+   3. Cluste-mode-enabled = (Scale out)
+4. Components of ElasticCache
+   5. Node - Network attached RAM, Fixed size (any EC2 instance can be selected r2/)
+   6. Shards (Node group) - group of upto 6 ElasticCache nodes
+   6. Cluster - 1-90 Redis shards
 
 ## AWS Elasicache usecase
 
