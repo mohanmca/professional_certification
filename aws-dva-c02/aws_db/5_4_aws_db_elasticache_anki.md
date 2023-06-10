@@ -3,7 +3,8 @@
 * What is cache
 * What is ElastiCache Service? Why we need them?
 * What are ElastiCache features?
-
+* ![amazong aurora serverless](../img/database/aws_rds_elasticcache.png)
+* ![amazong aurora serverless](../img/database/aws_elasticcache_cluster.png)
 ## AWS Elasticache
 
 * WebService create,operate and scale in-memory datastore or cache in the cloud
@@ -44,8 +45,21 @@
    3. Cluste-mode-enabled = (Scale out)
 4. Components of ElasticCache
    5. Node - Network attached RAM, Fixed size (any EC2 instance can be selected r2/)
+      6. Node-type (cache.r5.large)
    6. Shards (Node group) - group of upto 6 ElasticCache nodes
    6. Cluster - 1-90 Redis shards
+
+## Amazon MemoryDB for Redis
+1. Fully managed, in-memory, Redis-compatible data store
+2. Deployed as a cluster service a dataset that is partitioned into shards
+3. Eache shard has a primary node and upto 5 read replica nodes
+   4. (can spread across availability zones for high availability)
+5. Cluster may have upto 500 nodes
+   6. storage upto 100TB
+7. TXN logs distributed across availability zones
+8. Data tiering allows to move less-frequetly accessed data to disk
+8. Supports encryption in transit and at-rest
+9. Snapshot for easy backup and restore of your MemoryDB cluster
 
 ## AWS Elasicache usecase
 

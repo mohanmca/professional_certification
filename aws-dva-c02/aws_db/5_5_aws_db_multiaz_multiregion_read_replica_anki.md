@@ -61,3 +61,44 @@
 * write-ahead log is asynchrnously replicated between master and read-replicas
 * Dedicated DB role is their to manage replication
 * Multi-AZ read replica can be easily created for PgSQL
+
+## Choosing a Relational Database on AWS
+
+1. Do I need RDBMS?
+    1. if data suits in table model, then RDBMS is good fit
+    2. is relationship needed between data?
+    3. Acid Compliance needed>
+    4. Data is highly structured?
+1. Do you need managed or un-managed?
+    1. Managed
+        1. Patching, backup, replication and clustering
+    1. Un-managed
+        1. Full control, and run on any EC2 instance
+1. Do you need OLAP or OLTP?
+    2. OLAP - Amazon Redshift
+1. Pay when server is not being used or only pay for query?
+    1. pay for server uptime?
+1. Single region, multi-region
+1. Fully managed OLTP
+    1. Amazon RDS
+1. Main consideration
+    1. Skill level
+    2. Prefernce
+    3. Framework
+    4. Existing Tech (Oracle or SqlServer)
+1. RDS Custom
+    2. SQL server and Oracle
+    3. Patching, HA, configuration
+    4. Install 3rd party application
+    5. Granular access control of file system
+3. Semi-Managed database (RDS custom)
+    4. Setup
+    5. Operation
+6. Scalability requirements
+    7. 64TiB for most, except SQL-server (16TiB)
+3. Amazon Aurora (128TB)
+    4. AWS custom proprietary database engine compatible with mysql/postgresql
+    5. Faster than AWS RDS MYSQL and RDS Postgresql due to its architecture
+    6. Decouples compute and storage, enabling storage tier to span six nodes in 3AZ
+    7. Suports multi-master capabilities, 15 read replicas
+    8. Supports faster scaling and failover, and automatic storage by default
