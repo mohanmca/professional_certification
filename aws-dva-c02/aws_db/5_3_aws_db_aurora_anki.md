@@ -101,6 +101,12 @@
 * Daily backups are maintained maximum of 35 days (min 1 day)
 * We can do on-demand snapshot
   * Can be stored indefinitely
+* How to crash mysql-aurora
+  * "Alter System Crash"
+
+
+## How to run same command multiple times in Shell
+1. watch command can do
   
 
 ## Aurora Replicas
@@ -113,7 +119,7 @@
   * Maximum of 4 compute instances can be configured as masters in a multi-master cluster
   * Incoming database connections to an Aurora-multi-master cluster are not load balanced by the service
   * Client has to implemented and performed within the client
-* 
+
 
 
 
@@ -126,13 +132,26 @@
 ## Aurora Serverless
 
 * Aurora database product without managing the resources.
-* For a cluster, you can set a min and max ACU (Aurora Capacity Units) based on the load and can even go down to 0 to be paused. 
+* For a cluster, you can set a min and max ACU (Aurora Capacity Units) based on the load and can even go down to 0 to be paused.
+  * 2GB - 32GB RAM (1ACU to 16ACU)
 * Only billed for storage consumed when the instances are zero.
 * Billing is based on resources used on a per-second basis.
 * Aurora Serverless - Use Cases
   * Infrequently used applications.
   * Low volume blog site.
   * You only pay for resources as you consume them on a per second basis.
+* Single connection endpoint
+  * It is for both read/write
+* Web Service Data API
+  * Aurora serverless databases
+* ![amazong aurora serverless](../img/database/amazon_aurora_serverless.png)
+
+
+## Images
+* ![amazong aurora serverless](../img/database/aws_rds_ebs_gps.png)
+* ![amazong aurora serverless](../img/database/aws_rds_ebs_provisioned.png)
+* ![amazong aurora serverless](../img/database/aws_rds_connection_endpoints.png)
+* ![amazong aurora serverless](../img/database/aws_rds_storage_scalling.png)
 
 ## Reference
 

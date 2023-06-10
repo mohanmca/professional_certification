@@ -12,6 +12,12 @@
 ## User-data
 * Can be executed only once (during first boot)
 
+## How do you run multiple command in AWS bastion box
+1. Use Tmux
+2. Use GNU parallel shell
+
+
+
 ## Why can't I connect to EC2 elastic-beanstalk
 * [AWS Elastic Beanstalk-troubleshoot](https://www.youtube.com/watch?v=7wvvuQGz728)
 
