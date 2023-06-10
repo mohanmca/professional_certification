@@ -70,8 +70,16 @@
 * Knowledge graphs
   * W3C RDF
   * Property Graph
-  * Sparql, Gremlin
+  * OpenCypher, Sparql, Gremlin
+* Stores data across 6 Nodes in 3 AZ and supports upto 15 read replicas
 
+## AWS Timestream
+1. Timeseries database
+2. Separates
+   3. ingestion, storage and query layers, enable them to scale independently
+4. Amazon Quantum Ledger Database
+   5. Amazon QLDB
+  
 ## AWS RDS Subnet
 
 * Subnets are segments of a VPC's IP address range that allow you to group your resources based on security and operational needs.
