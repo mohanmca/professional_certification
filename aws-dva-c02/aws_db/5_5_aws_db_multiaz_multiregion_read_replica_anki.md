@@ -102,3 +102,28 @@
     6. Decouples compute and storage, enabling storage tier to span six nodes in 3AZ
     7. Suports multi-master capabilities, 15 read replicas
     8. Supports faster scaling and failover, and automatic storage by default
+
+## Database types
+1. key-value (dynamodb)
+   2. Low-latency at massive scale
+   3. single-digit low latency
+   4. Not flexible but infinitely scalable
+2. document-db
+   3. Flexible data-storage + transaction support
+   4. Uses mongodb querying language
+   5. Storing in JSON
+3. graph
+4. in-memory database
+   5. Do you need caching layer
+      6. If this is for DynamoDB
+         7. Amazon DynamoDB DAX
+      8. If not for dynamodb
+         9. Amazon ElasticCache
+      10. Use if persistence
+          11. REDIS
+4. time-series
+5. ledger
+6. wide-column
+   7. Amazon Keyspaces
+      8. No ACID support
+      9. Cassandra compatible
