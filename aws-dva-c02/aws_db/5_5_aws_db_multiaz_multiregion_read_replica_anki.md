@@ -20,10 +20,10 @@
 * Automatic failover to standby (non-Aurora) or read replica (Aurora) when a problem is detected
 
 
-## Multi-AZ deployments Failover mechanism
+## Multi-AZ deployments Fail-over mechanism
 
 * Secondary instance would take over from primary instance
-* It changes based on databse engine type
+* It changes based on database engine type
 * For MS-SQL-server, it uses mirroring supported by MS-SQL-Server
 * 60-120 seconds for DNS fail-over to secondary instance
 * RDS-EVENT-0025 (Failure completion event)
