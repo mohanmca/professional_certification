@@ -1,17 +1,24 @@
 ## Amazon Aurora (DB cluster)
 
 * Database engine that's compatible with MySQL and PostgreSQL.
-* Aurora doesn't use local storage for the compute instances.
+* Aurora doesn't use local storage from the compute instances.
 * It has high-performance storage subsystem.
 * Involves entire clusters of database servers that are synchronized through replication, instead of individual database instances.
 * Aurora cluster volume is a virtual database storage volume that spans multiple Availability Zones, with each Availability Zone having a copy of the DB cluster data.
-* Not supported in the region that has lesser than 3 AZ
+* Aurora is not supported in the region that has lesser than 3 AZ
 * Three types of DB instances
   * Primary DB Instance
   * Aurora Replica
     * Connects to the same storage volume as the primary DB instance and supports only read operations.
     * Aurora automatically fails over to an Aurora Replica in case the primary DB instance becomes unavailable.
     * Aurora multi-master clusters, all DB instances have read/write capability.
+* Amazon Aurora replicates data _____ ways across multiple availability zones. (six)
+  * Aurora is built to be highly available, fault-tolerant, and self-healing, as it replicates your data six ways across multiple availability zones.
+
+## AWS Aurora
+1. No patching required
+   2. OS and DB is patched by AWS
+2. Back-up
 
 ## Amazon Aurora Connection Management
 
