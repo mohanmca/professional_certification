@@ -10,8 +10,8 @@
       * Microsoft SQL Server for RDS  
       * Oracle for RDS  
     * Amazon Aurora for RDS
+      * Amazon Aurora MySQL fork of AWS (No.1 usage)
       * PostgreSQL
-      * MySQL for RDS  
     * Amazon Community DB
       * PostgreSQL
       * MySQL
@@ -83,14 +83,6 @@
   2. Amazon RDS uses that DB subnet group and your preferred Availability Zone to select a subnet and an IP address within that subnet to associate with your DB instance.
 * When Amazon RDS creates a DB instance in a VPC, it assigns a network interface to your DB instance by using an IP address selected from your DB Subnet Group.
 * If the primary DB instance of a Multi-AZ deployment fails, Amazon RDS can promote the corresponding standby and subsequently create a new standby using an IP address from an assigned subnet in one of the other Availability Zones.
-
-## AWS RDS (instead of own EC2)
-
-* Scale compute metrics in or out independently
-  * processor size, the amount of storage, or the IOPS speed, independently of each other.
-* The automatic backups and patching.
-* RDS run a synchronous, or asynchronous version of your database, in a different availability zone. (multi AZ support for all RDS)
-* Automatic failure detection and recovery
 
 ## Amazon RDS for MySQL
 

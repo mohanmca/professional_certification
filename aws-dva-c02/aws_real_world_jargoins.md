@@ -12,6 +12,12 @@
 ## User-data
 * Can be executed only once (during first boot)
 
+## Why can't I connect to EC2 elastic-beanstalk
+* [AWS Elastic Beanstalk-troubleshoot](https://www.youtube.com/watch?v=7wvvuQGz728)
+
+## All the Jargons
+* [Your AWS Terminology Cheat Sheet](https://acloudguru.com/blog/engineering/your-aws-terminology-cheat-sheet)
+
 ## [AWS Real scenario issues](https://www.youtube.com/playlist?list=PLhr1KZpdzukfdjsOHZ-BazZt1iK1J8UUw)
 1. How do I resolve a "MySQL server has gone away" error in Amazon RDS?
 1. A client is receiving a certificate error message when trying to access my website. What do I do?
@@ -725,8 +731,3 @@
 1. Why was a query to my RDS for MySQL DB instance blocked when there is no other active session?
 1. Why wasn't my Lambda function triggered by my EventBridge rule?
 
-## Why can't I connect to EC2 elastic-beanstalk
-* [AWS Elastic Beanstalk-troubleshoot](https://www.youtube.com/watch?v=7wvvuQGz728)
-
-## All the Jargons
-* [Your AWS Terminology Cheat Sheet](https://acloudguru.com/blog/engineering/your-aws-terminology-cheat-sheet)
