@@ -400,6 +400,12 @@ def lambda_handler(event, context):
 * [The Hitchhiker's Guide to AWS ECS and Docker](https://start.jcolemorrison.com/the-hitchhikers-guide-to-aws-ecs-and-docker/)
 
 
+## How to get metadata of the compute instance
+```bash
+TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
+curl http://169.254.169.254/latest/meta-data/profile -H "X-aws-ec2-metadata-token: $TOKEN"
+```
+
 ## Lambda monitoring
 1. ![aws_lambda_monitoring_metrics](img/compute/lambda/aws_lambda_monitoring_metrics.png)
 2. CloudWatch logstream
