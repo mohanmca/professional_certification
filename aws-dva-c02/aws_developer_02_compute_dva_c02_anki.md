@@ -395,7 +395,9 @@ def lambda_handler(event, context):
     --event-source-arn arn:aws:sqs:us-west-2:123456789012:mySQSqueue
     --event-source-arn arn:aws:dynamodb:us-west-2:45456789012:table/my-table/stream/2021-0610T19:26:16:525
     ```
-## AWS BeanStalk
+
+## AWS ECS and Docker
+* [The Hitchhiker's Guide to AWS ECS and Docker](https://start.jcolemorrison.com/the-hitchhikers-guide-to-aws-ecs-and-docker/)
 
 
 ## Lambda monitoring

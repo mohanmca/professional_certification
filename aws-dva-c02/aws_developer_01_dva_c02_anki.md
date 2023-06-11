@@ -2,6 +2,7 @@
 * [Study notes](https://github.com/itsmostafa/certified-aws-developer-associate-notes)
 * [Further study notes](https://certification.kananinirav.com/aws-developer-associate/)
 * [SAA notes with screenshot](https://github.com/eMahtab/aws-solutions-architect-notes)
+* [AWS Real scenario issues](https://www.youtube.com/playlist?list=PLhr1KZpdzukfdjsOHZ-BazZt1iK1J8UUw)
 * [Youtube-BeanStalk](https://www.youtube.com/@amazonwebservices/search?query=BeanStalk)
 * Development (32%)
   * Lambda
@@ -36,6 +37,9 @@
 
 * 720/1000 - passing score
 * 65 question and 130 minutes
+* [Jon-Bonso-AWS Certified Developer Associate DVA-C02 Practice Exams 2023](https://portal.tutorialsdojo.com/courses/aws-certified-developer-associate-practice-exams/#learndash-course-content)
+* [AWS Certified Developer Associate (DVA-C02) Exam Questions 2023](https://skillcertpro.com/product/aws-certified-developer-associate-practice-exam-tests/)
+
 
 ## Why certifications, what they test?
 * Minimally Qualified
