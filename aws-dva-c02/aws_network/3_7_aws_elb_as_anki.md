@@ -21,7 +21,7 @@
   * Process that checks for connection request+protocol+port
   * Ports and Protocols set as conditions
   * One or more listener
-  * Each listner has one or more rules
+  * Each listener has one or more rules
 * Target groups
   * Target resources
 * Rules
@@ -42,7 +42,7 @@
 * ELB Nodes
   * Part of AZ
 * Cross Zone LB
-  * To distribute request acorss AZ between target
+  * To distribute request across AZ between target
 
 ### Server certificate (For encrypted request)
 * To allow ALB to handle traffic over https it requires two things
@@ -64,7 +64,7 @@
 1. Step-1) Setup target groups
     1. Target-group = name + type (instance/ip/lambda) + protocol + port + vpc + HealthCheck (protocol+port) 
     1. Health-check advanced settings
-      1. [healthy-thrshold + un-healthy-thrshold + timeout + interval + sucess codes]
+      1. [healthy-threshold + un-healthy-threshold + timeout + interval + sucess codes]
 1. Step-2) select instances for above target groups
 1. Step-3) Create LB > ALB
     1. Name
@@ -79,18 +79,18 @@
 
 
 ## Network load balancer (APSTNDP)
-* Works at layer 4 (Transport layer)
+* Works at layer 4 (Transport layer/Connection Level)
 * TCP, TLS vs UDP
 * Low latency choice
 * Cross -zone could be enabled/disabled
 * Provisioned in AZ
 * Algorithm chooses target based on TCP Sequence, the protocol, source port, source-ip, target-port, target ip
-* Creation steps are similar to ELB but need to choose TCP/UDP instepad of protocol
+* Creation steps are similar to ELB but need to choose TCP/UDP instead of protocol
 
 
 ## Classic load balancer
 * TCP, SSL, HTTP, HTTPS
-* ALB should be prefered over CLB
+* ALB should be preferred over CLB
 * Classic network not supported for accounts created after 12-April-2013
 * Works when network shared with other customers (without VPC)
 * CLB (where ALB won't support)
@@ -112,8 +112,8 @@
   * When you create a group, you can specify its minimum, maximum, and desired number of EC2 instances.
 
 #### AWS EC2 autoscaling - components
-1. Launch configuration  - Creaion of launch configuration (or Lauch template)
-   1. Lauch template is advanced version of launch configuration
+1. Launch configuration  - Creation of launch configuration (or Launch template)
+   1. Launch template is advanced version of launch configuration
 1. Autoscaling Group - Creation of Autoscaling Group
   1. Your group uses a launch configuration as a template for its EC2 instances.
 1. Launch configuration
@@ -138,7 +138,7 @@
       1. name + description + source-template
     1. Launch template content
         1. AMI, Instance-Type, Key-pair + network type + security groups
-        1. Network interace
+        1. Network interface
            1. Device, Network-Interface+subnet+AutoAssignIP+Primary+Secondary+SecGroup
         1. Stoage volumes
         1. Tags
@@ -179,8 +179,10 @@
     
 
 ### CloudWatch
-* By default, CloudWatch monitors EC2 instances approximately every 5 minutes. Detailed monitoring enables monitoring more often (each minute). Note: Detailed monitoring does have an associated cost.
-* Cooldown period - The cooldown period helps you prevent your Auto Scaling group from launching or terminating additional instances before the effects of previous activities are visible. You can configure the length of time based on your instance startup time or other application needs. 
+* By default, CloudWatch monitors EC2 instances approximately every 5 minutes. 
+  * Detailed monitoring enables monitoring more often (each minute). Note: Detailed monitoring does have an associated cost.
+* Cooldown period - The cooldown period helps you prevent your Auto Scaling group from launching or terminating additional instances before the effects of previous activities are visible. 
+  * You can configure the length of time based on your instance startup time or other application needs. 
 
 
 ### Combine ELB vs Autoscaling group
