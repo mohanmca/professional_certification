@@ -1,6 +1,6 @@
 # Virtual Private Clouds
 
-##  Components of VPC
+## Components of VPC
 1. Subnets
 1. Route Tables
 1. NAC - Network Access List
@@ -25,7 +25,6 @@
 * In the example above, the network address would be 192.168.0.0.
 * The remaining bits in the IP address (in this case, the last octet 100) represent the host portion.
 
-
 ### Subnets and CIDR block
 
 * It is segmented partition within VPC
@@ -49,26 +48,29 @@
 * Private subnet
     * If a subnet doesn't have a route to the Internet gateway, the subnet is known as a private subnet.
     * The private subnet routes internet traffic through the NAT instance.
+* ![aws_lambda_monitoring_metrics](../img/network/subnet_az_fail_over.png)
 
 ### Subnets, Region and Resiliency
 
 * For every subnet in AZ, it is better to have replica one in another AZ
 * Web/App/DB Layer - Each can be in different sub-net
+* ![aws_vpc_subnet.png](../img/network/aws_vpc_subnet.png)
 
 
-## CIDR-Limitation on VPC
+## CIDR-Limitation on VPC (except 5 IP address of each subnet)
 * First four IP address and last ip-address within subnet can't be used
 * 10.0.1.0/24 - is a subnet
   * 10.0.1.0   -> Network IP address any subnet (Application can't use)
   * 10.0.1.1   -> AWS Routing reserved (Application can't use)
   * 10.0.1.2   -> AWS DNS reserved (Application can't use)
-  * 10.0.1.2   -> AWS DNS reserved  (Application can't use)
-  * 10.0.1.3 -to-  10.0.1.254  -> No restrictions
+  * 10.0.1.3   -> AWS Future (Application can't use)
+  * 10.0.1.4 -to-  10.0.1.254  -> No restrictions
   * 10.0.1.255 -> Broadcast IP address on any subnet (Application can't use)
   * 251 IP addresses out of 256 is accessible for our VPC
-
+    
 
 ## 0.0.0.0/0 -> Every IP that is not explicitly configured in route table.
+
 ## Largest possible VPC network
 * Deploying the largest VPC possible results in over 65,000 IP addresses.
 ### 10.x.x.x address space
@@ -93,17 +95,18 @@
     * It is recommended to creating rules in increments (for example, increments of 10 or 100) so that you can insert new rules where you need to later on.
 * [NACL document](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html)
 * When you add or remove rules from a network ACL, the changes are automatically applied to the subnets it is associated with.
+* ![aws_nacl](../img/network/aws_nacl.png)
 
 ## Security Group
 
-* All the rules are evaluated before decisions are made (unlike NACL)
-* Works at instance level (not at network level)
-* We can specify allow rules, but not deny rules.
+* No rule number, All the rules are evaluated before decisions are made (unlike NACL)
+  * Works at instance level (not at network level)
+* We can specify allow rules, but not deny rules. Default everything is deny!
 * Security-Group = Type/Protocol/Port-Range/Source (MySQL|HTTP/TCP/3306/10.0.1.0`/`24)
 * By default, a security group includes an outbound rule that allows all outbound traffic. You can remove the rule and add outbound rules that allow specific outbound traffic only.
     * If your security group has no outbound rules, no outbound traffic originating from your instance is allowed.
 * Note that NACLs may take a bit longer to propagate, as opposed to security groups, which take effect almost immediately (1-2 seconds).
-
+* ![aws_nacl_sg](../img/network/aws_nacl_sg.png)
 
 ## VPC - Nat Gateway
 
@@ -112,6 +115,7 @@
   * Nat gateway accepts private-subnet initiated connection
   * Nat gateway rejects internet initiated connection into private subnet
 * Nat gateway should sit in public gateway (not in private)
+* It is managed by AWS, default, it would create fail-over, we can suppress
 * Private subnet should have an entry 0.0.0.0/0 ---> Nat Gateway to gain access to internet
    * 0.0.0.0/0 -> nat.0fabcdef678ghk
 * Nat-gateway should be configured for resilient fallback VPC as well
