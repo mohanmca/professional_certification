@@ -19,6 +19,7 @@
   * Persistent IPv4 address that attached to aws account
   * Can attach an EIP address to an instance or an Elastic Network Interface
   * Detached EIP will still incur cost (unless returned to AWS)
+  * Used to maintain static IP address for any instance
 
 ### Elastic Network Interface (ENI/Eth0)
 
@@ -29,7 +30,7 @@
 * Logical virtual network interface card inside cloud
    * Create, configure, and attach to your EC2 instances
    * We can attach private IP address or an elastic IP address or it's MAC address.
-* AWS VPC Flowlogs can be used to capture the trafic of ENI/PNI (logs)
+* AWS VPC Flow-logs can be used to capture the traffic of ENI/PNI (logs)
 * PNI - Primary network interface (default one attached to EC2)
 
 
@@ -56,16 +57,16 @@
 * Interface Endpoints
   * Interface Endpoints are essentially ENIs
   * PrivateLink
-    * PrivateLink target would be Interface enpoints (that could in turn allow other AWS services accessible)
+    * PrivateLink target would be Interface endpoints (that could in turn allow other AWS services accessible)
     * Allows a private and secure connection between VPCs, AWS services, and on-premises applications, via the AWS internal network.
     * Private DNS name that resolved to the private IP address of the interface endpoint and will route through the internal AWS network instead of the internet
 * Gateway Endpoint
-  * RouteTable would be target enpoint for Gateway
+  * RouteTable would be target endpoint for Gateway
   * Amazon S3 and DynamoDB - are supported
   * Route that was selected will have automatic entry for Gateway endpoint
   * Entry will have prefix related to the vpc-endpoint-id
 
-## Aws Global Accelarator
+## Aws Global Accelerator
 
 * Enable client TCP/UDP connection quickly communicate with AWS Global infrastructure
 * Intelligently routes customer traffic (uses Edge locations)
