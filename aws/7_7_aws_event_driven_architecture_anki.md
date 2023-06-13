@@ -128,7 +128,7 @@
 ### Amazon Kinesis (event-driven)
 
 * Collect, Process and analyze realtime-streaming data
-* Collect streams of data from sources and pipe to sinq
+* Collect streams of data from sources and pipe to sink
   * Application-logs/IOT data/Imagery data/Website clickstream
   * Database/Data lakes/Data warehouses
 * Kinesis doesn't store data itself
@@ -139,9 +139,10 @@
   * Date Firehose
     * Doesn't require consumer application
     * We can configure transformer to transform data
-    * Transform the data using readymade blueprint lambda function vs custom lambda function
-    * Target delviery stream should be configured
+    * Transform the data using ready-made blueprint lambda function vs custom lambda function
+    * Target delivery stream should be configured
       * Streaming data into S3/Redshift/Elastic Search/Splunk
+      * Spluk/DataDog/GenericHTTPEndpoint/Splunk/NewRelic
   * Kinesis analytics
     * Standard SQL queries on streaming data
 
@@ -154,7 +155,7 @@
 * Consumer can be RedShift/S3
 * Consumer application should use kinesis client library
 
-#### Amazon Kinesis Analytics
+#### Amazon Kinesis Data Analytics
 
 * 3 steps requires 
   * Create input stream
@@ -162,6 +163,7 @@
   * Create output stream
 * Data processing real-time
 * Output of stream of one-query can feed to second in-application stream
+* Apache flink java/scala is available for Kinesis Data Streams
 
 
 #### AWS Lambda

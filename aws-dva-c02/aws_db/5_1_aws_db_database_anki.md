@@ -187,6 +187,26 @@ CREATE TABLE laboratory ( id INT, name VARCHAR(100) );
 
 
 
+## AWS RDS Instance lab notes
+1. Amazon Relational Database Service (Amazon RDS) makes it easy to set up, operate, and scale a relational database in the cloud. Before launching actual RDS instances, you need to configure a DB Subnet Group.
+1. Subnets are segments of a VPC's IP address range that allow you to group your resources based on security and operational needs. A DB Subnet Group is a collection of subnets (typically private) that you create in a VPC and designate for your DB instances. Each DB subnet group should have subnets in at least two Availability Zones in a given region. Note that SQL Server Mirroring with a SQL Server DB instance requires at least 3 subnets in distinct Availability Zones.
+1. When creating a DB instance in a VPC, you must select a DB subnet group. Amazon RDS uses that DB subnet group and your preferred Availability Zone to select a subnet and an IP address within that subnet to associate with your DB instance. When Amazon RDS creates a DB instance in a VPC, it assigns a network interface to your DB instance by using an IP address selected from your DB Subnet Group. If the primary DB instance of a Multi-AZ deployment fails, Amazon RDS can promote the corresponding standby and subsequently create a new standby using an IP address from an assigned subnet in one of the other Availability Zones.
+1. You can create an RDS Subnet Group using the RDS launch wizard.
+
+## [Create RDS Proxy](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-proxy-planning.html)
+
+1. Using a proxy allows your applications to pool and share database connections to help them scale. A proxy simplifies connection management and makes applications more resilient to database failures.
+2. It allows application connect usig IAM, internally proxy connects using DB credentials
+2. An Amazon RDS Proxy is a service you can put in front of your MySQL and PostgreSQL Amazon RDS databases to improve their scalability and reliability.
+1. RDS proxy has three main features:
+   1. Pooling an application's database connections
+   1. Automatically switching to a standby instance in case of a database failure
+   1. Enabling the use of AWS Identity and Access Management (IAM) credentials to authenticate
+2. sysbench is a general-purpose benchmarking tool that can be used to simulate and benchmark complex workloads. It has support for database testing and is also easy to modify with scripts using the Lua scripting language.
+3. Your RDS Proxy has served all the connection requests made by sysbench. When more requests come simultaneously than the RDS database can handle, new connections are accepted and queued up by the RDS Proxy until database instance connections become available again.
+1. Queuing increases the latency for the affected database connections. Whether this is a valid approach will depend upon your workload and specific application requirements. RDS proxies can be configured to reject connections above a certain amount.
+1. A particularly good use-case for RDS proxies is for use with AWS Lambda functions. AWS Lambda functions are often used to handle unpredictable and spiky workloads. By configuring them to use an RDS proxy you can reduce or eliminate the number of database connection failures they may see. It's also easy to take advantage of RDS Proxy IAM authentication from AWS Lambda functions, simplifying credential management.
+1. Something to be aware of is that an RDS Proxy can not be directly publicly accessed. It is deployed as a VPC Endpoint and assigned private IP addresses from the VPC subnets selected when creating it. RDS Proxies can be accessed across VPCs by creating additional endpoints.
 
 
 ## Reference

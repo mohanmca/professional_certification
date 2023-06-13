@@ -396,6 +396,10 @@ def lambda_handler(event, context):
     --event-source-arn arn:aws:dynamodb:us-west-2:45456789012:table/my-table/stream/2021-0610T19:26:16:525
     ```
 
+## What is Lambda - outputRoute and outputToken?
+* outputRoute and outputToken: Token parameters used by S3 Object Lambda to match and route the WriteGetObjectResponse API call with the original caller. Since the S3 Object Lambda access point is essentially intercepting the original retrieval request, these output parameters are necessary to return the transformed data to the correct origin.
+* inputS3Url: The pre-signed URL that will be used to fetch the original object from your S3 bucket
+
 ## AWS ECS and Docker
 * [The Hitchhiker's Guide to AWS ECS and Docker](https://start.jcolemorrison.com/the-hitchhikers-guide-to-aws-ecs-and-docker/)
 
