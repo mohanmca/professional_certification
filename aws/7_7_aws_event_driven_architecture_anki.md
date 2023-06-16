@@ -19,7 +19,7 @@
   * An order has been placed on a website
   * An item has been moved from for sale to sold
   * A message that conveys something tangible
-* Three components of event-driven archiecture
+* Three components of event-driven architecture
   * CFS (Consumer, Function, Supplier) - Spring Integration terms
   * PRC (Producer, router and consumer)
     * A producer is the element within the infrastructure that will push an event to the event router.
@@ -149,8 +149,10 @@
 #### Amazon Kinesis Streams
 
 * Amazon Kinesis Streams is ordered sequence of data records
-* A record is the unit of data (in Kinesis stream)
-* A record (Sequence number + Partition Key + Data Blob)
+* Data Record = Partition Key + Sequence Number + Data Blob
+  * A record (Sequence number + Partition Key + Data Blob)
+  * A record is the unit of data (in Kinesis stream)
+  * 1000 Record per second or 1MB per second (Per shard)
 * Web service sending data can be considered as producers
 * Consumer can be RedShift/S3
 * Consumer application should use kinesis client library
@@ -164,6 +166,64 @@
 * Data processing real-time
 * Output of stream of one-query can feed to second in-application stream
 * Apache flink java/scala is available for Kinesis Data Streams
+
+## AWS Kinesis limits and price
+1. 0.014$ per (1.14 cents) per 1million unit of put payload
+2. 0.015$ (per shard/per hour) 1.15 cent per shards per hour
+3. aws kinesis create-stream --stream-name mystream --shard-count 3 --output json
+4. aws kinesis describe-stream --stream-name mystream --output json
+5. Partition Key
+   5. Every shard has a unique range of partition key (non overlapping with other shard)
+   6. MD5 hash value of the Partition kye and based on this value decides to which shard the record will be written
+   7. Size of the partition key is not included in the data-record payload limit of 1MB Single record Data Record limit
+      8. But included for throughput calculation
+9. Retention Period
+   10. 24 hours default
+   11. 8760 hours (365 days) maximum
+   12. increaseDetentionPeriod() / decreaseDetentionPeriod()
+13. Producer
+    14. 1000 messages per second / 1MB / default retention period 24 hours (per shard) ProvisionExceededThroughputException
+15. Consumer
+    16. Shared Throughput consumer / Standard Consumer / Minimal cost
+        17. Max 10000 records
+        18. 2 MB/sec  read throughput
+        18. 5 API calls per second across all consumer per shard (crossing more than 5 consumer might be diminishing return per shard)
+        19. That is 10MB/sec per shard read throughput
+        20. If 1 request returns 10 MB of record, it is 5 seconds worth of records
+        21. Usage : 5 or less applications simultaneously consuming the same stream and latency of around 200 milliseconds, to reduce cost
+    17. Enhanced Fan-out consumer
+        18. Multiple consumer for same shard (each for difference application)
+        19. Push based
+            20. SubscribeToShard() for every 5 minutes (client has to call)
+            21. Data pushed for 5 minutes for that client
+            22. 2 MB per consumer per shard/5API
+        23. Usage : 5 or 10 applications simultaneously consuming the same stream and latency of around 70 milliseconds
+        24. Upto 20 consumer and each getting 2 MB per second
+    19. HTTP/2 Data retrieval API
+        20. No limit of 5 API
+        21. 200-1000 millisecond vs 70 milliseconds (standard vs enhanced fan-out)
+
+## AWS Stream processing
+1. Some data looses value over time
+   2. click-steam
+   3. temperature
+   4. tick data
+   5. Anomaly detection
+   6. Location data
+4. Exact moment we have to take decision
+5. Use case for streaming
+   6. Clickstream - add and offer based on clicks
+   7. Preventive Maintenance
+   8. Fraud Detection
+   9. Emotion Analytics
+      10. Unhappy users
+   10. Dynamic Pricing Engine
+11. Challenges of stream processing
+    12. High touch system
+    13. difficult to setup due to moving parts
+    14. Expensive
+    15. Scaling operation
+        16. Seasonal stream
 
 
 #### AWS Lambda
