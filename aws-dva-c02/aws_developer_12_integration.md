@@ -30,8 +30,13 @@
    11. Allows to easily check the variable
    12. Available in Java, Python and Typescript
 
-## AWS Step functions
+## Event-Bus Cross Account
+1. [Sending and receiving events between AWS accounts in Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-cross-account.html)
+2. [How do I set up centralized bus-to-bus routing with EventBridge?](https://repost.aws/knowledge-center/eventbridge-centralized-bus-to-bus)
+3. [Template code](https://s12d.com/aboutevents)
+4. [Template code](https://s12d.com/events-for)
 
+## AWS Step functions
 1. Orchestration lambda based engine (serverless)
 2. Step functions
    3. In Parallel
